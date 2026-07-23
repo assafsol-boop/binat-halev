@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בינת הלב — האתר בבנייה</title>
+<meta name="description" content="בינת הלב — האתר בבנייה. בינתיים מוזמנים להיכנס לאגדות התקווה.">
+<meta name="theme-color" content="#0f2a3d">
+<meta property="og:title" content="בינת הלב — האתר בבנייה">
+<meta property="og:description" content="בקרוב עולים. בינתיים — אגדות התקווה.">
+<meta property="og:locale" content="he_IL">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0b2030;
+    --bg-mid:#123449;
+    --gold:#e8b96b;
+    --gold-soft:#f5d9a8;
+    --text:#f4f1ea;
+    --text-dim:rgba(244,241,234,.66);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Heebo","Segoe UI",Arial,sans-serif;
+    background:var(--bg-deep);
+    color:var(--text);
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+    position:relative;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* רקע: הילה רכה + גרדיאנט עומק */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(closest-side at 50% 18%, rgba(232,185,107,.16), transparent 70%),
+      radial-gradient(closest-side at 82% 88%, rgba(90,160,190,.14), transparent 70%),
+      linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-mid) 55%,var(--bg-deep) 100%);
+    z-index:-1;
+  }
+
+  .card{
+    width:100%;
+    max-width:620px;
+    text-align:center;
+    animation:rise .9s cubic-bezier(.16,.84,.44,1) both;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  .bsd{
+    font-size:14px;
+    letter-spacing:.08em;
+    color:var(--text-dim);
+    margin-bottom:34px;
+  }
+
+  .brand{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    margin-bottom:30px;
+  }
+  .brand-mark{
+    width:64px;height:64px;
+    border-radius:50%;
+    border:1px solid rgba(232,185,107,.45);
+    display:grid;place-items:center;
+    font-size:26px;
+    color:var(--gold);
+    background:rgba(232,185,107,.07);
+    box-shadow:0 0 40px rgba(232,185,107,.13);
+  }
+  .brand-name{
+    font-size:20px;
+    font-weight:500;
+    letter-spacing:.22em;
+    color:var(--gold-soft);
+  }
+
+  h1{
+    font-size:clamp(30px,6.2vw,50px);
+    font-weight:800;
+    line-height:1.24;
+    margin-bottom:18px;
+    letter-spacing:-.01em;
+  }
+  h1 .accent{
+    color:var(--gold);
+    display:block;
+    font-weight:700;
+    font-size:.72em;
+    margin-top:10px;
+    letter-spacing:0;
+  }
+
+  p.lead{
+    font-size:clamp(16px,2.4vw,19px);
+    font-weight:300;
+    line-height:1.75;
+    color:var(--text-dim);
+    max-width:44ch;
+    margin:0 auto 40px;
+  }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:17px 40px;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--gold) 0%,#d9a04f 100%);
+    color:#241503;
+    font-size:18px;
+    font-weight:700;
+    text-decoration:none;
+    box-shadow:0 12px 34px rgba(232,185,107,.28);
+    transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+  }
+  .cta:hover,.cta:focus-visible{
+    transform:translateY(-3px);
+    box-shadow:0 18px 44px rgba(232,185,107,.4);
+    filter:brightness(1.05);
+  }
+  .cta:active{transform:translateY(-1px)}
+  .cta:focus-visible{outline:2px solid var(--gold-soft);outline-offset:4px}
+  .cta .arrow{
+    font-size:22px;
+    line-height:1;
+    transition:transform .2s ease;
+  }
+  .cta:hover .arrow{transform:translateX(-5px)}
+
+  .divider{
+    width:80px;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(232,185,107,.55),transparent);
+    margin:46px auto 20px;
+  }
+  footer{
+    font-size:14px;
+    color:var(--text-dim);
+    font-weight:300;
+  }
+  footer a{color:var(--gold-soft);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+  <main class="card">
+    <div class="bsd">בס"ד</div>
+
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">✦</div>
+      <div class="brand-name">בינת הלב</div>
+    </div>
+
+    <h1>
+      האתר בבנייה
+      <span class="accent">בקרוב עולים עם אגדות התקווה</span>
+    </h1>
+
+    <p class="lead">
+      אנחנו עובדים על משהו חדש. בינתיים, מוזמנים להיכנס לאוסף
+      <strong>אגדות התקווה</strong> — כבר באוויר וממתין לכם.
+    </p>
+
+    <a class="cta" href="/agadot-hatikva/">
+      <span>לאגדות התקווה</span>
+      <span class="arrow" aria-hidden="true">←</span>
+    </a>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <footer>
+      binathalev.co · <a href="/agadot-hatikva/">agadot-hatikva</a>
+    </footer>
+  </main>
+
+</body>
+</html>
