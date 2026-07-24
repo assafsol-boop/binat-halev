@@ -460,13 +460,8 @@ a{color:var(--blue)}
   font-family:var(--display);font-weight:800;font-size:1.02rem;
   text-decoration:none;color:var(--ink);
 }
-.nav .brand .logo{
-  display:grid;place-items:center;width:36px;height:36px;flex:none;border-radius:11px;
-  background:linear-gradient(145deg,var(--night),var(--night-2));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
-}
-.nav .brand .logo svg{width:19px;height:19px}
-.nav .brand .logo .mk-img{width:28px;height:28px;object-fit:contain}
+.nav .brand .logo{display:grid;place-items:center;width:40px;height:36px;flex:none}
+.nav .brand .logo .mk-img{width:40px;height:36px;object-fit:contain}
 .nav .links{display:flex;align-items:center;gap:clamp(6px,1.4vw,18px)}
 .nav .links a{
   text-decoration:none;color:var(--ink-soft);font-weight:600;font-size:.93rem;
@@ -545,12 +540,8 @@ a{color:var(--blue)}
   padding:clamp(34px,5vw,62px) clamp(16px,4vw,32px) clamp(24px,3.4vw,38px);
   border-bottom:1px solid var(--line);
 }
-.top .mark{
-  display:grid;place-items:center;width:60px;height:60px;margin:0 auto 16px;border-radius:18px;
-  background:linear-gradient(145deg,var(--night),var(--night-2));box-shadow:var(--shadow-md);
-}
-.top .mark svg{width:32px;height:32px}
-.top .mark .mk-img{width:42px;height:42px;object-fit:contain}
+.top .mark{display:grid;place-items:center;margin:0 auto 14px}
+.top .mark .mk-img{width:78px;height:69px;object-fit:contain}
 .top h1{font-family:var(--display);font-weight:800;letter-spacing:-.6px;
   font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.05;margin-bottom:10px}
 .top h1 .gl{background:linear-gradient(100deg,var(--gold-deep),var(--gold) 55%,#e0a419);
@@ -680,6 +671,32 @@ a{color:var(--blue)}
 .wk.now .dt{color:var(--gold-deep);font-weight:700}
 @media (max-width:760px){ .weeks{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:430px){ .weeks{grid-template-columns:1fr} }
+
+/* צור קשר */
+.contact{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(18px,2.6vw,34px);align-items:start;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(22px,3.4vw,38px);box-shadow:var(--shadow-xs)}
+.contact .c-intro h3{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3vw,1.62rem);margin-bottom:10px}
+.contact .c-intro p{color:var(--ink-soft);line-height:1.75;font-size:1rem}
+.c-form{display:grid;gap:11px}
+.c-form input,.c-form textarea{width:100%;font:inherit;font-size:.98rem;color:var(--ink);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-xs);padding:12px 15px;
+  transition:border-color .15s,box-shadow .15s}
+.c-form input:focus,.c-form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.c-form textarea{resize:vertical;min-height:120px}
+.c-form button{justify-self:start;font-family:var(--display);font-weight:700;font-size:1rem;cursor:pointer;
+  border:none;border-radius:999px;padding:12px 32px;color:#3a2900;
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));box-shadow:0 8px 20px rgba(242,169,0,.3);
+  transition:transform .16s,box-shadow .16s}
+.c-form button:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(242,169,0,.4)}
+.c-form button:disabled{opacity:.6;cursor:default;transform:none}
+.c-note{font-size:.9rem;min-height:1.1em;margin-top:1px}
+.c-note.err{color:#c0392b}
+.c-done{display:flex;align-items:center;gap:12px;background:var(--gold-soft);border:1px solid #f2dfa6;
+  border-radius:var(--radius-sm);padding:18px 20px;color:#6a4e12;font-size:1.05rem;line-height:1.6}
+.c-done .v{display:grid;place-items:center;width:30px;height:30px;flex:none;border-radius:50%;
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));color:#fff;font-weight:800}
+@media (max-width:680px){ .contact{grid-template-columns:1fr} }
 </style>
 </head>
 <body><div class="bsd-bar">בס״ד</div>
@@ -689,6 +706,7 @@ a{color:var(--blue)}
     <a href="/parashat-hashavua/">פרשת השבוע</a>
     <a href="/agadot-hatikva/">אגדות התקווה</a>
     <a href="/about.html">על האתר</a>
+    <a href="/#contact">צור קשר</a>
   </nav>
   <span class="sp"></span>
   <div class="search">
@@ -769,6 +787,27 @@ a{color:var(--blue)}
   <div class="weeks" id="weeks"></div>
 </section>
 
+<section class="band" id="contact">
+  <div class="band-head">צור קשר</div>
+  <div class="contact">
+    <div class="c-intro">
+      <h3>יש לכם מה לומר?</h3>
+      <p>שאלה, הערה, תיקון קטן, בקשה, או סתם מילה טובה — נשמח מאוד לקרוא.
+         השאירו פרטים ונחזור אליכם בהקדם.</p>
+    </div>
+    <form class="c-form" id="cform" novalidate>
+      <input type="text" name="שם" placeholder="השם שלכם" required>
+      <input type="text" name="פרטי קשר" placeholder="אימייל או טלפון לחזרה אליכם" required>
+      <textarea name="הודעה" placeholder="ההודעה שלכם…" required></textarea>
+      <input type="hidden" name="_subject" value="הודעה חדשה מאתר בינת הלב">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+        style="display:none">
+      <button type="submit" id="csend">שליחה</button>
+      <p class="c-note" id="cnote" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <footer class="rich-foot">
   <div class="cols">
     <div>
@@ -787,6 +826,7 @@ a{color:var(--blue)}
       <h4>האתר</h4>
       <a href="/">דף הבית</a>
       <a href="/about.html">על האתר</a>
+      <a href="/#contact">צור קשר</a>
     </div>
     <div>
       <h4>הערה</h4>
@@ -1179,6 +1219,32 @@ var QUOTES=[
     document.getElementById("qFrom").textContent=q[1];
     document.getElementById("qLink").setAttribute("href",q[2]);
   }
+})();
+/* ---- טופס צור קשר: שליחה ל-FormSubmit דרך מפתח מוסתר, בלי חשיפת הכתובת ---- */
+(function(){
+  var f=document.getElementById("cform"); if(!f) return;
+  var btn=document.getElementById("csend"), note=document.getElementById("cnote");
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(f.querySelector('[name="_honey"]').value) return;      /* מלכודת בוטים */
+    var data={}; new FormData(f).forEach(function(v,k){ data[k]=v; });
+    if(!(data["שם"]||"").trim()||!(data["פרטי קשר"]||"").trim()||!(data["הודעה"]||"").trim()){
+      note.textContent="נא למלא את כל השדות."; note.className="c-note err"; return; }
+    var orig=btn.textContent; btn.disabled=true; btn.textContent="שולח…";
+    note.textContent=""; note.className="c-note";
+    fetch("https://formsubmit.co/ajax/d3ffb214869a92710ca75b880b490a11",{
+      method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify(data)
+    }).then(function(r){return r.json();}).then(function(j){
+      if(j.success==="true"||j.success===true){
+        f.innerHTML='<div class="c-done"><span class="v">\u2713</span>'+
+          '<span>תודה! ההודעה נשלחה — נחזור אליכם בהקדם האפשרי.</span></div>';
+      } else { throw new Error(); }
+    }).catch(function(){
+      btn.disabled=false; btn.textContent=orig;
+      note.textContent="אירעה תקלה בשליחה. נסו שוב עוד רגע."; note.className="c-note err";
+    });
+  });
 })();
 
 var IDX=[
