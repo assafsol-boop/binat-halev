@@ -514,7 +514,7 @@ a{color:var(--blue)}
 }
 .rich-foot .cols{
   max-width:var(--maxw);margin-inline:auto;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.4vw,32px);
+  display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(14px,2vw,28px);
 }
 .rich-foot h4{
   font-family:var(--display);font-size:.78rem;letter-spacing:.14em;font-weight:700;
@@ -607,7 +607,8 @@ a{color:var(--blue)}
 .band-head::before{content:"";width:22px;height:3px;border-radius:99px;background:var(--gold)}
 
 /* האוספים */
-.cols{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,18px)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,18px)}
+@media (max-width:820px){ .cols{grid-template-columns:1fr} }
 .col{position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;
   color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   padding:clamp(20px,3vw,28px);box-shadow:var(--shadow-xs);
@@ -707,6 +708,7 @@ a{color:var(--blue)}
   <nav class="links">
     <a href="/parashat-hashavua/">פרשת השבוע</a>
     <a href="/agadot-hatikva/">אגדות התקווה</a>
+    <a href="/eye-level/">בגובה העיניים</a>
     <a href="/about.html">על האתר</a>
     <a href="/#contact">צור קשר</a>
   </nav>
@@ -762,6 +764,13 @@ a{color:var(--blue)}
       <p>שמונה עשרה אגדות מן הגמרא, בשמונה פרקים — קמצא ובר קמצא, מרתא בת בייתוס,
          שריפת האוצרות. כל אחת נחתמת באור.</p>
       <div class="foot"><span class="n">18 אגדות</span><span>8 פרקים</span></div>
+    </a>
+    <a class="col" href="/eye-level/" style="--k:#17847d">
+      <div class="kt"><span class="kd"></span><span>חוכמה אנושית</span></div>
+      <h3>בגובה העיניים</h3>
+      <p>קומץ משניות מפרקי אבות, כל אחת סביב מצב אחד שכולנו מכירים מבפנים — לעשות ולא רק
+         לדעת, לדון לכף זכות, לשמוח בחלק. בלי אבחנה, בלי הטפה.</p>
+      <div class="foot"><span class="n">אוסף חדש</span><span>בהרחבה</span></div>
     </a>
   </div>
 </section>
@@ -827,7 +836,12 @@ a{color:var(--blue)}
       <a href="/agadot-hatikva/">כל 18 האגדות</a>
       <a href="/agadot-hatikva/a3.html">קמצא ובר קמצא</a>
       <a href="/agadot-hatikva/a9.html">תן לי יבנה וחכמיה</a>
-      <a href="/agadot-hatikva/a16.html">רבי עקיבא והשועל</a>
+    </div>
+    <div>
+      <h4>בגובה העיניים</h4>
+      <a href="/eye-level/">כל האוסף</a>
+      <a href="/eye-level/maase.html">המעשה הוא העיקר</a>
+      <a href="/eye-level/sameach.html">איזהו עשיר</a>
     </div>
     <div>
       <h4>האתר</h4>
@@ -1331,7 +1345,10 @@ var IDX=[
 ["טור מלכא וביתר","זוג תרנגולים ויתד שנשברה — ושני מקומות שנחרבו.","/agadot-hatikva/a15.html","אגדה · לא רק ירושלים"],
 ["רבי עקיבא והשועל","ארבעה חכמים בוכים, ואחד מצחק — ומסביר מדוע.","/agadot-hatikva/a16.html","אגדה · הנחמה"],
 ["רבי יוסי בחורבה","בת קול שמנהמת כיונה — שלוש פעמים בכל יום.","/agadot-hatikva/a17.html","אגדה · הנחמה"],
-["הפרושים ורבי יהושע","איך חיים אחרי החורבן: לא לשכוח, אבל גם לא לשקוע.","/agadot-hatikva/a18.html","אגדה · הנחמה"]
+["הפרושים ורבי יהושע","איך חיים אחרי החורבן: לא לשכוח, אבל גם לא לשקוע.","/agadot-hatikva/a18.html","אגדה · הנחמה"],
+["המדריך למי שכל הזמן מתכוון להתחיל","אפשר לצבור הבנות, תובנות והחלטות שנים — ושום דבר בחיים לא זז. משנה אחת אומרת בפשטות שהמדד היחיד הוא לא מה שהבנת, אלא מה שעשית. מי שמפנים את זה מפסיק לחכות לרגע שבו ״ירגיש מוכן״.","/eye-level/maase.html","בגובה העיניים · לעשות, לא רק לדעת"],
+["הסיפור שאתה שם בראש על מה שהוא עשה","מישהו לא ענה, איחר, אמר משפט — ותוך שנייה בנינו בראש את הגרסה הכי גרועה של מה שהוא חשב. משנה אחת מבקשת לעצור בדיוק שם. מי שלומד לעשות את זה מקבל בחזרה שקט, ואנשים שנשארים לידו.","/eye-level/lekaf-zchut.html","בגובה העיניים · אולי הוא לא התכוון"],
+["המדריך למי שאף פעם אין לו מספיק","תמיד חסר עוד קצת — עוד שכר, עוד הכרה, מה שיש לשני. משנה אחת מגדירה מחדש מהו עשיר, וההגדרה לא תלויה בכמה יש לך. מי שמפנים אותה מקבל בחזרה את הדבר שהכי ברח ממנו: שקט.","/eye-level/sameach.html","בגובה העיניים · כשלאחרים יש יותר"]
 ];
 (function(){
   var q=document.getElementById("q"), res=document.getElementById("res");
