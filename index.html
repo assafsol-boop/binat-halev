@@ -679,6 +679,8 @@ a{color:var(--blue)}
 .contact .c-intro h3{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3vw,1.62rem);margin-bottom:10px}
 .contact .c-intro p{color:var(--ink-soft);line-height:1.75;font-size:1rem}
 .c-form{display:grid;gap:11px}
+.c-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media (max-width:480px){ .c-row{grid-template-columns:1fr} }
 .c-form input,.c-form textarea{width:100%;font:inherit;font-size:.98rem;color:var(--ink);
   background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-xs);padding:12px 15px;
   transition:border-color .15s,box-shadow .15s}
@@ -797,7 +799,10 @@ a{color:var(--blue)}
     </div>
     <form class="c-form" id="cform" novalidate>
       <input type="text" name="שם" placeholder="השם שלכם" required>
-      <input type="text" name="פרטי קשר" placeholder="אימייל או טלפון לחזרה אליכם" required>
+      <div class="c-row">
+        <input type="email" name="אימייל" placeholder="אימייל (לא חובה)" autocomplete="email">
+        <input type="tel" name="טלפון" placeholder="טלפון (לא חובה)" autocomplete="tel">
+      </div>
       <textarea name="הודעה" placeholder="ההודעה שלכם…" required></textarea>
       <input type="hidden" name="_subject" value="הודעה חדשה מאתר בינת הלב">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
@@ -1224,17 +1229,20 @@ var QUOTES=[
 (function(){
   var f=document.getElementById("cform"); if(!f) return;
   var btn=document.getElementById("csend"), note=document.getElementById("cnote");
+  var t0=Date.now();                                          /* חותמת זמן טעינה — למלכודת זמן */
+  function err(m){ note.textContent=m; note.className="c-note err"; }
   f.addEventListener("submit",function(e){
     e.preventDefault();
-    if(f.querySelector('[name="_honey"]').value) return;      /* מלכודת בוטים */
-    var data={}; new FormData(f).forEach(function(v,k){ data[k]=v; });
-    if(!(data["שם"]||"").trim()||!(data["פרטי קשר"]||"").trim()||!(data["הודעה"]||"").trim()){
-      note.textContent="נא למלא את כל השדות."; note.className="c-note err"; return; }
-    var orig=btn.textContent; btn.disabled=true; btn.textContent="שולח…";
-    note.textContent=""; note.className="c-note";
+    if(f.querySelector('[name="_honey"]').value) return;      /* 1. מלכודת דבש: שדה נסתר שרק בוט ממלא */
+    var d={}; new FormData(f).forEach(function(v,k){ d[k]=(v||"").trim(); });
+    if(!d["שם"]||!d["הודעה"]) return err("נא למלא שם והודעה.");
+    if(!d["אימייל"] && !d["טלפון"]) return err("נא להשאיר אימייל או טלפון (או שניהם) כדי שנוכל לחזור אליכם.");
+    if(d["אימייל"] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d["אימייל"])) return err("כתובת האימייל אינה תקינה.");
+    if(Date.now()-t0 < 3000) return err("רגע אחד — ונסו לשלוח שוב.");   /* 2. מלכודת זמן: בוט שולח מיידית */
+    var orig=btn.textContent; btn.disabled=true; btn.textContent="שולח…"; note.textContent=""; note.className="c-note";
     fetch("https://formsubmit.co/ajax/d3ffb214869a92710ca75b880b490a11",{
       method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify(data)
+      body:JSON.stringify(d)
     }).then(function(r){return r.json();}).then(function(j){
       if(j.success==="true"||j.success===true){
         f.innerHTML='<div class="c-done"><span class="v">\u2713</span>'+
@@ -1242,7 +1250,7 @@ var QUOTES=[
       } else { throw new Error(); }
     }).catch(function(){
       btn.disabled=false; btn.textContent=orig;
-      note.textContent="אירעה תקלה בשליחה. נסו שוב עוד רגע."; note.className="c-note err";
+      err("אירעה תקלה בשליחה. נסו שוב עוד רגע.");
     });
   });
 })();
