@@ -807,6 +807,8 @@ a{color:var(--blue)}
       <input type="hidden" name="_subject" value="הודעה חדשה מאתר בינת הלב">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
         style="display:none">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"
+        style="display:none">
       <button type="submit" id="csend">שליחה</button>
       <p class="c-note" id="cnote" role="status" aria-live="polite"></p>
     </form>
@@ -1233,8 +1235,10 @@ var QUOTES=[
   function err(m){ note.textContent=m; note.className="c-note err"; }
   f.addEventListener("submit",function(e){
     e.preventDefault();
-    if(f.querySelector('[name="_honey"]').value) return;      /* 1. מלכודת דבש: שדה נסתר שרק בוט ממלא */
+    var hp=f.querySelector('[name="_honey"]'), hp2=f.querySelector('[name="website"]');
+    if((hp&&hp.value)||(hp2&&hp2.value)) return;              /* 1. שתי מלכודות דבש: שדות נסתרים שרק בוט ממלא */
     var d={}; new FormData(f).forEach(function(v,k){ d[k]=(v||"").trim(); });
+    delete d["website"];                                      /* שדה מלכודת פנימי — לא נשלח */
     if(!d["שם"]||!d["הודעה"]) return err("נא למלא שם והודעה.");
     if(!d["אימייל"] && !d["טלפון"]) return err("נא להשאיר אימייל או טלפון (או שניהם) כדי שנוכל לחזור אליכם.");
     if(d["אימייל"] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d["אימייל"])) return err("כתובת האימייל אינה תקינה.");
