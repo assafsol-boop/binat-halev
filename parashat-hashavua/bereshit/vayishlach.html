@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>פרשת וישלח: הלילה שלפני הפגישה שאתה הכי מפחד ממנה | פרשת השבוע</title>
+<meta name="description" content="עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   פרשת השבוע — שפת עיצוב: "אור של שחר"
+   אפליקציית עיון מודרנית · חדר חדשות · בהיר ואוורירי.
+   אין קלף, אין סריף ארכיוני. זהה לפרויקט "אגדות התקווה".
+   ============================================================ */
+
+:root{
+  /* בסיס בהיר וקריר */
+  --bg:#eef2f8;
+  --bg-2:#e6ecf5;
+  --surface:#ffffff;
+  --surface-2:#f6f8fc;
+
+  --ink:#141d2e;
+  --ink-soft:#525d73;
+  --ink-faint:#8892a5;
+  --line:#e2e8f1;
+  --line-soft:#eef2f7;
+
+  /* לילה ← שחר: זהות המותג */
+  --night:#182545;
+  --night-2:#0f1a33;
+  --gold:#f2a900;
+  --gold-2:#ffc233;
+  --gold-deep:#b97e05;
+  --gold-soft:#fff5dc;
+
+  /* צבע "חדשות/ניתוח" */
+  --blue:#2f6bff;
+  --blue-soft:#e8eefe;
+
+  --shadow-xs:0 1px 3px rgba(20,29,46,.06);
+  --shadow-sm:0 4px 14px rgba(20,29,46,.08);
+  --shadow-md:0 12px 30px rgba(20,29,46,.12);
+  --shadow-gold:0 12px 30px rgba(242,169,0,.22);
+
+  --radius:22px;
+  --radius-sm:15px;
+  --radius-xs:11px;
+
+  --maxw:960px;
+
+  --sans:"Heebo","Assistant","Segoe UI",system-ui,sans-serif;
+  --display:"Rubik","Heebo","Segoe UI",sans-serif;
+
+  --c:#4a6df0;   /* גוון הפרשה — נדרס */
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:1.0625rem;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%}
+a{color:var(--blue)}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}
+
+/* ============================================================
+   סרגל עליון — סגנון ערוץ שידור
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px clamp(15px,4vw,34px);
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .brand{
+  display:flex;align-items:center;gap:11px;
+  font-weight:800;font-size:1.02rem;text-decoration:none;color:var(--ink);
+  font-family:var(--display);
+}
+.topbar .brand .logo{
+  display:grid;place-items:center;width:38px;height:38px;flex:none;
+  border-radius:11px;
+  background:linear-gradient(145deg,var(--night),var(--night-2));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.topbar .brand .logo svg{width:20px;height:20px}
+.topbar .live{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.78rem;font-weight:700;color:var(--gold-deep);letter-spacing:.04em;
+}
+.topbar .live .pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 0 0 rgba(242,169,0,.6);
+  animation:pulse 2.2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(242,169,0,.55)}
+  70%{box-shadow:0 0 0 9px rgba(242,169,0,0)}
+  100%{box-shadow:0 0 0 0 rgba(242,169,0,0)}
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 16px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);font:inherit;font-weight:600;font-size:.9rem;
+  text-decoration:none;cursor:pointer;
+  transition:transform .16s,box-shadow .16s,background .16s,border-color .16s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);border-color:var(--gold);background:var(--gold-soft)}
+
+/* ============================================================
+   עמוד פרשה — "כתבה" באפליקציית חדשות
+   ============================================================ */
+.article{padding-bottom:20px}
+
+.a-head{
+  max-width:var(--maxw);margin-inline:auto;
+  padding:clamp(26px,4vw,44px) clamp(16px,4vw,32px) clamp(18px,2.5vw,26px);
+  position:relative;
+}
+.a-head .ghost{
+  position:absolute;inset-block-start:-6px;inset-inline-start:12px;
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(6rem,20vw,13rem);line-height:.8;
+  color:var(--c);opacity:.06;pointer-events:none;z-index:0;
+  font-variant-numeric:tabular-nums;
+}
+.a-head .row{position:relative;z-index:1}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:color-mix(in srgb,var(--c) 12%,#fff);
+  color:var(--c);
+  border:1px solid color-mix(in srgb,var(--c) 28%,transparent);
+  padding:6px 14px;border-radius:999px;
+  font-size:.82rem;font-weight:700;margin-bottom:16px;
+}
+.chip .cd{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.a-head h1{
+  position:relative;z-index:1;
+  font-family:var(--display);
+  font-size:clamp(1.9rem,5.6vw,3rem);font-weight:800;line-height:1.14;
+  letter-spacing:-.5px;text-wrap:balance;margin-bottom:12px;
+}
+.a-head .dek{
+  position:relative;z-index:1;
+  color:var(--ink-soft);font-size:clamp(1.02rem,2.4vw,1.18rem);
+  max-width:54ch;line-height:1.7;margin-bottom:18px;
+}
+.a-head .meta{
+  position:relative;z-index:1;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid var(--line);
+  font-size:.88rem;color:var(--ink-faint);
+}
+.a-head .meta .src{
+  display:inline-flex;align-items:center;gap:7px;
+  color:var(--ink);font-weight:700;
+}
+.a-head .meta .src svg{width:16px;height:16px;color:var(--c)}
+.a-head .meta .num{margin-inline-start:auto;font-variant-numeric:tabular-nums}
+
+.body{max-width:var(--maxw);margin-inline:auto;padding:8px clamp(16px,4vw,32px) 0}
+
+.section-label{
+  display:flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.16em;font-weight:700;
+  color:var(--ink-faint);margin:30px 0 14px;
+}
+.section-label::before{content:"";width:22px;height:3px;border-radius:99px;background:var(--c)}
+
+.story{max-width:66ch}
+.story p{margin-bottom:15px}
+.story p:last-child{margin-bottom:0}
+.story em{font-style:normal;color:var(--c);font-weight:600}
+.story strong{font-weight:700;color:var(--ink)}
+
+/* רשימת "כללי המשחק" */
+.story ul{
+  list-style:none;margin:20px 0 0;
+  display:grid;gap:9px;
+}
+.story ul li{
+  position:relative;
+  background:var(--surface);border:1px solid var(--line);
+  border-inline-start:3px solid var(--c);
+  border-radius:var(--radius-xs);
+  padding:12px 16px;
+  box-shadow:var(--shadow-xs);
+  font-size:.99rem;line-height:1.7;color:var(--ink-soft);
+}
+.story ul li b{color:var(--ink);font-weight:700}
+
+/* ציטוט — pull-quote מודרני */
+.line{
+  position:relative;
+  margin:30px 0;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 8%,#fff),var(--surface));
+  border:1px solid color-mix(in srgb,var(--c) 20%,transparent);
+  border-radius:var(--radius);
+  padding:clamp(22px,3.4vw,32px) clamp(20px,3.4vw,34px);
+  overflow:hidden;
+}
+.line .mark{
+  position:absolute;inset-block-start:-14px;inset-inline-start:14px;
+  font-family:var(--display);font-weight:800;font-size:6rem;line-height:1;
+  color:var(--c);opacity:.14;
+}
+.line .lbl{
+  display:block;font-size:.7rem;letter-spacing:.2em;font-weight:700;
+  color:var(--c);margin-bottom:12px;position:relative;
+}
+.line q{
+  quotes:none;display:block;position:relative;
+  font-family:var(--display);
+  font-size:clamp(1.2rem,3.4vw,1.6rem);font-weight:600;
+  line-height:1.55;color:var(--ink);
+}
+.line cite{
+  display:block;margin-top:11px;position:relative;
+  font-style:normal;font-size:.8rem;letter-spacing:.06em;
+  color:var(--ink-faint);font-weight:600;
+}
+
+/* ============================================================
+   שלושת המקטעים: המבחן ← מן הגמרא ← סיפור מן השטח
+   מגמה קרירה→חמה שמסתיימת באור.
+   ============================================================ */
+.segment{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--line);
+  border-inline-start:4px solid var(--seg,var(--blue));
+  border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);
+  padding:20px clamp(17px,3vw,26px);margin-top:18px;
+}
+.segment .ico{
+  flex:none;width:42px;height:42px;border-radius:12px;
+  display:grid;place-items:center;
+  background:color-mix(in srgb,var(--seg,var(--blue)) 12%,#fff);
+  color:var(--seg,var(--blue));
+}
+.segment .ico svg{width:21px;height:21px}
+.segment .sbody{flex:1;min-width:0}
+.segment .sbody h4{
+  font-size:.74rem;letter-spacing:.14em;font-weight:700;
+  color:var(--seg,var(--blue));margin-bottom:6px;
+}
+.segment .sbody p{color:var(--ink-soft);font-size:1rem;line-height:1.8}
+.segment .sbody p+p{margin-top:10px}
+.segment .sbody em{font-style:normal;color:var(--ink);font-weight:600}
+
+/* כותרת־משנה בתוך מקטע */
+.segment .sbody .stitle{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.08rem,2.6vw,1.24rem);
+  color:var(--ink);line-height:1.4;margin-bottom:9px;
+}
+/* "היום, אצלנו" — תיבת התרחיש המודרני */
+.segment .sbody .today{
+  margin-top:13px;padding:13px 16px;
+  background:color-mix(in srgb,var(--seg,var(--blue)) 6%,#fff);
+  border:1px dashed color-mix(in srgb,var(--seg,var(--blue)) 32%,transparent);
+  border-radius:var(--radius-xs);
+}
+.segment .sbody .today .tl{
+  display:block;font-size:.68rem;letter-spacing:.16em;font-weight:700;
+  color:var(--seg,var(--blue));margin-bottom:6px;
+}
+.segment .sbody .today p{font-size:.97rem}
+
+.segment.now{--seg:var(--blue)}
+.segment.meaning{--seg:#5566a8}
+.segment.trial{--seg:#7059a6}
+.segment.talmud{--seg:#2f6bff}
+.segment.tzadik{--seg:#d4842c}
+
+/* נקודת אור — שיא האור */
+.future{
+  position:relative;overflow:hidden;
+  margin-top:18px;
+  background:
+    radial-gradient(120% 90% at 90% -30%, rgba(255,194,51,.5), transparent 55%),
+    linear-gradient(160deg,var(--gold-soft),#fffdf6);
+  border:1px solid #f2dfa6;
+  border-radius:var(--radius);
+  padding:clamp(22px,3.6vw,32px) clamp(20px,3.6vw,34px);
+  box-shadow:var(--shadow-gold);
+}
+.future .fhead{display:flex;align-items:center;gap:13px;margin-bottom:14px;position:relative}
+.future .fhead .sun{
+  flex:none;width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));
+  box-shadow:0 6px 16px rgba(242,169,0,.4);
+}
+.future .fhead .sun svg{width:23px;height:23px;color:#fff}
+.future .fhead h4{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.2rem,3.2vw,1.5rem);color:var(--gold-deep);
+}
+.future p{position:relative;color:#6a4e12;font-size:1.04rem;line-height:1.85;max-width:64ch}
+.future p+p{margin-top:11px}
+.future em{font-style:normal;font-weight:700;color:var(--gold-deep)}
+.future .todo{
+  position:relative;margin-top:16px;
+  background:rgba(255,255,255,.72);
+  border:1px solid #f0dca0;border-radius:var(--radius-sm);
+  padding:15px 18px;
+}
+.future .todo .tl{
+  display:block;font-size:.68rem;letter-spacing:.16em;font-weight:700;
+  color:var(--gold-deep);margin-bottom:7px;
+}
+.future .todo p{font-size:1rem;color:#6a4e12}
+.future .verse{
+  display:block;margin-top:17px;padding-top:15px;
+  border-top:1px solid #f0dca0;position:relative;
+  font-family:var(--display);font-size:1.1rem;font-weight:500;
+  color:var(--gold-deep);line-height:1.65;
+}
+.future .verse cite{
+  display:block;margin-top:7px;font-family:var(--sans);font-style:normal;
+  font-size:.8rem;letter-spacing:.06em;color:#b08b3a;font-weight:600;
+}
+
+/* ============================================================
+   קופסת הידע — שלושה כרטיסים
+   ============================================================ */
+.knowledge-box{
+  max-width:var(--maxw);margin:34px auto 0;
+  padding:0 clamp(16px,4vw,32px);
+}
+.knowledge-box .kb-head{
+  display:flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.16em;font-weight:700;
+  color:var(--ink-faint);margin-bottom:14px;
+}
+.knowledge-box .kb-head::before{content:"";width:22px;height:3px;border-radius:99px;background:var(--c)}
+.knowledge-box .k-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(10px,1.4vw,15px);
+}
+.k-card{
+  position:relative;overflow:hidden;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  padding:17px 18px 18px;
+  box-shadow:var(--shadow-xs);
+  transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.k-card::before{
+  content:"";position:absolute;inset-block-start:0;inset-inline:0;height:3px;
+  background:var(--c);
+}
+.k-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 24px color-mix(in srgb,var(--c) 22%,transparent);
+  border-color:var(--c);
+}
+.k-card .kt{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--display);font-weight:700;font-size:1.04rem;
+  color:var(--ink);margin-bottom:7px;
+}
+.k-card .kt .kd{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.k-card p{font-size:.93rem;line-height:1.72;color:var(--ink-soft)}
+.k-card p+p{margin-top:8px}
+.k-card strong{color:var(--ink);font-weight:700}
+
+/* ============================================================
+   ניווט + פוטר
+   ============================================================ */
+.pager{
+  max-width:var(--maxw);margin:38px auto 0;
+  padding:24px clamp(16px,4vw,32px) 0;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.pager a{
+  display:flex;flex-direction:column;gap:3px;text-decoration:none;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:13px 20px;min-width:200px;
+  box-shadow:var(--shadow-xs);color:var(--ink);
+  transition:transform .16s,box-shadow .16s,border-color .16s;
+}
+.pager a:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);border-color:var(--gold)}
+.pager a .lbl{font-size:.76rem;color:var(--ink-faint)}
+.pager a .ttl{font-weight:700;font-family:var(--display);font-size:1.02rem}
+.pager a.next{text-align:left;margin-inline-start:auto}
+.pager a.disabled{opacity:.34;pointer-events:none}
+
+.foot{
+  max-width:var(--maxw);margin:38px auto 0;
+  padding:26px clamp(16px,4vw,32px) 54px;border-top:1px solid var(--line);
+  text-align:center;color:var(--ink-faint);font-size:.86rem;line-height:1.8;
+}
+.foot .disc{
+  display:block;max-width:660px;margin:13px auto 0;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:12px 18px;font-size:.83rem;
+}
+
+.to-top{
+  position:fixed;inset-block-end:20px;inset-inline-start:20px;
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));color:#fff;border:none;cursor:pointer;
+  display:grid;place-items:center;box-shadow:var(--shadow-gold);z-index:40;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;
+}
+.to-top svg{width:21px;height:21px}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{transform:translateY(-3px)}
+
+/* ============================================================
+   רספונסיביות
+   ============================================================ */
+@media (max-width:760px){
+  .knowledge-box .k-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .pager a{min-width:100%}
+  .segment{flex-direction:column;gap:12px}
+  .topbar .brand span.full{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important}
+  .topbar .live .pulse{animation:none}
+}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc233" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H10a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H6.5A2.5 2.5 0 0 1 4 16.5z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H14a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h3.5a2.5 2.5 0 0 0 2.5-2.5z"/></svg></span>
+    <span>פרשת <span class="full">השבוע</span></span></a>
+  <a class="btn" href="../index.html">כל הפרשות</a>
+</header>
+
+<article class="article" style="--c:#23795a">
+  <header class="a-head">
+    <span class="ghost">8</span>
+    <div class="chip"><span class="cd"></span>ספר בראשית - פרשת וישלח</div>
+    <h1>הלילה שלפני הפגישה שאתה הכי מפחד ממנה</h1>
+    <p class="dek">עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש.</p>
+    <div class="meta">
+      <span class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2z"/><path d="M17 6h3v12a2 2 0 0 1-2 2"/><path d="M8 8h6M8 12h6"/></svg>בראשית ל״ב, ד׳ – ל״ו, מ״ג</span>
+      <span class="num">פרשה 8 / 54</span>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <div class="section-label">מה קורה בפרשה</div>
+    <div class="story">
+      <p>יעקב חוזר לארץ, ושולח מלאכים לעשיו כדי לבדוק את השטח. הם חוזרים עם ידיעה קצרה ומפחידה: <em>״וגם הולך לקראתך, וארבע מאות איש עמו״</em>. הכתוב מתאר את התגובה בשתי מילים כפולות — ״ויירא יעקב מאוד וייצר לו״.</p>
+      <p>הוא נערך בשלושה מסלולים במקביל: מחלק את המחנה לשניים כדי שאם ייפגע אחד יינצל השני, שולח מנחה עצומה לפניו, ומתפלל. ואז, בלילה שלפני, הוא מעביר את כל המשפחה מעבר לנחל <strong>ונשאר לבדו</strong>. שם נאבק בו איש עד עלות השחר, פוגע בכף ירכו, ומשנה את שמו לישראל.</p>
+      <p>בבוקר נפגשים האחים. עשיו רץ, מחבק, נופל על צווארו, ושניהם בוכים. בהמשך הפרשה מגיעים הפרקים הקשים — מעשה דינה ושכם, מות רחל בדרך לבית לחם, ומות יצחק. הספר ממשיך, אבל משהו אחד נסגר.</p>
+      <ul>
+        <li><b>מי שפוחד — נערך, ולא משתתק.</b> יעקב לא מכחיש את הפחד ולא נעמד בגבורה מזויפת. הוא מתכונן לשלוש אפשרויות בו זמנית. פחד הוא מידע, לא פסק דין.</li>
+        <li><b>אין להשיב אלימות בהשמדה.</b> תגובת שמעון ולוי בשכם היא מעשה קיצוני, ויעקב מגנה אותם — גם בשעת מעשה וגם על ערש מותו. גם עוול אמיתי אינו כרטיס פתוח לכל תגובה.</li>
+        <li><b>פשרה בין אחים עדיפה על צדק מלא.</b> יעקב מוותר על רכוש כבד רק כדי להיפגש בשלום. יש רגעים שבהם ״מי צודק״ הוא השאלה היקרה ביותר שאפשר לשאול.</li>
+      </ul>
+    </div>
+
+    <div class="line">
+      <span class="mark">&#8220;</span>
+      <span class="lbl">הַשּׁוּרָה שֶׁלֹּא נִשְׁכַּחַת</span>
+      <q>וַיִּוָּתֵר יַעֲקֹב לְבַדּוֹ, וַיֵּאָבֵק אִישׁ עִמּוֹ — עַד עֲלוֹת הַשָּׁחַר.</q>
+      <cite>בראשית ל״ב, כ״ה · הלילה האחרון לפני הפגישה</cite>
+    </div>
+
+    <div class="section-label">המבחן</div>
+    <section class="segment trial">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M6 7 3 13h6z"/><path d="M18 7l-3 6h6z"/><path d="M8 21h8"/><path d="M12 3 8 5M12 3l4 2"/></svg></span>
+      <div class="sbody">
+        <h4>יעקב · הלילה על נחל יבוק</h4>
+        <p class="stitle">המפגש עם עשיו לקח בוקר אחד. המאבק שלפניו לקח לילה שלם.</p>
+        <p>שימו לב לפרופורציה. הפגישה עצמה — זו שיעקב פחד ממנה עשרים ושתיים שנה — נגמרת בשלושה פסוקים של חיבוק ובכי. מה שתופס את מרכז הפרשה הוא <strong>הלילה שלפני</strong>.</p>
+        <p>וזו אבחנה שכל אדם מכיר בגוף. השיחה שדחית שנתיים נמשכת בפועל אחת עשרה דקות. השנתיים הן החלק הארוך. ״ויירא יעקב מאוד וייצר לו״ — אומרים חכמים: <em>ירא שמא ייהרג, וצר לו שמא יהרוג</em>. הוא פחד גם ממה שהאחר יעשה לו, וגם ממה שהוא עצמו עלול לעשות.</p>
+        <p>ואז הוא מעביר את כולם מעבר לנחל ונשאר לבדו. חז״ל אמרו שהאיש שנאבק בו הוא <em>שרו של עשיו</em> — כלומר, הדמות שיעקב סחב איתו בראש כל השנים האלה. לא עשיו האמיתי, שכבר מזמן התקדם בחיים ובנה משפחה. הגרסה שנשארה בפנים, שגדלה בחושך.</p>
+        <p>והמאבק לא נגמר בניצחון. הוא נגמר בשלושה דברים: <strong>פציעה בירך שתישאר לתמיד, שם חדש, וזריחה</strong>. וכשהמלאך מבקש להשתחרר, יעקב עונה את המשפט שהוא לב הפרשה: ״לא אשלחך כי אם ברכתני״. גם ממה שנאבק בי — אני יוצא עם משהו ביד.</p>
+        <div class="today">
+          <span class="tl">היום, אצלנו</span>
+          <p>יש שיחה שאתה דוחה. אח שלא דיברת איתו מאז ההלוויה. חבר שנעלב ולא ידעת איך לתקן. הורה שאמר לך פעם משפט שלא נשכח. אתה מנסח את זה בראש בנסיעות, מוחק, מנסח שוב. במקביל, הדמות שלו בראש שלך נעשית כל שנה קצת יותר גדולה וקצת יותר קשה.</p>
+        <p><em>מה מרוויחים מלהיכנס לזירה:</em> קודם כול, הפער. כמעט תמיד מתברר שהאדם האמיתי — זה שיושב מולך בבית קפה — קטן בהרבה מהיריב שגידלת בראש עשרים שנה. שנית, הסתיימות: גם אם השיחה לא מסתדרת, היא נגמרת. <strong>אנשים מתארים אחריה תמיד את אותה תחושה — לא של ניצחון, אלא של פינוי מקום.</strong> משהו שתפס נפח ענק פשוט מפסיק לתפוס אותו. וכן, לפעמים נשארת צליעה. אבל צליעה אפשר לחיות איתה. עם לילה שלא נגמר — הרבה יותר קשה.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-label">מן הגמרא אל החיים</div>
+    <section class="segment talmud">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M3 12h2M19 12h2"/></svg></span>
+      <div class="sbody">
+        <h4>חולין צ״א ע״ב</h4>
+        <p class="stitle">המלאך ביקש להשתחרר כי הגיע תורו לומר שירה. גם למי שנאבק בך יש לוח זמנים.</p>
+        <p>הגמרא שואלת את השאלה המתבקשת: למה בעצם המלאך ממהר? הפסוק אומר <em>״שלחני כי עלה השחר״</em>, והתשובה שם: הגיע תורי לומר שירה. מלאך אינו נאבק לנצח — יש לו משמרת, ויש לה סוף.</p>
+        <p>וזו נקודה עצומה עבור מי שנמצא באמצע לילה כזה. <strong>המאבק אינו מצב קבוע. יש לו שעה שבה הוא נגמר, גם אם באמצע זה לא נראה כך.</strong> אף אחד לא נאבק עד הבוקר בלי לחשוב, בשלוש לפנות בוקר, שזה פשוט לא ייגמר.</p>
+        <p>והתשובה של יעקב חשובה לא פחות: <em>״לא אשלחך כי אם ברכתני״</em>. הוא לא אומר ״לך״. הוא לא אומר ״ניצחתי״. הוא אומר: אני לא משחרר אותך עד שאני יוצא מכאן עם משהו. מהתקופה הקשה הזאת מגיעה לי ברכה, ואני לא הולך בלעדיה.</p>
+        <p><em>ומה יוצא לנו מזה:</em> שתי מסקנות מעשיות. האחת — כשאתם באמצע, זכרו שגם ללילה יש לוח זמנים. השנייה, והחזקה יותר: <strong>אל תצאו מתקופה קשה בידיים ריקות.</strong> מי שעבר משבר ולא עצר לשאול ״מה למדתי כאן על עצמי, ומה אני לוקח״ — משלם את המחיר המלא ולא גובה את התמורה. הפסוק שאחרי המאבק אומר ״ויזרח לו השמש״. חז״ל דייקו: <em>לו</em> — במיוחד בשבילו, כדי לרפא.</p>
+      </div>
+    </section>
+
+    <div class="section-label">סיפור מן השטח</div>
+    <section class="segment tzadik">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-3.5 10.9V17h7v-3.1A6 6 0 0 0 12 3z"/><path d="M9 20h6M10 22.5h4"/></svg></span>
+      <div class="sbody">
+        <h4>הרב שלמה זלמן אויערבך · ירושלים</h4>
+        <p class="stitle">בהלוויית אשתו הוא ביקש ממנה סליחה, בקול, מול כולם.</p>
+        <p>כשנפטרה רבנית אויערבך, ניגש בעלה — מגדולי הפוסקים בירושלים — אל המיטה ואמר דברים שנשמרו מאז. בין השאר ביקש ממנה מחילה: <em>אם פגעתי בך, אם היו רגעים שלא נהגתי כראוי — אני מבקש ממך סליחה.</em></p>
+        <p>אנשים שהיו שם סיפרו שקשה היה לתאר במה בדיוק הוא עלול היה לפגוע בה. הם היו ידועים כזוג שכל השכונה למדה ממנו. אבל הוא לא ויתר על המשפט הזה, ולא השאיר אותו למחשבה פרטית.</p>
+        <p><strong>וזה בדיוק החלק שאנחנו הכי נוטים לדחות.</strong> את המשפט הקצר, הלא נעים, שכולו שתי מילים. אנחנו אומרים לעצמנו שהוא מובן מאליו, שהצד השני יודע, שיהיה עוד זמן.</p>
+        <p>יעקב לא שלח לעשיו מכתב הסבר בן עשרה עמודים. הוא נעמד מולו והשתחווה שבע פעמים. <em>לפעמים כל מה שנדרש כדי לסגור עשרים שנה הוא מחווה אחת שאי אפשר לפרש לא נכון</em> — ובלבד שהיא תיאמר בזמן שיש עם מי לדבר.</p>
+      </div>
+    </section>
+
+    <section class="future">
+      <div class="fhead"><span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M12 9a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5z"/><path d="M12 3v3"/><path d="M5.5 8.5 7 10M18.5 8.5 17 10M2 14h1M21 14h1"/></svg></span><h4>נקודת אור</h4></div>
+      <p>המשפט שסוגר את המאבק הוא אחד היפים בתורה: <em>״ויזרח לו השמש כאשר עבר את פנואל, והוא צולע על ירכו״</em>. שני דברים באותו פסוק — השמש והצליעה. הכתוב לא בוחר ביניהם.</p>
+        <p>וזה מה שהפרשה הזאת אומרת לנו. לא מבטיחים לנו שנצא מהדברים הקשים שלמים כמו שנכנסנו. <strong>מבטיחים לנו שהשמש תזרח, ושהשם שנצא איתו יהיה גדול מזה שנכנסנו איתו.</strong> מי שנשאר בזירה מקבל בסוף לא ניצחון — אלא ישראל במקום יעקב, ובוקר במקום לילה. וגם צליעה. ובעיקר, את היכולת להיפגש.</p>
+      <div class="todo">
+        <span class="tl">משימה קטנה לסוף השבוע</span>
+        <p>יש הודעה שאתם מנסחים בראש כבר הרבה זמן. אל תשלחו אותה שלמה. שלחו שלוש שורות: מה שקרה, מה שאתם מרגישים היום, ובקשה להיפגש. בלי לפרט את כל הצדק. <em>המטרה היא לא לנצח את השיחה — היא לגמור את הלילה.</em></p>
+      </div>
+      <span class="verse">וַיִּזְרַח לוֹ הַשֶּׁמֶשׁ… וְהוּא צֹלֵעַ עַל יְרֵכוֹ.<cite>בראשית ל״ב, ל״ב · יוצאים משם עם שניהם: האור והצליעה</cite></span>
+    </section>
+
+  </div>
+
+  <div class="knowledge-box">
+    <div class="kb-head">קופסת ידע</div>
+    <div class="k-grid">
+
+      <div class="k-card">
+        <div class="kt"><span class="kd"></span>מי היה ״האיש״</div>
+        <p>הכתוב מקפיד לא לזהות אותו: ״ויאבק איש עמו״. חז״ל אמרו שהוא <strong>שרו של עשיו</strong> — הכוח שמייצג את האח, ולא האח עצמו.</p>
+        <p>כשיעקב שואל לשמו, התשובה מתחמקת: ״למה זה תשאל לשמי״. יש דברים שנאבקים בהם בלי לדעת בדיוק איך קוראים להם.</p>
+      </div>
+
+      <div class="k-card">
+        <div class="kt"><span class="kd"></span>גיד הנשה</div>
+        <p>האיסור לאכול את הגיד שבירך הבהמה — האיסור היחיד בתורה שמקורו באירוע ולא בציווי כללי.</p>
+        <p><strong>עַם שלם זוכר פציעה של אדם אחד</strong>, בכל ארוחה, לדורות. לא כדי להתאבל — כדי לזכור שהמקום הפגיע הוא גם המקום שבו קרה הדבר החשוב.</p>
+      </div>
+
+      <div class="k-card">
+        <div class="kt"><span class="kd"></span>יעקב ← ישראל</div>
+        <p>״לא יעקב ייאמר עוד שמך, כי אם ישראל — כי שרית עם אלוהים ועם אנשים ותוכל״. יעקב מלשון עקב, אחיזה מאחור; ישראל מלשון שררה, לעמוד מלפנים.</p>
+        <p><strong>בניגוד לאברהם, השם הישן לא נעלם.</strong> התורה ממשיכה לקרוא לו יעקב לסירוגין — שני החלקים נשארים.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="pager">
+    <a class="prev" href="vayetze.html"><span class="lbl">הפרשה הקודמת</span><span class="ttl">ויצא</span></a>
+    <a class="next" href="vayeshev.html"><span class="lbl">הפרשה הבאה</span><span class="ttl">וישב</span></a>
+  </nav>
+
+  <footer class="foot">
+    פרשה 8 מתוך 54 · בראשית ל״ב, ד׳ – ל״ו, מ״ג
+    <span class="disc">עזר לימודי בלבד. הסיפורים מסופרים בלשון חופשית — יש לעיין במקור.
+      ״המבחן״, ״מן הגמרא אל החיים״ ו״נקודת אור״ הם דברי עיון, ואינם ציטוט מן המקורות;
+      הפסוקים ודברי חז״ל מובאים בשמם.</span>
+  </footer>
+</article>
+
+<button class="to-top" id="toTop" aria-label="חזרה למעלה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+<script>(function(){var b=document.getElementById("toTop");addEventListener("scroll",function(){b.classList.toggle("show",scrollY>460)},{passive:true});b.onclick=function(){scrollTo({top:0,behavior:"smooth"})}})();</script>
+</body>
+</html>

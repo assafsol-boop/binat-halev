@@ -1,194 +1,914 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>בינת הלב — האתר בבנייה</title>
-<meta name="description" content="בינת הלב — האתר בבנייה. בינתיים מוזמנים להיכנס לאגדות התקווה.">
-<meta name="theme-color" content="#0f2a3d">
-<meta property="og:title" content="בינת הלב — האתר בבנייה">
-<meta property="og:description" content="בקרוב עולים. בינתיים — אגדות התקווה.">
-<meta property="og:locale" content="he_IL">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>בינת הלב — פרשת השבוע ואגדות חז״ל בשפה של היום</title>
+<meta name="description" content="הקונפליקט האנושי שמאחורי הטקסט. פרשת השבוע, אגדות התקווה, וכל פעם דבר אחד מעשי לקחת לסוף השבוע.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg-deep:#0b2030;
-    --bg-mid:#123449;
-    --gold:#e8b96b;
-    --gold-soft:#f5d9a8;
-    --text:#f4f1ea;
-    --text-dim:rgba(244,241,234,.66);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family:"Heebo","Segoe UI",Arial,sans-serif;
-    background:var(--bg-deep);
-    color:var(--text);
-    min-height:100svh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:32px 20px;
-    position:relative;
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
-  /* רקע: הילה רכה + גרדיאנט עומק */
-  body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-      radial-gradient(closest-side at 50% 18%, rgba(232,185,107,.16), transparent 70%),
-      radial-gradient(closest-side at 82% 88%, rgba(90,160,190,.14), transparent 70%),
-      linear-gradient(160deg,var(--bg-deep) 0%,var(--bg-mid) 55%,var(--bg-deep) 100%);
-    z-index:-1;
-  }
+/* ============================================================
+   פרשת השבוע — שפת עיצוב: "אור של שחר"
+   אפליקציית עיון מודרנית · חדר חדשות · בהיר ואוורירי.
+   אין קלף, אין סריף ארכיוני. זהה לפרויקט "אגדות התקווה".
+   ============================================================ */
 
-  .card{
-    width:100%;
-    max-width:620px;
-    text-align:center;
-    animation:rise .9s cubic-bezier(.16,.84,.44,1) both;
-  }
-  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+:root{
+  /* בסיס בהיר וקריר */
+  --bg:#eef2f8;
+  --bg-2:#e6ecf5;
+  --surface:#ffffff;
+  --surface-2:#f6f8fc;
 
-  .bsd{
-    font-size:14px;
-    letter-spacing:.08em;
-    color:var(--text-dim);
-    margin-bottom:34px;
-  }
+  --ink:#141d2e;
+  --ink-soft:#525d73;
+  --ink-faint:#8892a5;
+  --line:#e2e8f1;
+  --line-soft:#eef2f7;
 
-  .brand{
-    display:inline-flex;
-    flex-direction:column;
-    align-items:center;
-    gap:14px;
-    margin-bottom:30px;
-  }
-  .brand-mark{
-    width:64px;height:64px;
-    border-radius:50%;
-    border:1px solid rgba(232,185,107,.45);
-    display:grid;place-items:center;
-    font-size:26px;
-    color:var(--gold);
-    background:rgba(232,185,107,.07);
-    box-shadow:0 0 40px rgba(232,185,107,.13);
-  }
-  .brand-name{
-    font-size:20px;
-    font-weight:500;
-    letter-spacing:.22em;
-    color:var(--gold-soft);
-  }
+  /* לילה ← שחר: זהות המותג */
+  --night:#182545;
+  --night-2:#0f1a33;
+  --gold:#f2a900;
+  --gold-2:#ffc233;
+  --gold-deep:#b97e05;
+  --gold-soft:#fff5dc;
 
-  h1{
-    font-size:clamp(30px,6.2vw,50px);
-    font-weight:800;
-    line-height:1.24;
-    margin-bottom:18px;
-    letter-spacing:-.01em;
-  }
-  h1 .accent{
-    color:var(--gold);
-    display:block;
-    font-weight:700;
-    font-size:.72em;
-    margin-top:10px;
-    letter-spacing:0;
-  }
+  /* צבע "חדשות/ניתוח" */
+  --blue:#2f6bff;
+  --blue-soft:#e8eefe;
 
-  p.lead{
-    font-size:clamp(16px,2.4vw,19px);
-    font-weight:300;
-    line-height:1.75;
-    color:var(--text-dim);
-    max-width:44ch;
-    margin:0 auto 40px;
-  }
+  --shadow-xs:0 1px 3px rgba(20,29,46,.06);
+  --shadow-sm:0 4px 14px rgba(20,29,46,.08);
+  --shadow-md:0 12px 30px rgba(20,29,46,.12);
+  --shadow-gold:0 12px 30px rgba(242,169,0,.22);
 
-  .cta{
-    display:inline-flex;
-    align-items:center;
-    gap:12px;
-    padding:17px 40px;
-    border-radius:999px;
-    background:linear-gradient(135deg,var(--gold) 0%,#d9a04f 100%);
-    color:#241503;
-    font-size:18px;
-    font-weight:700;
-    text-decoration:none;
-    box-shadow:0 12px 34px rgba(232,185,107,.28);
-    transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
-  }
-  .cta:hover,.cta:focus-visible{
-    transform:translateY(-3px);
-    box-shadow:0 18px 44px rgba(232,185,107,.4);
-    filter:brightness(1.05);
-  }
-  .cta:active{transform:translateY(-1px)}
-  .cta:focus-visible{outline:2px solid var(--gold-soft);outline-offset:4px}
-  .cta .arrow{
-    font-size:22px;
-    line-height:1;
-    transition:transform .2s ease;
-  }
-  .cta:hover .arrow{transform:translateX(-5px)}
+  --radius:22px;
+  --radius-sm:15px;
+  --radius-xs:11px;
 
-  .divider{
-    width:80px;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(232,185,107,.55),transparent);
-    margin:46px auto 20px;
-  }
-  footer{
-    font-size:14px;
-    color:var(--text-dim);
-    font-weight:300;
-  }
-  footer a{color:var(--gold-soft);text-decoration:none}
-  footer a:hover{text-decoration:underline}
+  --maxw:960px;
 
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important}
-  }
+  --sans:"Heebo","Assistant","Segoe UI",system-ui,sans-serif;
+  --display:"Rubik","Heebo","Segoe UI",sans-serif;
+
+  --c:#4a6df0;   /* גוון הפרשה — נדרס */
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:1.0625rem;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%}
+a{color:var(--blue)}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}
+
+/* ============================================================
+   סרגל עליון — סגנון ערוץ שידור
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px clamp(15px,4vw,34px);
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .brand{
+  display:flex;align-items:center;gap:11px;
+  font-weight:800;font-size:1.02rem;text-decoration:none;color:var(--ink);
+  font-family:var(--display);
+}
+.topbar .brand .logo{
+  display:grid;place-items:center;width:38px;height:38px;flex:none;
+  border-radius:11px;
+  background:linear-gradient(145deg,var(--night),var(--night-2));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.topbar .brand .logo svg{width:20px;height:20px}
+.topbar .live{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.78rem;font-weight:700;color:var(--gold-deep);letter-spacing:.04em;
+}
+.topbar .live .pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 0 0 rgba(242,169,0,.6);
+  animation:pulse 2.2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(242,169,0,.55)}
+  70%{box-shadow:0 0 0 9px rgba(242,169,0,0)}
+  100%{box-shadow:0 0 0 0 rgba(242,169,0,0)}
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 16px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);font:inherit;font-weight:600;font-size:.9rem;
+  text-decoration:none;cursor:pointer;
+  transition:transform .16s,box-shadow .16s,background .16s,border-color .16s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);border-color:var(--gold);background:var(--gold-soft)}
+
+/* ============================================================
+   עמוד פרשה — "כתבה" באפליקציית חדשות
+   ============================================================ */
+.article{padding-bottom:20px}
+
+.a-head{
+  max-width:var(--maxw);margin-inline:auto;
+  padding:clamp(26px,4vw,44px) clamp(16px,4vw,32px) clamp(18px,2.5vw,26px);
+  position:relative;
+}
+.a-head .ghost{
+  position:absolute;inset-block-start:-6px;inset-inline-start:12px;
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(6rem,20vw,13rem);line-height:.8;
+  color:var(--c);opacity:.06;pointer-events:none;z-index:0;
+  font-variant-numeric:tabular-nums;
+}
+.a-head .row{position:relative;z-index:1}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  background:color-mix(in srgb,var(--c) 12%,#fff);
+  color:var(--c);
+  border:1px solid color-mix(in srgb,var(--c) 28%,transparent);
+  padding:6px 14px;border-radius:999px;
+  font-size:.82rem;font-weight:700;margin-bottom:16px;
+}
+.chip .cd{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.a-head h1{
+  position:relative;z-index:1;
+  font-family:var(--display);
+  font-size:clamp(1.9rem,5.6vw,3rem);font-weight:800;line-height:1.14;
+  letter-spacing:-.5px;text-wrap:balance;margin-bottom:12px;
+}
+.a-head .dek{
+  position:relative;z-index:1;
+  color:var(--ink-soft);font-size:clamp(1.02rem,2.4vw,1.18rem);
+  max-width:54ch;line-height:1.7;margin-bottom:18px;
+}
+.a-head .meta{
+  position:relative;z-index:1;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid var(--line);
+  font-size:.88rem;color:var(--ink-faint);
+}
+.a-head .meta .src{
+  display:inline-flex;align-items:center;gap:7px;
+  color:var(--ink);font-weight:700;
+}
+.a-head .meta .src svg{width:16px;height:16px;color:var(--c)}
+.a-head .meta .num{margin-inline-start:auto;font-variant-numeric:tabular-nums}
+
+.body{max-width:var(--maxw);margin-inline:auto;padding:8px clamp(16px,4vw,32px) 0}
+
+.section-label{
+  display:flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.16em;font-weight:700;
+  color:var(--ink-faint);margin:30px 0 14px;
+}
+.section-label::before{content:"";width:22px;height:3px;border-radius:99px;background:var(--c)}
+
+.story{max-width:66ch}
+.story p{margin-bottom:15px}
+.story p:last-child{margin-bottom:0}
+.story em{font-style:normal;color:var(--c);font-weight:600}
+.story strong{font-weight:700;color:var(--ink)}
+
+/* רשימת "כללי המשחק" */
+.story ul{
+  list-style:none;margin:20px 0 0;
+  display:grid;gap:9px;
+}
+.story ul li{
+  position:relative;
+  background:var(--surface);border:1px solid var(--line);
+  border-inline-start:3px solid var(--c);
+  border-radius:var(--radius-xs);
+  padding:12px 16px;
+  box-shadow:var(--shadow-xs);
+  font-size:.99rem;line-height:1.7;color:var(--ink-soft);
+}
+.story ul li b{color:var(--ink);font-weight:700}
+
+/* ציטוט — pull-quote מודרני */
+.line{
+  position:relative;
+  margin:30px 0;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 8%,#fff),var(--surface));
+  border:1px solid color-mix(in srgb,var(--c) 20%,transparent);
+  border-radius:var(--radius);
+  padding:clamp(22px,3.4vw,32px) clamp(20px,3.4vw,34px);
+  overflow:hidden;
+}
+.line .mark{
+  position:absolute;inset-block-start:-14px;inset-inline-start:14px;
+  font-family:var(--display);font-weight:800;font-size:6rem;line-height:1;
+  color:var(--c);opacity:.14;
+}
+.line .lbl{
+  display:block;font-size:.7rem;letter-spacing:.2em;font-weight:700;
+  color:var(--c);margin-bottom:12px;position:relative;
+}
+.line q{
+  quotes:none;display:block;position:relative;
+  font-family:var(--display);
+  font-size:clamp(1.2rem,3.4vw,1.6rem);font-weight:600;
+  line-height:1.55;color:var(--ink);
+}
+.line cite{
+  display:block;margin-top:11px;position:relative;
+  font-style:normal;font-size:.8rem;letter-spacing:.06em;
+  color:var(--ink-faint);font-weight:600;
+}
+
+/* ============================================================
+   שלושת המקטעים: המבחן ← מן הגמרא ← סיפור מן השטח
+   מגמה קרירה→חמה שמסתיימת באור.
+   ============================================================ */
+.segment{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--line);
+  border-inline-start:4px solid var(--seg,var(--blue));
+  border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);
+  padding:20px clamp(17px,3vw,26px);margin-top:18px;
+}
+.segment .ico{
+  flex:none;width:42px;height:42px;border-radius:12px;
+  display:grid;place-items:center;
+  background:color-mix(in srgb,var(--seg,var(--blue)) 12%,#fff);
+  color:var(--seg,var(--blue));
+}
+.segment .ico svg{width:21px;height:21px}
+.segment .sbody{flex:1;min-width:0}
+.segment .sbody h4{
+  font-size:.74rem;letter-spacing:.14em;font-weight:700;
+  color:var(--seg,var(--blue));margin-bottom:6px;
+}
+.segment .sbody p{color:var(--ink-soft);font-size:1rem;line-height:1.8}
+.segment .sbody p+p{margin-top:10px}
+.segment .sbody em{font-style:normal;color:var(--ink);font-weight:600}
+
+/* כותרת־משנה בתוך מקטע */
+.segment .sbody .stitle{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.08rem,2.6vw,1.24rem);
+  color:var(--ink);line-height:1.4;margin-bottom:9px;
+}
+/* "היום, אצלנו" — תיבת התרחיש המודרני */
+.segment .sbody .today{
+  margin-top:13px;padding:13px 16px;
+  background:color-mix(in srgb,var(--seg,var(--blue)) 6%,#fff);
+  border:1px dashed color-mix(in srgb,var(--seg,var(--blue)) 32%,transparent);
+  border-radius:var(--radius-xs);
+}
+.segment .sbody .today .tl{
+  display:block;font-size:.68rem;letter-spacing:.16em;font-weight:700;
+  color:var(--seg,var(--blue));margin-bottom:6px;
+}
+.segment .sbody .today p{font-size:.97rem}
+
+.segment.now{--seg:var(--blue)}
+.segment.meaning{--seg:#5566a8}
+.segment.trial{--seg:#7059a6}
+.segment.talmud{--seg:#2f6bff}
+.segment.tzadik{--seg:#d4842c}
+
+/* נקודת אור — שיא האור */
+.future{
+  position:relative;overflow:hidden;
+  margin-top:18px;
+  background:
+    radial-gradient(120% 90% at 90% -30%, rgba(255,194,51,.5), transparent 55%),
+    linear-gradient(160deg,var(--gold-soft),#fffdf6);
+  border:1px solid #f2dfa6;
+  border-radius:var(--radius);
+  padding:clamp(22px,3.6vw,32px) clamp(20px,3.6vw,34px);
+  box-shadow:var(--shadow-gold);
+}
+.future .fhead{display:flex;align-items:center;gap:13px;margin-bottom:14px;position:relative}
+.future .fhead .sun{
+  flex:none;width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));
+  box-shadow:0 6px 16px rgba(242,169,0,.4);
+}
+.future .fhead .sun svg{width:23px;height:23px;color:#fff}
+.future .fhead h4{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.2rem,3.2vw,1.5rem);color:var(--gold-deep);
+}
+.future p{position:relative;color:#6a4e12;font-size:1.04rem;line-height:1.85;max-width:64ch}
+.future p+p{margin-top:11px}
+.future em{font-style:normal;font-weight:700;color:var(--gold-deep)}
+.future .todo{
+  position:relative;margin-top:16px;
+  background:rgba(255,255,255,.72);
+  border:1px solid #f0dca0;border-radius:var(--radius-sm);
+  padding:15px 18px;
+}
+.future .todo .tl{
+  display:block;font-size:.68rem;letter-spacing:.16em;font-weight:700;
+  color:var(--gold-deep);margin-bottom:7px;
+}
+.future .todo p{font-size:1rem;color:#6a4e12}
+.future .verse{
+  display:block;margin-top:17px;padding-top:15px;
+  border-top:1px solid #f0dca0;position:relative;
+  font-family:var(--display);font-size:1.1rem;font-weight:500;
+  color:var(--gold-deep);line-height:1.65;
+}
+.future .verse cite{
+  display:block;margin-top:7px;font-family:var(--sans);font-style:normal;
+  font-size:.8rem;letter-spacing:.06em;color:#b08b3a;font-weight:600;
+}
+
+/* ============================================================
+   קופסת הידע — שלושה כרטיסים
+   ============================================================ */
+.knowledge-box{
+  max-width:var(--maxw);margin:34px auto 0;
+  padding:0 clamp(16px,4vw,32px);
+}
+.knowledge-box .kb-head{
+  display:flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.16em;font-weight:700;
+  color:var(--ink-faint);margin-bottom:14px;
+}
+.knowledge-box .kb-head::before{content:"";width:22px;height:3px;border-radius:99px;background:var(--c)}
+.knowledge-box .k-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(10px,1.4vw,15px);
+}
+.k-card{
+  position:relative;overflow:hidden;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);
+  padding:17px 18px 18px;
+  box-shadow:var(--shadow-xs);
+  transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.k-card::before{
+  content:"";position:absolute;inset-block-start:0;inset-inline:0;height:3px;
+  background:var(--c);
+}
+.k-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 24px color-mix(in srgb,var(--c) 22%,transparent);
+  border-color:var(--c);
+}
+.k-card .kt{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--display);font-weight:700;font-size:1.04rem;
+  color:var(--ink);margin-bottom:7px;
+}
+.k-card .kt .kd{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
+.k-card p{font-size:.93rem;line-height:1.72;color:var(--ink-soft)}
+.k-card p+p{margin-top:8px}
+.k-card strong{color:var(--ink);font-weight:700}
+
+/* ============================================================
+   ניווט + פוטר
+   ============================================================ */
+.pager{
+  max-width:var(--maxw);margin:38px auto 0;
+  padding:24px clamp(16px,4vw,32px) 0;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.pager a{
+  display:flex;flex-direction:column;gap:3px;text-decoration:none;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:13px 20px;min-width:200px;
+  box-shadow:var(--shadow-xs);color:var(--ink);
+  transition:transform .16s,box-shadow .16s,border-color .16s;
+}
+.pager a:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);border-color:var(--gold)}
+.pager a .lbl{font-size:.76rem;color:var(--ink-faint)}
+.pager a .ttl{font-weight:700;font-family:var(--display);font-size:1.02rem}
+.pager a.next{text-align:left;margin-inline-start:auto}
+.pager a.disabled{opacity:.34;pointer-events:none}
+
+.foot{
+  max-width:var(--maxw);margin:38px auto 0;
+  padding:26px clamp(16px,4vw,32px) 54px;border-top:1px solid var(--line);
+  text-align:center;color:var(--ink-faint);font-size:.86rem;line-height:1.8;
+}
+.foot .disc{
+  display:block;max-width:660px;margin:13px auto 0;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:12px 18px;font-size:.83rem;
+}
+
+.to-top{
+  position:fixed;inset-block-end:20px;inset-inline-start:20px;
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));color:#fff;border:none;cursor:pointer;
+  display:grid;place-items:center;box-shadow:var(--shadow-gold);z-index:40;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;
+}
+.to-top svg{width:21px;height:21px}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{transform:translateY(-3px)}
+
+/* ============================================================
+   רספונסיביות
+   ============================================================ */
+@media (max-width:760px){
+  .knowledge-box .k-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .pager a{min-width:100%}
+  .segment{flex-direction:column;gap:12px}
+  .topbar .brand span.full{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important}
+  .topbar .live .pulse{animation:none}
+}
+
+</style>
+<style>
+/* ============================================================
+   דף הבית של בינת הלב. נשען על אותה שפת עיצוב של האוספים.
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(120% 150% at 88% -20%, rgba(242,169,0,.42), transparent 46%),
+    radial-gradient(90% 120% at 8% 120%, rgba(47,107,255,.28), transparent 52%),
+    linear-gradient(120deg, var(--night) 0%, var(--night-2) 100%);
+  padding:clamp(28px,5vw,54px) clamp(18px,5vw,40px) clamp(26px,4vw,44px);
+}
+.hero::after{
+  content:"";position:absolute;inset-block-end:-60%;inset-inline:0;height:120%;
+  background:radial-gradient(50% 60% at 78% 100%, rgba(255,194,51,.32), transparent 70%);
+  pointer-events:none;
+}
+.hero .inner{max-width:var(--maxw);margin-inline:auto;position:relative;z-index:2}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  padding:6px 15px;border-radius:999px;
+  font-size:.8rem;font-weight:700;letter-spacing:.04em;color:#ffe6ad;margin-bottom:16px;
+}
+.hero .eyebrow .pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--gold-2);
+  box-shadow:0 0 0 0 rgba(255,194,51,.6);animation:pulse 2.2s infinite;
+}
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(1.9rem,5.4vw,3.15rem);
+  font-weight:800;line-height:1.1;letter-spacing:-.5px;
+  margin-bottom:14px;text-wrap:balance;max-width:20ch;
+}
+.hero h1 .glow{
+  background:linear-gradient(100deg,var(--gold-2),#fff 62%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero .lead{max-width:60ch;color:#c8d2e6;font-size:clamp(.98rem,2.2vw,1.08rem);line-height:1.7}
+.hero .acts{display:flex;gap:11px;flex-wrap:wrap;margin-top:22px}
+.hero .go{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 24px;border-radius:999px;text-decoration:none;
+  font-family:var(--display);font-weight:700;font-size:1rem;
+  background:linear-gradient(145deg,var(--gold-2),var(--gold));color:#3a2900;
+  box-shadow:0 10px 26px rgba(242,169,0,.34);
+  transition:transform .16s,box-shadow .16s;
+}
+.hero .go:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(242,169,0,.44)}
+.hero .ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;text-decoration:none;
+  border:1px solid rgba(255,255,255,.26);color:#e7ecf7;
+  font-weight:600;font-size:.95rem;transition:background .16s,border-color .16s;
+}
+.hero .ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.45)}
+.hero .when{margin-top:16px;font-size:.82rem;color:#93a2c0;letter-spacing:.02em}
+
+/* כרטיסי האוספים */
+.shelf{max-width:var(--maxw);margin-inline:auto;padding:clamp(26px,4vw,42px) clamp(16px,4vw,32px) 0}
+.shelf-head{
+  display:flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.16em;font-weight:700;color:var(--ink-faint);margin-bottom:16px;
+}
+.shelf-head::before{content:"";width:22px;height:3px;border-radius:99px;background:var(--gold)}
+.cols{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,18px)}
+.col{
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+  text-decoration:none;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:clamp(20px,3vw,28px);
+  box-shadow:var(--shadow-xs);
+  transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.col::before{content:"";position:absolute;inset-block-start:0;inset-inline:0;height:4px;background:var(--k)}
+.col:hover{transform:translateY(-4px);border-color:var(--k);
+  box-shadow:0 16px 34px color-mix(in srgb,var(--k) 22%,transparent)}
+.col .kt{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.col .kt .kd{width:9px;height:9px;border-radius:50%;background:var(--k);flex:none}
+.col .kt span{font-size:.72rem;letter-spacing:.14em;font-weight:700;color:var(--k)}
+.col h3{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3.2vw,1.62rem);
+  line-height:1.2;margin-bottom:10px}
+.col p{color:var(--ink-soft);font-size:.99rem;line-height:1.72;flex:1}
+.col .foot{display:flex;align-items:center;gap:8px;margin-top:16px;
+  font-family:var(--display);font-weight:700;color:var(--k);font-size:.98rem}
+.col .foot .n{
+  background:color-mix(in srgb,var(--k) 11%,#fff);
+  border:1px solid color-mix(in srgb,var(--k) 26%,transparent);
+  padding:3px 11px;border-radius:999px;font-size:.8rem;font-variant-numeric:tabular-nums;
+}
+.hfoot{
+  max-width:var(--maxw);margin:38px auto 0;
+  padding:26px clamp(16px,4vw,32px) 54px;border-top:1px solid var(--line);
+  text-align:center;color:var(--ink-faint);font-size:.86rem;line-height:1.8;
+}
+.hfoot .bsd{display:block;font-size:.8rem;color:var(--ink-faint);margin-bottom:6px}
+@media (max-width:700px){ .cols{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .hero .eyebrow .pulse{animation:none} }
 </style>
 </head>
 <body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#ffc233" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-9.5a4 4 0 0 1 7-2.6 4 4 0 0 1 7 2.6c0 5-7 9.5-7 9.5z"/><path d="M12 3v2"/></svg></span>
+    <span>בינת <span class="full">הלב</span></span></a>
+  <span class="live"><span class="pulse"></span>מתעדכן כל שבוע</span>
+</header>
 
-  <main class="card">
-    <div class="bsd">בס"ד</div>
-
-    <div class="brand">
-      <div class="brand-mark" aria-hidden="true">✦</div>
-      <div class="brand-name">בינת הלב</div>
+<section class="hero">
+  <div class="inner">
+    <span class="eyebrow"><span class="pulse"></span><span id="pLabel">השבוע · פרשת ואתחנן</span></span>
+    <h1><span class="glow" id="pTitle">מה עושים כשהתשובה היא לא, והיא סופית</span></h1>
+    <p class="lead" id="pDek">משה התחנן חמש מאות ופעם אחת שיינתן לו להיכנס, וקיבל סירוב מוחלט. מה שהוא עשה ביום שאחרי הוא אולי הדבר החזק ביותר בכל התורה.</p>
+    <div class="acts">
+      <a class="go" id="pLink" href="/parashat-hashavua/devarim/vaetchanan.html">לקריאה<span aria-hidden="true">←</span></a>
+      <a class="ghost" href="/parashat-hashavua/">כל 54 הפרשות</a>
     </div>
+    <div class="when" id="pWhen"></div>
+  </div>
+</section>
 
-    <h1>
-      האתר בבנייה
-      <span class="accent">בקרוב עולים עם אגדות התקווה</span>
-    </h1>
+<div class="ticker" aria-hidden="true">
+  <div class="track"><span><b>בִּינַת הַלֵּב</b></span><span class="sep">·</span><span>הַקּוֹנְפְלִיקְט הָאֱנוֹשִׁי שֶׁמֵּאֲחוֹרֵי הַטֶּקְסְט</span><span class="sep">·</span><span>נ״ד פָּרָשׁוֹת · י״ח אַגָּדוֹת</span><span class="sep">·</span><span><b>בִּינַת הַלֵּב</b></span><span class="sep">·</span><span>הַקּוֹנְפְלִיקְט הָאֱנוֹשִׁי שֶׁמֵּאֲחוֹרֵי הַטֶּקְסְט</span><span class="sep">·</span><span>נ״ד פָּרָשׁוֹת · י״ח אַגָּדוֹת</span><span class="sep">·</span></div>
+</div>
 
-    <p class="lead">
-      אנחנו עובדים על משהו חדש. בינתיים, מוזמנים להיכנס לאוסף
-      <strong>אגדות התקווה</strong> — כבר באוויר וממתין לכם.
-    </p>
+<main class="shelf">
+  <div class="shelf-head">האוספים</div>
+  <div class="cols">
 
-    <a class="cta" href="/agadot-hatikva/">
-      <span>לאגדות התקווה</span>
-      <span class="arrow" aria-hidden="true">←</span>
+    <a class="col" href="/parashat-hashavua/" style="--k:#3d6fd9">
+      <div class="kt"><span class="kd"></span><span>חמישה חומשי תורה</span></div>
+      <h3>פרשת השבוע</h3>
+      <p>כל פרשה סובבת סביב התנגשות אנושית אחת — קנאה, פחד, ויתור, סליחה. הסיפור, המבחן
+         שעומד במרכזו, מה שחז״ל ראו בו, וסיפור מן השטח. כל עמוד נחתם בדבר אחד מעשי
+         שאפשר לעשות איתו כבר בסוף השבוע.</p>
+      <div class="foot"><span class="n">54 פרשות</span><span>5 ספרים</span></div>
     </a>
 
-    <div class="divider" aria-hidden="true"></div>
+    <a class="col" href="/agadot-hatikva/" style="--k:#f2a900">
+      <div class="kt"><span class="kd"></span><span>מן החורבן אל הגאולה</span></div>
+      <h3>אגדות התקווה</h3>
+      <p>שמונה עשרה אגדות מן הגמרא, בשמונה פרקים — קמצא ובר קמצא, מרתא בת בייתוס,
+         שריפת האוצרות. כל אחת נקראת כמו שהיא, ונחתמת באור: מה היא אומרת לימינו,
+         ואיך אותו מעשה עצמו עתיד להתהפך לטובה.</p>
+      <div class="foot"><span class="n">18 אגדות</span><span>8 פרקים</span></div>
+    </a>
 
-    <footer>
-      binathalev.co · <a href="/agadot-hatikva/">agadot-hatikva</a>
-    </footer>
-  </main>
+  </div>
+</main>
 
+<footer class="hfoot">
+  <span class="bsd">בס״ד</span>
+  binathalev.co · בינת הלב
+  <span class="disc" style="display:block;max-width:660px;margin:13px auto 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 18px;font-size:.83rem">
+    עזר לימודי בלבד. הסיפורים מסופרים בלשון חופשית — יש לעיין במקור.
+    לוח קריאת הפרשות הוא מנהג ארץ ישראל.</span>
+</footer>
+
+<script>
+/* לוח הפרשות צרוב בדף — [תאריך שבת, שם, קישור, כותרת, תקציר] */
+var SCHED=[
+["2026-01-03","ויחי","/parashat-hashavua/bereshit/vayechi.html","מה עושים כשסלחת — והם עדיין מפחדים ממך","שבע עשרה שנה אחרי הפיוס הגדול, גילה יוסף שאחיו עדיין חיים בפחד ממנו. הפרשה שסוגרת את ספר בראשית עוסקת בעבודה השקטה שאחרי הסליחה: לגרום לה להיות מאמינה."],
+["2026-01-10","שמות","/parashat-hashavua/shemot/shemot.html","מה עושים כשבחרו דווקא בך, ואתה בטוח שטעו","האדם שנבחר להוציא עם שלם מעבדות ניסה חמש פעמים לסרב, ואמר על עצמו שהוא לא יודע לדבר. מי שמפסיק לחכות להרגשה שהוא ראוי, מגלה שאפשר להתחיל גם בלעדיה."],
+["2026-01-17","וארא","/parashat-hashavua/shemot/vaera.html","למה כל כך קשה להודות שטעינו","שבע מכות, שבע הזדמנויות לעצור — ואדם אחד שבחר בכל פעם מחדש להחזיק בעמדה שכבר הרסה לו את הארץ. מי שמסוגל לשנות דעה באמצע חוסך לעצמו את המכה השמינית."],
+["2026-01-24","בא","/parashat-hashavua/shemot/bo.html","הלילה שבו קבוצת עבדים קיבלה לידיים את הזמן","רגע לפני היציאה, המצווה הראשונה שניתנה לעם לא הייתה על אמונה או על מוסר — אלא על לוח שנה. מי שמפסיק לחיות בזמן של אחרים מגלה שהחיים שלו נראים אחרת לגמרי."],
+["2026-01-31","בשלח","/parashat-hashavua/shemot/beshalach.html","הרגע שבו נגמרות האפשרויות וצריך להיכנס למים","מאחור הצבא, מלפנים הים, ובאמצע עם שלם שמתווכח מה לעשות. מי שמפסיק לנתח ומרים רגל אחת קדימה מגלה שהקרקע מתגלה תוך כדי, אף פעם לא לפני."],
+["2026-02-07","יתרו","/parashat-hashavua/shemot/yitro.html","המדריך לאדם שלא מצליח להגיד ״קח את זה ממני״","האיש הכי חזק בעם ישב מבוקר עד ערב וטיפל בכל בעיה בעצמו, עד שחותנו אמר לו את המשפט שאיש לא העז: ככה אתה תישבר. מי שמשחרר שליטה מקבל בחזרה את הדבר היחיד שאין לו — זמן."],
+["2026-02-14","משפטים","/parashat-hashavua/shemot/mishpatim.html","מה קורה ביום שאחרי החוויה הגדולה","יום אחרי המעמד הגדול בהיסטוריה, הטקסט עובר בלי הכנה לשור שנגח ולשומר שאיבד פיקדון. מי שמבין שהמבחן האמיתי הוא בהתנהלות היומיומית מפסיק לחכות לרגעים הגדולים."],
+["2026-02-21","תרומה","/parashat-hashavua/shemot/truma.html","למה שווה לתת כשאף אחד לא רואה שנתת","המשכן נבנה כולו מתרומות של מתנדבים, בלי מגביות ובלי לוחות תורמים. מי שמגלה שהנתינה עובדת בעיקר עליו מפסיק לחשב אם היא השתלמה."],
+["2026-02-28","תצוה","/parashat-hashavua/shemot/tetzave.html","האח שהיה ראשון, וקיבל אח קטן למנהל","אהרן היה מנהיג העם לפני שמשה חזר ממדיין, ובכל זאת הכתוב מעיד שכשראה את אחיו הקטן ממונה — שמח בלב. מי שמצליח בזה מקבל בחזרה משפחה שלמה שלא נהרסה."],
+["2026-03-07","כי תשא","/parashat-hashavua/shemot/ki-tisa.html","מה עושים עם השברים אחרי שהכול התנפץ","ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."],
+["2026-03-14","ויקהל־פקודי","/parashat-hashavua/shemot/vayakhel.html","החלק בעבר שלך שהכי התביישת בו","הנשים הביאו למשכן את המראות שבהן התייפו במצרים, ומשה נרתע. התשובה שקיבל הפכה את היוצרות — דווקא אלה, נאמר לו, חביבות עליי מכול."],
+["2026-03-21","ויקרא","/parashat-hashavua/vayikra/vayikra.html","מה עושים כשטעית ואף אחד לא ראה","הספר שכולו קורבנות מקדיש את מרביתו לא לחגיגות אלא לתיקון של מי ששגה. מי שלומד לסגור חשבון פתוח, במקום לקוות שיישכח, מקבל בחזרה שקט שאין לו תחליף."],
+["2026-03-28","צו","/parashat-hashavua/vayikra/tzav.html","העבודה שאף אחד לא רואה, בשעה שאף אחד לא ער","לפני כל עבודה במקדש הייתה משימה אחת קבועה: לפנות את האפר מאתמול. מי שמבין שהתחזוקה השקופה היא העבודה עצמה, מפסיק לחכות למשימות שיש בהן זוהר."],
+["2026-04-11","שמיני","/parashat-hashavua/vayikra/shmini.html","מה אומרים לאדם שאיבד הכול, ביום הכי גדול שלו","ביום שבו נחנך המשכן מתו שני בניו של אהרן, והוא לא אמר מילה. הפרשה הזאת מלמדת בעיקר מה עושים כשאין מה להגיד — וזה אחד הכישורים הכי נחוצים שיש."],
+["2026-04-18","תזריע־מצרע","/parashat-hashavua/vayikra/tazria.html","מה שאנחנו אומרים על אנשים כשהם לא בחדר","התורה מקדישה שני פרקים שלמים למחלה שחז״ל קשרו אותה לדיבור על אחרים. מי שמצליח לשמור על הפה שלו מגלה שהוא הרבה פחות מסובך עם אנשים."],
+["2026-04-25","אחרי מות־קדשים","/parashat-hashavua/vayikra/achrei-mot.html","פעם בשנה, אדם אחד נכנס לחדר לבד","עבודת יום הכיפורים כולה נשענה על כך שהכהן הגדול ייכנס למקום שאין בו איש, בלי בגדי זהב ובלי קהל. מי שמוצא לעצמו חדר כזה מגלה שהוא חוזר ממנו אדם אחר."],
+["2026-05-02","אמור","/parashat-hashavua/vayikra/emor.html","מה מחזיק אנשים לאורך שנה שלמה","התורה קובעת לוח שנה של מועדים קבועים, שחוזרים בין אם השנה הייתה טובה ובין אם לא. מי שבונה לעצמו נקודות עצירה קבועות מגלה שהן מחזיקות אותו דווקא בשנים הקשות."],
+["2026-05-09","בהר־בחקתי","/parashat-hashavua/vayikra/behar.html","מה קורה לחברה שבה אף אחד לא נשאר תקוע לנצח","פעם בחמישים שנה החזירה התורה כל אדמה לבעליה וכל אדם לביתו. מי שיודע שיש מסלול יציאה מפסיק לחיות בפחד — וזה משנה איך הוא מתנהג כל שאר השנים."],
+["2026-05-16","במדבר","/parashat-hashavua/bamidbar/bamidbar.html","למה כל כך חשוב שמישהו יידע שאתה שם","לפני היציאה למסע נספר כל אדם בעם, בשמו ולפי משפחתו. מי שיודע שקיימת לו כתובת בתוך קבוצה מתפקד אחרת לגמרי — וזה נכון בכל צוות ובכל בית."],
+["2026-05-23","נשא","/parashat-hashavua/bamidbar/naso.html","מה שאנחנו אומרים לאנשים כשהם עומדים מולנו","הפרשה הארוכה בתורה מסתיימת בשלושה פסוקים קצרים שנאמרים עד היום מעל ראשם של ילדים. מי שיודע לברך אנשים בפועל, לא רק להרגיש כלפיהם — משנה את האווירה בכל חדר שהוא נכנס אליו."],
+["2026-05-30","בהעלתך","/parashat-hashavua/bamidbar/behaalotcha.html","מה קורה לאדם שנשבר מרוב אחריות","משה, שהוציא עם ממצרים, אמר במפורש שהוא לא מסוגל יותר ושעדיף שימות. התגובה שקיבל לא הייתה נזיפה אלא פתרון — וזה בדיוק ההבדל שרובנו זקוקים לו."],
+["2026-06-06","שלח־לך","/parashat-hashavua/bamidbar/shlach.html","איך פחד אחד מחליט את גורלו של דור שלם","שנים עשר אנשים ראו בדיוק את אותה ארץ, ועשרה מהם חזרו עם דוח שהפיל עם שלם. מי שמצליח להפריד בין מה שראה לבין מה שהוא מספר על עצמו, מקבל בחזרה את היכולת לזוז."],
+["2026-06-13","קורח","/parashat-hashavua/bamidbar/korach.html","המחלוקת שאף אחד כבר לא זוכר על מה התחילה","קורח פתח בטענה צודקת לחלוטין, ותוך יום היא בלעה אותו ואת כל מי שהלך אחריו. מי שיודע לזהות מתי ויכוח הפסיק לעסוק בעניין, חוסך לעצמו שנים."],
+["2026-06-20","חוקת","/parashat-hashavua/bamidbar/chukat.html","מה קורה כשאדם טוב מאבד את זה לרגע אחד","משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש."],
+["2026-06-27","בלק","/parashat-hashavua/bamidbar/balak.html","מה קורה כשמישהו מתעקש לראות בך אויב","מלך שכר את הנביא הגדול בעולם כדי לקלל עם שלא עשה לו דבר, וכל ניסיון נהפך לברכה. הפרשה הזאת עוסקת בעיקר במה שקורה לאדם שמחליט מראש מה הוא רואה."],
+["2026-07-04","פינחס","/parashat-hashavua/bamidbar/pinchas.html","חמש נשים שהגישו תביעה — וניצחו","בנות צלפחד עמדו מול משה, מול הנשיאים ומול כל העדה, וטענו שהחוק פשוט לא הוגן. התשובה שקיבלו שינתה את החוק. מי שמעז לשאול מגלה שהמערכת גמישה יותר משחשב."],
+["2026-07-11","מטות־מסעי","/parashat-hashavua/bamidbar/matot.html","כמה שווה מילה שאמרת ואף אחד לא רשם","התורה פותחת פרשה שלמה בכך שאדם מחויב למה שיצא מפיו, גם בלי חוזה ובלי עדים. מי שמילתו נחשבת מגלה שהחיים שלו פשוטים בהרבה משל כולם."],
+["2026-07-18","דברים","/parashat-hashavua/devarim/devarim.html","איך אומרים למישהו את האמת בלי להרוס אותו","משה פותח נאום פרידה בן חמישה שבועות, וכולו ביקורת — אבל הוא בונה אותה כך שאיש לא יסתום את האוזניים. מי שלומד לומר דברים קשים בדרך שאפשר לשמוע, מקבל בחזרה אנשים שמדברים איתו."],
+["2026-07-25","ואתחנן","/parashat-hashavua/devarim/vaetchanan.html","מה עושים כשהתשובה היא לא, והיא סופית","משה התחנן חמש מאות ופעם אחת שיינתן לו להיכנס, וקיבל סירוב מוחלט. מה שהוא עשה ביום שאחרי הוא אולי הדבר החזק ביותר בכל התורה."],
+["2026-08-01","עקב","/parashat-hashavua/devarim/ekev.html","מה קורה לאדם בדיוק כשהכול מתחיל להצליח","האזהרה הגדולה בפרשה אינה מפני כישלון אלא מפני הצלחה — הרגע שבו אדם אומר לעצמו ״כוחי ועוצם ידי״. מי שזוכר מי עזר לו בדרך, שומר על מה שבנה."],
+["2026-08-08","ראה","/parashat-hashavua/devarim/reeh.html","כמה בחירות קטנות עומדות מאחורי כל אדם","״ראה, אנוכי נותן לפניכם היום ברכה וקללה״ — משפט שנשמע דרמטי, ובעצם מתאר את מה שקורה לכל אחד מאיתנו כמה עשרות פעמים ביום. מי שמזהה את הבחירה, כבר חצי בחר."],
+["2026-08-15","שופטים","/parashat-hashavua/devarim/shoftim.html","מי שומר על מי שמחליט","הפרשה מקימה שופטים, מלך, כהנים ונביאים — ומיד מגבילה כל אחד מהם. מי שמבין שגם הוא זקוק למישהו שיגיד לו ״לא״, מגלה שזה בדיוק מה ששומר עליו."],
+["2026-08-22","כי־תצא","/parashat-hashavua/devarim/ki-tetze.html","מה שאנחנו עושים כשאף אחד לא רואה, בדברים הכי קטנים","הפרשה עם מספר המצוות הגדול בתורה עוסקת באבדה שמצאת, בגג שבנית, ובציפור שראית בקן. מי שמקפיד בקטן מגלה שהוא כמעט לא נדרש להתמודד עם הגדול."],
+["2026-08-29","כי־תבוא","/parashat-hashavua/devarim/ki-tavo.html","למה כל כך קשה לנו להגיד תודה על מה שיש","החקלאי הראשון שהצליח נדרש לשים את הפרי בסל, לעלות לירושלים, ולספר בקול את כל הסיפור שהביא אותו לשם. מי שעושה את זה מגלה שהוא רואה את חייו אחרת."],
+["2026-09-05","נצבים־וילך","/parashat-hashavua/devarim/nitzavim.html","מה שאתה צריך כדי להשתנות כבר נמצא אצלך","משה מסכם ארבעים שנה במשפט אחד: זה לא בשמיים ולא מעבר לים — זה קרוב אליך מאוד. מי שמפסיק לחכות לתנאים המושלמים מגלה שהוא יכול להתחיל היום."],
+["2026-09-19","האזינו","/parashat-hashavua/devarim/haazinu.html","מה אדם בוחר לומר כשנשארה לו רק שיחה אחת","משה יכול היה לסיים ברשימת הוראות. הוא בחר לסיים בשיר. מי שמבין מה נשאר מאיתנו אצל אנשים, מתחיל לומר דברים אחרים לגמרי."],
+["2026-10-10","בראשית","/parashat-hashavua/bereshit/bereshit.html","המדריך למי שהפנים שלו נפלו","העולם נברא שלם ומדויק, ותוך שישה פרקים הוא מתפרק — לא בגלל אויב מבחוץ, אלא בגלל אדם אחד שהסתכל על אחיו והרגיש קטן."],
+["2026-10-17","נח","/parashat-hashavua/bereshit/noach.html","האיש שבנה תיבה ולא דפק לאף אחד בדלת","אפשר להיות אדם הגון לגמרי, לשמור על הבית שלך נקי — ועדיין לפספס את הדבר היחיד שהיה נדרש ממך. מי שמעז לצאת מהתיבה שלו מגלה שיש לו הרבה יותר כוח ממה שחשב."],
+["2026-10-24","לך־לך","/parashat-hashavua/bereshit/lech-lecha.html","מה קורה כשאתה עוזב את כל מה שבטוח","בגיל שבעים וחמש, כשכל אחד היה אומר לו שהספינה הפליגה, אדם אחד קם ועזב הכול בלי לדעת לאן. מי שמעז לזוז ממקום שכבר מזמן לא שלו מגלה כמה אנרגיה בזבז על להחזיק אותו."],
+["2026-10-31","וירא","/parashat-hashavua/bereshit/vayera.html","מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."],
+["2026-11-07","חיי שרה","/parashat-hashavua/bereshit/chayei-sara.html","איך בוחרים אנשים שיישארו איתנו לכל החיים","עבד אחד נשלח למצוא כלה, והמבחן שהוא ממציא לעצמו אינו יופי, ייחוס או כסף — אלא כמה טרחה אדם מוכן לקחת על עצמו למען מי שלא ביקש ממנו כלום. הכלל הזה עובד היום בדיוק כמו אז."],
+["2026-11-14","תולדות","/parashat-hashavua/bereshit/toldot.html","המשפחה שבה כל הורה אהב ילד אחר","בית אחד, שני אחים, וברכה אחת שנראתה כאילו יש רק עותק אחד ממנה. מי שמפסיק לחלק את האנשים סביבו לזוכים ומפסידים מגלה שהוא מקבל בחזרה את שניהם."],
+["2026-11-21","ויצא","/parashat-hashavua/bereshit/vayetze.html","עשרים שנה אצל בוס שמרמה אותך","אדם ברח מהבית בלי כלום, נפל לידיים של מעסיק שהחליף לו את התנאים עשר פעמים — ויצא משם עם משפחה, רכוש ושם טוב. השאלה היחידה שהוא נאלץ להכריע בה כל בוקר היא מי הוא רוצה להיות בתוך זה."],
+["2026-11-28","וישלח","/parashat-hashavua/bereshit/vayishlach.html","הלילה שלפני הפגישה שאתה הכי מפחד ממנה","עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש."],
+["2026-12-05","וישב","/parashat-hashavua/bereshit/vayeshev.html","כמה עולה משפט אחד של ״טעיתי״","אדם אחד עמד מול בית דין שהוא עצמו הרכיב, במקום שבו אף אחד לא היה מגלה את האמת — ואמר בקול שהוא זה שטעה. הרגע הזה הפך אותו למי שכל המלכות יוצאת ממנו."],
+["2026-12-12","מקץ","/parashat-hashavua/bereshit/miketz.html","שלוש עשרה שנה בבור, ובוקר אחד שהופך הכול","אדם שהושלך לבור בגיל שבע עשרה יצא ממנו בגיל שלושים — וכשעמד סוף סוף מול המלך, המילה הראשונה שאמר הייתה שזה לא בזכותו. מי שמצליח להחזיק את הראש הזה, שורד גם את הבור וגם את הארמון."],
+["2026-12-19","ויגש","/parashat-hashavua/bereshit/vayigash.html","שתי מילים שהפשירו עשרים ושתיים שנה","הוא יכול היה לפרוס בפניהם את כתב האישום המלא, שורה אחר שורה, והיה צודק בכל אות. במקום זה הוא אמר את שמו — ואת מה שהוא בחר לעשות עם מה שקרה לו."],
+["2026-12-26","ויחי","/parashat-hashavua/bereshit/vayechi.html","מה עושים כשסלחת — והם עדיין מפחדים ממך","שבע עשרה שנה אחרי הפיוס הגדול, גילה יוסף שאחיו עדיין חיים בפחד ממנו. הפרשה שסוגרת את ספר בראשית עוסקת בעבודה השקטה שאחרי הסליחה: לגרום לה להיות מאמינה."],
+["2027-01-02","שמות","/parashat-hashavua/shemot/shemot.html","מה עושים כשבחרו דווקא בך, ואתה בטוח שטעו","האדם שנבחר להוציא עם שלם מעבדות ניסה חמש פעמים לסרב, ואמר על עצמו שהוא לא יודע לדבר. מי שמפסיק לחכות להרגשה שהוא ראוי, מגלה שאפשר להתחיל גם בלעדיה."],
+["2027-01-09","וארא","/parashat-hashavua/shemot/vaera.html","למה כל כך קשה להודות שטעינו","שבע מכות, שבע הזדמנויות לעצור — ואדם אחד שבחר בכל פעם מחדש להחזיק בעמדה שכבר הרסה לו את הארץ. מי שמסוגל לשנות דעה באמצע חוסך לעצמו את המכה השמינית."],
+["2027-01-16","בא","/parashat-hashavua/shemot/bo.html","הלילה שבו קבוצת עבדים קיבלה לידיים את הזמן","רגע לפני היציאה, המצווה הראשונה שניתנה לעם לא הייתה על אמונה או על מוסר — אלא על לוח שנה. מי שמפסיק לחיות בזמן של אחרים מגלה שהחיים שלו נראים אחרת לגמרי."],
+["2027-01-23","בשלח","/parashat-hashavua/shemot/beshalach.html","הרגע שבו נגמרות האפשרויות וצריך להיכנס למים","מאחור הצבא, מלפנים הים, ובאמצע עם שלם שמתווכח מה לעשות. מי שמפסיק לנתח ומרים רגל אחת קדימה מגלה שהקרקע מתגלה תוך כדי, אף פעם לא לפני."],
+["2027-01-30","יתרו","/parashat-hashavua/shemot/yitro.html","המדריך לאדם שלא מצליח להגיד ״קח את זה ממני״","האיש הכי חזק בעם ישב מבוקר עד ערב וטיפל בכל בעיה בעצמו, עד שחותנו אמר לו את המשפט שאיש לא העז: ככה אתה תישבר. מי שמשחרר שליטה מקבל בחזרה את הדבר היחיד שאין לו — זמן."],
+["2027-02-06","משפטים","/parashat-hashavua/shemot/mishpatim.html","מה קורה ביום שאחרי החוויה הגדולה","יום אחרי המעמד הגדול בהיסטוריה, הטקסט עובר בלי הכנה לשור שנגח ולשומר שאיבד פיקדון. מי שמבין שהמבחן האמיתי הוא בהתנהלות היומיומית מפסיק לחכות לרגעים הגדולים."],
+["2027-02-13","תרומה","/parashat-hashavua/shemot/truma.html","למה שווה לתת כשאף אחד לא רואה שנתת","המשכן נבנה כולו מתרומות של מתנדבים, בלי מגביות ובלי לוחות תורמים. מי שמגלה שהנתינה עובדת בעיקר עליו מפסיק לחשב אם היא השתלמה."],
+["2027-02-20","תצוה","/parashat-hashavua/shemot/tetzave.html","האח שהיה ראשון, וקיבל אח קטן למנהל","אהרן היה מנהיג העם לפני שמשה חזר ממדיין, ובכל זאת הכתוב מעיד שכשראה את אחיו הקטן ממונה — שמח בלב. מי שמצליח בזה מקבל בחזרה משפחה שלמה שלא נהרסה."],
+["2027-02-27","כי תשא","/parashat-hashavua/shemot/ki-tisa.html","מה עושים עם השברים אחרי שהכול התנפץ","ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."],
+["2027-03-06","ויקהל","/parashat-hashavua/shemot/vayakhel.html","החלק בעבר שלך שהכי התביישת בו","הנשים הביאו למשכן את המראות שבהן התייפו במצרים, ומשה נרתע. התשובה שקיבל הפכה את היוצרות — דווקא אלה, נאמר לו, חביבות עליי מכול."],
+["2027-03-13","פקודי","/parashat-hashavua/shemot/pekudei.html","למה אדם שאיש לא חושד בו טורח להראות קבלות","משה מסר דין וחשבון מלא על כל גרם זהב שנתרם, למרות שאיש לא היה מעז לבקש. מי שמנהל את ענייניו בשקיפות מגלה שהוא חוסך לעצמו את הדבר היקר מכול — את הצורך להתגונן."],
+["2027-03-20","ויקרא","/parashat-hashavua/vayikra/vayikra.html","מה עושים כשטעית ואף אחד לא ראה","הספר שכולו קורבנות מקדיש את מרביתו לא לחגיגות אלא לתיקון של מי ששגה. מי שלומד לסגור חשבון פתוח, במקום לקוות שיישכח, מקבל בחזרה שקט שאין לו תחליף."],
+["2027-03-27","צו","/parashat-hashavua/vayikra/tzav.html","העבודה שאף אחד לא רואה, בשעה שאף אחד לא ער","לפני כל עבודה במקדש הייתה משימה אחת קבועה: לפנות את האפר מאתמול. מי שמבין שהתחזוקה השקופה היא העבודה עצמה, מפסיק לחכות למשימות שיש בהן זוהר."],
+["2027-04-03","שמיני","/parashat-hashavua/vayikra/shmini.html","מה אומרים לאדם שאיבד הכול, ביום הכי גדול שלו","ביום שבו נחנך המשכן מתו שני בניו של אהרן, והוא לא אמר מילה. הפרשה הזאת מלמדת בעיקר מה עושים כשאין מה להגיד — וזה אחד הכישורים הכי נחוצים שיש."],
+["2027-04-10","תזריע","/parashat-hashavua/vayikra/tazria.html","מה שאנחנו אומרים על אנשים כשהם לא בחדר","התורה מקדישה שני פרקים שלמים למחלה שחז״ל קשרו אותה לדיבור על אחרים. מי שמצליח לשמור על הפה שלו מגלה שהוא הרבה פחות מסובך עם אנשים."],
+["2027-04-17","מצרע","/parashat-hashavua/vayikra/metzora.html","איך מחזירים אדם שהורחק, בלי שיישאר עליו סימן","התורה מקדישה פרק שלם לא להרחקה אלא לחזרה — טקס מפורט שכל תכליתו להכניס אדם בחזרה פנימה. מי שיודע לקבל אנשים בחזרה מגלה שגם הוא מקבל הזדמנות שנייה."],
+["2027-05-01","אחרי מות","/parashat-hashavua/vayikra/achrei-mot.html","פעם בשנה, אדם אחד נכנס לחדר לבד","עבודת יום הכיפורים כולה נשענה על כך שהכהן הגדול ייכנס למקום שאין בו איש, בלי בגדי זהב ובלי קהל. מי שמוצא לעצמו חדר כזה מגלה שהוא חוזר ממנו אדם אחר."],
+["2027-05-08","קדשים","/parashat-hashavua/vayikra/kedoshim.html","כל מה שצריך לדעת על להיות בן אדם, בפרק אחד","הפרשה שנחשבת לתמצית התורה כולה כמעט ואינה עוסקת בקדושה מופשטת — היא עוסקת בשכר של פועל, במשקולות של סוחר, ובמה אומרים לחירש. וזו בדיוק הנקודה."],
+["2027-05-15","אמור","/parashat-hashavua/vayikra/emor.html","מה מחזיק אנשים לאורך שנה שלמה","התורה קובעת לוח שנה של מועדים קבועים, שחוזרים בין אם השנה הייתה טובה ובין אם לא. מי שבונה לעצמו נקודות עצירה קבועות מגלה שהן מחזיקות אותו דווקא בשנים הקשות."],
+["2027-05-22","בהר","/parashat-hashavua/vayikra/behar.html","מה קורה לחברה שבה אף אחד לא נשאר תקוע לנצח","פעם בחמישים שנה החזירה התורה כל אדמה לבעליה וכל אדם לביתו. מי שיודע שיש מסלול יציאה מפסיק לחיות בפחד — וזה משנה איך הוא מתנהג כל שאר השנים."],
+["2027-05-29","בחקתי","/parashat-hashavua/vayikra/bechukotai.html","מה באמת קורה כשמצטברים הרגלים קטנים","הפרשה שסוגרת את ויקרא מתארת שתי דרכים — אחת שבה הכול נבנה ואחת שבה הכול מתפורר — ומראה שההבדל ביניהן מתחיל תמיד באותו מקום קטן. מי שמזהה את הצעד הראשון חוסך לעצמו את כל השאר."],
+["2027-06-05","במדבר","/parashat-hashavua/bamidbar/bamidbar.html","למה כל כך חשוב שמישהו יידע שאתה שם","לפני היציאה למסע נספר כל אדם בעם, בשמו ולפי משפחתו. מי שיודע שקיימת לו כתובת בתוך קבוצה מתפקד אחרת לגמרי — וזה נכון בכל צוות ובכל בית."],
+["2027-06-12","נשא","/parashat-hashavua/bamidbar/naso.html","מה שאנחנו אומרים לאנשים כשהם עומדים מולנו","הפרשה הארוכה בתורה מסתיימת בשלושה פסוקים קצרים שנאמרים עד היום מעל ראשם של ילדים. מי שיודע לברך אנשים בפועל, לא רק להרגיש כלפיהם — משנה את האווירה בכל חדר שהוא נכנס אליו."],
+["2027-06-19","בהעלתך","/parashat-hashavua/bamidbar/behaalotcha.html","מה קורה לאדם שנשבר מרוב אחריות","משה, שהוציא עם ממצרים, אמר במפורש שהוא לא מסוגל יותר ושעדיף שימות. התגובה שקיבל לא הייתה נזיפה אלא פתרון — וזה בדיוק ההבדל שרובנו זקוקים לו."],
+["2027-06-26","שלח־לך","/parashat-hashavua/bamidbar/shlach.html","איך פחד אחד מחליט את גורלו של דור שלם","שנים עשר אנשים ראו בדיוק את אותה ארץ, ועשרה מהם חזרו עם דוח שהפיל עם שלם. מי שמצליח להפריד בין מה שראה לבין מה שהוא מספר על עצמו, מקבל בחזרה את היכולת לזוז."],
+["2027-07-03","קורח","/parashat-hashavua/bamidbar/korach.html","המחלוקת שאף אחד כבר לא זוכר על מה התחילה","קורח פתח בטענה צודקת לחלוטין, ותוך יום היא בלעה אותו ואת כל מי שהלך אחריו. מי שיודע לזהות מתי ויכוח הפסיק לעסוק בעניין, חוסך לעצמו שנים."],
+["2027-07-10","חוקת","/parashat-hashavua/bamidbar/chukat.html","מה קורה כשאדם טוב מאבד את זה לרגע אחד","משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש."],
+["2027-07-17","בלק","/parashat-hashavua/bamidbar/balak.html","מה קורה כשמישהו מתעקש לראות בך אויב","מלך שכר את הנביא הגדול בעולם כדי לקלל עם שלא עשה לו דבר, וכל ניסיון נהפך לברכה. הפרשה הזאת עוסקת בעיקר במה שקורה לאדם שמחליט מראש מה הוא רואה."],
+["2027-07-24","פינחס","/parashat-hashavua/bamidbar/pinchas.html","חמש נשים שהגישו תביעה — וניצחו","בנות צלפחד עמדו מול משה, מול הנשיאים ומול כל העדה, וטענו שהחוק פשוט לא הוגן. התשובה שקיבלו שינתה את החוק. מי שמעז לשאול מגלה שהמערכת גמישה יותר משחשב."],
+["2027-07-31","מטות־מסעי","/parashat-hashavua/bamidbar/matot.html","כמה שווה מילה שאמרת ואף אחד לא רשם","התורה פותחת פרשה שלמה בכך שאדם מחויב למה שיצא מפיו, גם בלי חוזה ובלי עדים. מי שמילתו נחשבת מגלה שהחיים שלו פשוטים בהרבה משל כולם."],
+["2027-08-07","דברים","/parashat-hashavua/devarim/devarim.html","איך אומרים למישהו את האמת בלי להרוס אותו","משה פותח נאום פרידה בן חמישה שבועות, וכולו ביקורת — אבל הוא בונה אותה כך שאיש לא יסתום את האוזניים. מי שלומד לומר דברים קשים בדרך שאפשר לשמוע, מקבל בחזרה אנשים שמדברים איתו."],
+["2027-08-14","ואתחנן","/parashat-hashavua/devarim/vaetchanan.html","מה עושים כשהתשובה היא לא, והיא סופית","משה התחנן חמש מאות ופעם אחת שיינתן לו להיכנס, וקיבל סירוב מוחלט. מה שהוא עשה ביום שאחרי הוא אולי הדבר החזק ביותר בכל התורה."],
+["2027-08-21","עקב","/parashat-hashavua/devarim/ekev.html","מה קורה לאדם בדיוק כשהכול מתחיל להצליח","האזהרה הגדולה בפרשה אינה מפני כישלון אלא מפני הצלחה — הרגע שבו אדם אומר לעצמו ״כוחי ועוצם ידי״. מי שזוכר מי עזר לו בדרך, שומר על מה שבנה."],
+["2027-08-28","ראה","/parashat-hashavua/devarim/reeh.html","כמה בחירות קטנות עומדות מאחורי כל אדם","״ראה, אנוכי נותן לפניכם היום ברכה וקללה״ — משפט שנשמע דרמטי, ובעצם מתאר את מה שקורה לכל אחד מאיתנו כמה עשרות פעמים ביום. מי שמזהה את הבחירה, כבר חצי בחר."],
+["2027-09-04","שופטים","/parashat-hashavua/devarim/shoftim.html","מי שומר על מי שמחליט","הפרשה מקימה שופטים, מלך, כהנים ונביאים — ומיד מגבילה כל אחד מהם. מי שמבין שגם הוא זקוק למישהו שיגיד לו ״לא״, מגלה שזה בדיוק מה ששומר עליו."],
+["2027-09-11","כי־תצא","/parashat-hashavua/devarim/ki-tetze.html","מה שאנחנו עושים כשאף אחד לא רואה, בדברים הכי קטנים","הפרשה עם מספר המצוות הגדול בתורה עוסקת באבדה שמצאת, בגג שבנית, ובציפור שראית בקן. מי שמקפיד בקטן מגלה שהוא כמעט לא נדרש להתמודד עם הגדול."],
+["2027-09-18","כי־תבוא","/parashat-hashavua/devarim/ki-tavo.html","למה כל כך קשה לנו להגיד תודה על מה שיש","החקלאי הראשון שהצליח נדרש לשים את הפרי בסל, לעלות לירושלים, ולספר בקול את כל הסיפור שהביא אותו לשם. מי שעושה את זה מגלה שהוא רואה את חייו אחרת."],
+["2027-09-25","נצבים־וילך","/parashat-hashavua/devarim/nitzavim.html","מה שאתה צריך כדי להשתנות כבר נמצא אצלך","משה מסכם ארבעים שנה במשפט אחד: זה לא בשמיים ולא מעבר לים — זה קרוב אליך מאוד. מי שמפסיק לחכות לתנאים המושלמים מגלה שהוא יכול להתחיל היום."],
+["2027-10-09","האזינו","/parashat-hashavua/devarim/haazinu.html","מה אדם בוחר לומר כשנשארה לו רק שיחה אחת","משה יכול היה לסיים ברשימת הוראות. הוא בחר לסיים בשיר. מי שמבין מה נשאר מאיתנו אצל אנשים, מתחיל לומר דברים אחרים לגמרי."],
+["2027-10-30","בראשית","/parashat-hashavua/bereshit/bereshit.html","המדריך למי שהפנים שלו נפלו","העולם נברא שלם ומדויק, ותוך שישה פרקים הוא מתפרק — לא בגלל אויב מבחוץ, אלא בגלל אדם אחד שהסתכל על אחיו והרגיש קטן."],
+["2027-11-06","נח","/parashat-hashavua/bereshit/noach.html","האיש שבנה תיבה ולא דפק לאף אחד בדלת","אפשר להיות אדם הגון לגמרי, לשמור על הבית שלך נקי — ועדיין לפספס את הדבר היחיד שהיה נדרש ממך. מי שמעז לצאת מהתיבה שלו מגלה שיש לו הרבה יותר כוח ממה שחשב."],
+["2027-11-13","לך־לך","/parashat-hashavua/bereshit/lech-lecha.html","מה קורה כשאתה עוזב את כל מה שבטוח","בגיל שבעים וחמש, כשכל אחד היה אומר לו שהספינה הפליגה, אדם אחד קם ועזב הכול בלי לדעת לאן. מי שמעז לזוז ממקום שכבר מזמן לא שלו מגלה כמה אנרגיה בזבז על להחזיק אותו."],
+["2027-11-20","וירא","/parashat-hashavua/bereshit/vayera.html","מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."],
+["2027-11-27","חיי שרה","/parashat-hashavua/bereshit/chayei-sara.html","איך בוחרים אנשים שיישארו איתנו לכל החיים","עבד אחד נשלח למצוא כלה, והמבחן שהוא ממציא לעצמו אינו יופי, ייחוס או כסף — אלא כמה טרחה אדם מוכן לקחת על עצמו למען מי שלא ביקש ממנו כלום. הכלל הזה עובד היום בדיוק כמו אז."],
+["2027-12-04","תולדות","/parashat-hashavua/bereshit/toldot.html","המשפחה שבה כל הורה אהב ילד אחר","בית אחד, שני אחים, וברכה אחת שנראתה כאילו יש רק עותק אחד ממנה. מי שמפסיק לחלק את האנשים סביבו לזוכים ומפסידים מגלה שהוא מקבל בחזרה את שניהם."],
+["2027-12-11","ויצא","/parashat-hashavua/bereshit/vayetze.html","עשרים שנה אצל בוס שמרמה אותך","אדם ברח מהבית בלי כלום, נפל לידיים של מעסיק שהחליף לו את התנאים עשר פעמים — ויצא משם עם משפחה, רכוש ושם טוב. השאלה היחידה שהוא נאלץ להכריע בה כל בוקר היא מי הוא רוצה להיות בתוך זה."],
+["2027-12-18","וישלח","/parashat-hashavua/bereshit/vayishlach.html","הלילה שלפני הפגישה שאתה הכי מפחד ממנה","עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש."],
+["2027-12-25","וישב","/parashat-hashavua/bereshit/vayeshev.html","כמה עולה משפט אחד של ״טעיתי״","אדם אחד עמד מול בית דין שהוא עצמו הרכיב, במקום שבו אף אחד לא היה מגלה את האמת — ואמר בקול שהוא זה שטעה. הרגע הזה הפך אותו למי שכל המלכות יוצאת ממנו."],
+["2028-01-01","מקץ","/parashat-hashavua/bereshit/miketz.html","שלוש עשרה שנה בבור, ובוקר אחד שהופך הכול","אדם שהושלך לבור בגיל שבע עשרה יצא ממנו בגיל שלושים — וכשעמד סוף סוף מול המלך, המילה הראשונה שאמר הייתה שזה לא בזכותו. מי שמצליח להחזיק את הראש הזה, שורד גם את הבור וגם את הארמון."],
+["2028-01-08","ויגש","/parashat-hashavua/bereshit/vayigash.html","שתי מילים שהפשירו עשרים ושתיים שנה","הוא יכול היה לפרוס בפניהם את כתב האישום המלא, שורה אחר שורה, והיה צודק בכל אות. במקום זה הוא אמר את שמו — ואת מה שהוא בחר לעשות עם מה שקרה לו."],
+["2028-01-15","ויחי","/parashat-hashavua/bereshit/vayechi.html","מה עושים כשסלחת — והם עדיין מפחדים ממך","שבע עשרה שנה אחרי הפיוס הגדול, גילה יוסף שאחיו עדיין חיים בפחד ממנו. הפרשה שסוגרת את ספר בראשית עוסקת בעבודה השקטה שאחרי הסליחה: לגרום לה להיות מאמינה."],
+["2028-01-22","שמות","/parashat-hashavua/shemot/shemot.html","מה עושים כשבחרו דווקא בך, ואתה בטוח שטעו","האדם שנבחר להוציא עם שלם מעבדות ניסה חמש פעמים לסרב, ואמר על עצמו שהוא לא יודע לדבר. מי שמפסיק לחכות להרגשה שהוא ראוי, מגלה שאפשר להתחיל גם בלעדיה."],
+["2028-01-29","וארא","/parashat-hashavua/shemot/vaera.html","למה כל כך קשה להודות שטעינו","שבע מכות, שבע הזדמנויות לעצור — ואדם אחד שבחר בכל פעם מחדש להחזיק בעמדה שכבר הרסה לו את הארץ. מי שמסוגל לשנות דעה באמצע חוסך לעצמו את המכה השמינית."],
+["2028-02-05","בא","/parashat-hashavua/shemot/bo.html","הלילה שבו קבוצת עבדים קיבלה לידיים את הזמן","רגע לפני היציאה, המצווה הראשונה שניתנה לעם לא הייתה על אמונה או על מוסר — אלא על לוח שנה. מי שמפסיק לחיות בזמן של אחרים מגלה שהחיים שלו נראים אחרת לגמרי."],
+["2028-02-12","בשלח","/parashat-hashavua/shemot/beshalach.html","הרגע שבו נגמרות האפשרויות וצריך להיכנס למים","מאחור הצבא, מלפנים הים, ובאמצע עם שלם שמתווכח מה לעשות. מי שמפסיק לנתח ומרים רגל אחת קדימה מגלה שהקרקע מתגלה תוך כדי, אף פעם לא לפני."],
+["2028-02-19","יתרו","/parashat-hashavua/shemot/yitro.html","המדריך לאדם שלא מצליח להגיד ״קח את זה ממני״","האיש הכי חזק בעם ישב מבוקר עד ערב וטיפל בכל בעיה בעצמו, עד שחותנו אמר לו את המשפט שאיש לא העז: ככה אתה תישבר. מי שמשחרר שליטה מקבל בחזרה את הדבר היחיד שאין לו — זמן."],
+["2028-02-26","משפטים","/parashat-hashavua/shemot/mishpatim.html","מה קורה ביום שאחרי החוויה הגדולה","יום אחרי המעמד הגדול בהיסטוריה, הטקסט עובר בלי הכנה לשור שנגח ולשומר שאיבד פיקדון. מי שמבין שהמבחן האמיתי הוא בהתנהלות היומיומית מפסיק לחכות לרגעים הגדולים."],
+["2028-03-04","תרומה","/parashat-hashavua/shemot/truma.html","למה שווה לתת כשאף אחד לא רואה שנתת","המשכן נבנה כולו מתרומות של מתנדבים, בלי מגביות ובלי לוחות תורמים. מי שמגלה שהנתינה עובדת בעיקר עליו מפסיק לחשב אם היא השתלמה."],
+["2028-03-11","תצוה","/parashat-hashavua/shemot/tetzave.html","האח שהיה ראשון, וקיבל אח קטן למנהל","אהרן היה מנהיג העם לפני שמשה חזר ממדיין, ובכל זאת הכתוב מעיד שכשראה את אחיו הקטן ממונה — שמח בלב. מי שמצליח בזה מקבל בחזרה משפחה שלמה שלא נהרסה."],
+["2028-03-18","כי תשא","/parashat-hashavua/shemot/ki-tisa.html","מה עושים עם השברים אחרי שהכול התנפץ","ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."],
+["2028-03-25","ויקהל־פקודי","/parashat-hashavua/shemot/vayakhel.html","החלק בעבר שלך שהכי התביישת בו","הנשים הביאו למשכן את המראות שבהן התייפו במצרים, ומשה נרתע. התשובה שקיבל הפכה את היוצרות — דווקא אלה, נאמר לו, חביבות עליי מכול."],
+["2028-04-01","ויקרא","/parashat-hashavua/vayikra/vayikra.html","מה עושים כשטעית ואף אחד לא ראה","הספר שכולו קורבנות מקדיש את מרביתו לא לחגיגות אלא לתיקון של מי ששגה. מי שלומד לסגור חשבון פתוח, במקום לקוות שיישכח, מקבל בחזרה שקט שאין לו תחליף."],
+["2028-04-08","צו","/parashat-hashavua/vayikra/tzav.html","העבודה שאף אחד לא רואה, בשעה שאף אחד לא ער","לפני כל עבודה במקדש הייתה משימה אחת קבועה: לפנות את האפר מאתמול. מי שמבין שהתחזוקה השקופה היא העבודה עצמה, מפסיק לחכות למשימות שיש בהן זוהר."],
+["2028-04-22","שמיני","/parashat-hashavua/vayikra/shmini.html","מה אומרים לאדם שאיבד הכול, ביום הכי גדול שלו","ביום שבו נחנך המשכן מתו שני בניו של אהרן, והוא לא אמר מילה. הפרשה הזאת מלמדת בעיקר מה עושים כשאין מה להגיד — וזה אחד הכישורים הכי נחוצים שיש."],
+["2028-04-29","תזריע־מצרע","/parashat-hashavua/vayikra/tazria.html","מה שאנחנו אומרים על אנשים כשהם לא בחדר","התורה מקדישה שני פרקים שלמים למחלה שחז״ל קשרו אותה לדיבור על אחרים. מי שמצליח לשמור על הפה שלו מגלה שהוא הרבה פחות מסובך עם אנשים."],
+["2028-05-06","אחרי מות־קדשים","/parashat-hashavua/vayikra/achrei-mot.html","פעם בשנה, אדם אחד נכנס לחדר לבד","עבודת יום הכיפורים כולה נשענה על כך שהכהן הגדול ייכנס למקום שאין בו איש, בלי בגדי זהב ובלי קהל. מי שמוצא לעצמו חדר כזה מגלה שהוא חוזר ממנו אדם אחר."],
+["2028-05-13","אמור","/parashat-hashavua/vayikra/emor.html","מה מחזיק אנשים לאורך שנה שלמה","התורה קובעת לוח שנה של מועדים קבועים, שחוזרים בין אם השנה הייתה טובה ובין אם לא. מי שבונה לעצמו נקודות עצירה קבועות מגלה שהן מחזיקות אותו דווקא בשנים הקשות."],
+["2028-05-20","בהר־בחקתי","/parashat-hashavua/vayikra/behar.html","מה קורה לחברה שבה אף אחד לא נשאר תקוע לנצח","פעם בחמישים שנה החזירה התורה כל אדמה לבעליה וכל אדם לביתו. מי שיודע שיש מסלול יציאה מפסיק לחיות בפחד — וזה משנה איך הוא מתנהג כל שאר השנים."],
+["2028-05-27","במדבר","/parashat-hashavua/bamidbar/bamidbar.html","למה כל כך חשוב שמישהו יידע שאתה שם","לפני היציאה למסע נספר כל אדם בעם, בשמו ולפי משפחתו. מי שיודע שקיימת לו כתובת בתוך קבוצה מתפקד אחרת לגמרי — וזה נכון בכל צוות ובכל בית."],
+["2028-06-03","נשא","/parashat-hashavua/bamidbar/naso.html","מה שאנחנו אומרים לאנשים כשהם עומדים מולנו","הפרשה הארוכה בתורה מסתיימת בשלושה פסוקים קצרים שנאמרים עד היום מעל ראשם של ילדים. מי שיודע לברך אנשים בפועל, לא רק להרגיש כלפיהם — משנה את האווירה בכל חדר שהוא נכנס אליו."],
+["2028-06-10","בהעלתך","/parashat-hashavua/bamidbar/behaalotcha.html","מה קורה לאדם שנשבר מרוב אחריות","משה, שהוציא עם ממצרים, אמר במפורש שהוא לא מסוגל יותר ושעדיף שימות. התגובה שקיבל לא הייתה נזיפה אלא פתרון — וזה בדיוק ההבדל שרובנו זקוקים לו."],
+["2028-06-17","שלח־לך","/parashat-hashavua/bamidbar/shlach.html","איך פחד אחד מחליט את גורלו של דור שלם","שנים עשר אנשים ראו בדיוק את אותה ארץ, ועשרה מהם חזרו עם דוח שהפיל עם שלם. מי שמצליח להפריד בין מה שראה לבין מה שהוא מספר על עצמו, מקבל בחזרה את היכולת לזוז."],
+["2028-06-24","קורח","/parashat-hashavua/bamidbar/korach.html","המחלוקת שאף אחד כבר לא זוכר על מה התחילה","קורח פתח בטענה צודקת לחלוטין, ותוך יום היא בלעה אותו ואת כל מי שהלך אחריו. מי שיודע לזהות מתי ויכוח הפסיק לעסוק בעניין, חוסך לעצמו שנים."],
+["2028-07-01","חוקת","/parashat-hashavua/bamidbar/chukat.html","מה קורה כשאדם טוב מאבד את זה לרגע אחד","משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש."],
+["2028-07-08","בלק","/parashat-hashavua/bamidbar/balak.html","מה קורה כשמישהו מתעקש לראות בך אויב","מלך שכר את הנביא הגדול בעולם כדי לקלל עם שלא עשה לו דבר, וכל ניסיון נהפך לברכה. הפרשה הזאת עוסקת בעיקר במה שקורה לאדם שמחליט מראש מה הוא רואה."],
+["2028-07-15","פינחס","/parashat-hashavua/bamidbar/pinchas.html","חמש נשים שהגישו תביעה — וניצחו","בנות צלפחד עמדו מול משה, מול הנשיאים ומול כל העדה, וטענו שהחוק פשוט לא הוגן. התשובה שקיבלו שינתה את החוק. מי שמעז לשאול מגלה שהמערכת גמישה יותר משחשב."],
+["2028-07-22","מטות־מסעי","/parashat-hashavua/bamidbar/matot.html","כמה שווה מילה שאמרת ואף אחד לא רשם","התורה פותחת פרשה שלמה בכך שאדם מחויב למה שיצא מפיו, גם בלי חוזה ובלי עדים. מי שמילתו נחשבת מגלה שהחיים שלו פשוטים בהרבה משל כולם."],
+["2028-07-29","דברים","/parashat-hashavua/devarim/devarim.html","איך אומרים למישהו את האמת בלי להרוס אותו","משה פותח נאום פרידה בן חמישה שבועות, וכולו ביקורת — אבל הוא בונה אותה כך שאיש לא יסתום את האוזניים. מי שלומד לומר דברים קשים בדרך שאפשר לשמוע, מקבל בחזרה אנשים שמדברים איתו."],
+["2028-08-05","ואתחנן","/parashat-hashavua/devarim/vaetchanan.html","מה עושים כשהתשובה היא לא, והיא סופית","משה התחנן חמש מאות ופעם אחת שיינתן לו להיכנס, וקיבל סירוב מוחלט. מה שהוא עשה ביום שאחרי הוא אולי הדבר החזק ביותר בכל התורה."],
+["2028-08-12","עקב","/parashat-hashavua/devarim/ekev.html","מה קורה לאדם בדיוק כשהכול מתחיל להצליח","האזהרה הגדולה בפרשה אינה מפני כישלון אלא מפני הצלחה — הרגע שבו אדם אומר לעצמו ״כוחי ועוצם ידי״. מי שזוכר מי עזר לו בדרך, שומר על מה שבנה."],
+["2028-08-19","ראה","/parashat-hashavua/devarim/reeh.html","כמה בחירות קטנות עומדות מאחורי כל אדם","״ראה, אנוכי נותן לפניכם היום ברכה וקללה״ — משפט שנשמע דרמטי, ובעצם מתאר את מה שקורה לכל אחד מאיתנו כמה עשרות פעמים ביום. מי שמזהה את הבחירה, כבר חצי בחר."],
+["2028-08-26","שופטים","/parashat-hashavua/devarim/shoftim.html","מי שומר על מי שמחליט","הפרשה מקימה שופטים, מלך, כהנים ונביאים — ומיד מגבילה כל אחד מהם. מי שמבין שגם הוא זקוק למישהו שיגיד לו ״לא״, מגלה שזה בדיוק מה ששומר עליו."],
+["2028-09-02","כי־תצא","/parashat-hashavua/devarim/ki-tetze.html","מה שאנחנו עושים כשאף אחד לא רואה, בדברים הכי קטנים","הפרשה עם מספר המצוות הגדול בתורה עוסקת באבדה שמצאת, בגג שבנית, ובציפור שראית בקן. מי שמקפיד בקטן מגלה שהוא כמעט לא נדרש להתמודד עם הגדול."],
+["2028-09-09","כי־תבוא","/parashat-hashavua/devarim/ki-tavo.html","למה כל כך קשה לנו להגיד תודה על מה שיש","החקלאי הראשון שהצליח נדרש לשים את הפרי בסל, לעלות לירושלים, ולספר בקול את כל הסיפור שהביא אותו לשם. מי שעושה את זה מגלה שהוא רואה את חייו אחרת."],
+["2028-09-16","נצבים־וילך","/parashat-hashavua/devarim/nitzavim.html","מה שאתה צריך כדי להשתנות כבר נמצא אצלך","משה מסכם ארבעים שנה במשפט אחד: זה לא בשמיים ולא מעבר לים — זה קרוב אליך מאוד. מי שמפסיק לחכות לתנאים המושלמים מגלה שהוא יכול להתחיל היום."],
+["2028-09-23","האזינו","/parashat-hashavua/devarim/haazinu.html","מה אדם בוחר לומר כשנשארה לו רק שיחה אחת","משה יכול היה לסיים ברשימת הוראות. הוא בחר לסיים בשיר. מי שמבין מה נשאר מאיתנו אצל אנשים, מתחיל לומר דברים אחרים לגמרי."],
+["2028-10-14","בראשית","/parashat-hashavua/bereshit/bereshit.html","המדריך למי שהפנים שלו נפלו","העולם נברא שלם ומדויק, ותוך שישה פרקים הוא מתפרק — לא בגלל אויב מבחוץ, אלא בגלל אדם אחד שהסתכל על אחיו והרגיש קטן."],
+["2028-10-21","נח","/parashat-hashavua/bereshit/noach.html","האיש שבנה תיבה ולא דפק לאף אחד בדלת","אפשר להיות אדם הגון לגמרי, לשמור על הבית שלך נקי — ועדיין לפספס את הדבר היחיד שהיה נדרש ממך. מי שמעז לצאת מהתיבה שלו מגלה שיש לו הרבה יותר כוח ממה שחשב."],
+["2028-10-28","לך־לך","/parashat-hashavua/bereshit/lech-lecha.html","מה קורה כשאתה עוזב את כל מה שבטוח","בגיל שבעים וחמש, כשכל אחד היה אומר לו שהספינה הפליגה, אדם אחד קם ועזב הכול בלי לדעת לאן. מי שמעז לזוז ממקום שכבר מזמן לא שלו מגלה כמה אנרגיה בזבז על להחזיק אותו."],
+["2028-11-04","וירא","/parashat-hashavua/bereshit/vayera.html","מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."],
+["2028-11-11","חיי שרה","/parashat-hashavua/bereshit/chayei-sara.html","איך בוחרים אנשים שיישארו איתנו לכל החיים","עבד אחד נשלח למצוא כלה, והמבחן שהוא ממציא לעצמו אינו יופי, ייחוס או כסף — אלא כמה טרחה אדם מוכן לקחת על עצמו למען מי שלא ביקש ממנו כלום. הכלל הזה עובד היום בדיוק כמו אז."],
+["2028-11-18","תולדות","/parashat-hashavua/bereshit/toldot.html","המשפחה שבה כל הורה אהב ילד אחר","בית אחד, שני אחים, וברכה אחת שנראתה כאילו יש רק עותק אחד ממנה. מי שמפסיק לחלק את האנשים סביבו לזוכים ומפסידים מגלה שהוא מקבל בחזרה את שניהם."],
+["2028-11-25","ויצא","/parashat-hashavua/bereshit/vayetze.html","עשרים שנה אצל בוס שמרמה אותך","אדם ברח מהבית בלי כלום, נפל לידיים של מעסיק שהחליף לו את התנאים עשר פעמים — ויצא משם עם משפחה, רכוש ושם טוב. השאלה היחידה שהוא נאלץ להכריע בה כל בוקר היא מי הוא רוצה להיות בתוך זה."],
+["2028-12-02","וישלח","/parashat-hashavua/bereshit/vayishlach.html","הלילה שלפני הפגישה שאתה הכי מפחד ממנה","עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש."],
+["2028-12-09","וישב","/parashat-hashavua/bereshit/vayeshev.html","כמה עולה משפט אחד של ״טעיתי״","אדם אחד עמד מול בית דין שהוא עצמו הרכיב, במקום שבו אף אחד לא היה מגלה את האמת — ואמר בקול שהוא זה שטעה. הרגע הזה הפך אותו למי שכל המלכות יוצאת ממנו."],
+["2028-12-16","מקץ","/parashat-hashavua/bereshit/miketz.html","שלוש עשרה שנה בבור, ובוקר אחד שהופך הכול","אדם שהושלך לבור בגיל שבע עשרה יצא ממנו בגיל שלושים — וכשעמד סוף סוף מול המלך, המילה הראשונה שאמר הייתה שזה לא בזכותו. מי שמצליח להחזיק את הראש הזה, שורד גם את הבור וגם את הארמון."],
+["2028-12-23","ויגש","/parashat-hashavua/bereshit/vayigash.html","שתי מילים שהפשירו עשרים ושתיים שנה","הוא יכול היה לפרוס בפניהם את כתב האישום המלא, שורה אחר שורה, והיה צודק בכל אות. במקום זה הוא אמר את שמו — ואת מה שהוא בחר לעשות עם מה שקרה לו."],
+["2028-12-30","ויחי","/parashat-hashavua/bereshit/vayechi.html","מה עושים כשסלחת — והם עדיין מפחדים ממך","שבע עשרה שנה אחרי הפיוס הגדול, גילה יוסף שאחיו עדיין חיים בפחד ממנו. הפרשה שסוגרת את ספר בראשית עוסקת בעבודה השקטה שאחרי הסליחה: לגרום לה להיות מאמינה."],
+["2029-01-06","שמות","/parashat-hashavua/shemot/shemot.html","מה עושים כשבחרו דווקא בך, ואתה בטוח שטעו","האדם שנבחר להוציא עם שלם מעבדות ניסה חמש פעמים לסרב, ואמר על עצמו שהוא לא יודע לדבר. מי שמפסיק לחכות להרגשה שהוא ראוי, מגלה שאפשר להתחיל גם בלעדיה."],
+["2029-01-13","וארא","/parashat-hashavua/shemot/vaera.html","למה כל כך קשה להודות שטעינו","שבע מכות, שבע הזדמנויות לעצור — ואדם אחד שבחר בכל פעם מחדש להחזיק בעמדה שכבר הרסה לו את הארץ. מי שמסוגל לשנות דעה באמצע חוסך לעצמו את המכה השמינית."],
+["2029-01-20","בא","/parashat-hashavua/shemot/bo.html","הלילה שבו קבוצת עבדים קיבלה לידיים את הזמן","רגע לפני היציאה, המצווה הראשונה שניתנה לעם לא הייתה על אמונה או על מוסר — אלא על לוח שנה. מי שמפסיק לחיות בזמן של אחרים מגלה שהחיים שלו נראים אחרת לגמרי."],
+["2029-01-27","בשלח","/parashat-hashavua/shemot/beshalach.html","הרגע שבו נגמרות האפשרויות וצריך להיכנס למים","מאחור הצבא, מלפנים הים, ובאמצע עם שלם שמתווכח מה לעשות. מי שמפסיק לנתח ומרים רגל אחת קדימה מגלה שהקרקע מתגלה תוך כדי, אף פעם לא לפני."],
+["2029-02-03","יתרו","/parashat-hashavua/shemot/yitro.html","המדריך לאדם שלא מצליח להגיד ״קח את זה ממני״","האיש הכי חזק בעם ישב מבוקר עד ערב וטיפל בכל בעיה בעצמו, עד שחותנו אמר לו את המשפט שאיש לא העז: ככה אתה תישבר. מי שמשחרר שליטה מקבל בחזרה את הדבר היחיד שאין לו — זמן."],
+["2029-02-10","משפטים","/parashat-hashavua/shemot/mishpatim.html","מה קורה ביום שאחרי החוויה הגדולה","יום אחרי המעמד הגדול בהיסטוריה, הטקסט עובר בלי הכנה לשור שנגח ולשומר שאיבד פיקדון. מי שמבין שהמבחן האמיתי הוא בהתנהלות היומיומית מפסיק לחכות לרגעים הגדולים."],
+["2029-02-17","תרומה","/parashat-hashavua/shemot/truma.html","למה שווה לתת כשאף אחד לא רואה שנתת","המשכן נבנה כולו מתרומות של מתנדבים, בלי מגביות ובלי לוחות תורמים. מי שמגלה שהנתינה עובדת בעיקר עליו מפסיק לחשב אם היא השתלמה."],
+["2029-02-24","תצוה","/parashat-hashavua/shemot/tetzave.html","האח שהיה ראשון, וקיבל אח קטן למנהל","אהרן היה מנהיג העם לפני שמשה חזר ממדיין, ובכל זאת הכתוב מעיד שכשראה את אחיו הקטן ממונה — שמח בלב. מי שמצליח בזה מקבל בחזרה משפחה שלמה שלא נהרסה."],
+["2029-03-03","כי תשא","/parashat-hashavua/shemot/ki-tisa.html","מה עושים עם השברים אחרי שהכול התנפץ","ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."],
+["2029-03-10","ויקהל־פקודי","/parashat-hashavua/shemot/vayakhel.html","החלק בעבר שלך שהכי התביישת בו","הנשים הביאו למשכן את המראות שבהן התייפו במצרים, ומשה נרתע. התשובה שקיבל הפכה את היוצרות — דווקא אלה, נאמר לו, חביבות עליי מכול."],
+["2029-03-17","ויקרא","/parashat-hashavua/vayikra/vayikra.html","מה עושים כשטעית ואף אחד לא ראה","הספר שכולו קורבנות מקדיש את מרביתו לא לחגיגות אלא לתיקון של מי ששגה. מי שלומד לסגור חשבון פתוח, במקום לקוות שיישכח, מקבל בחזרה שקט שאין לו תחליף."],
+["2029-03-24","צו","/parashat-hashavua/vayikra/tzav.html","העבודה שאף אחד לא רואה, בשעה שאף אחד לא ער","לפני כל עבודה במקדש הייתה משימה אחת קבועה: לפנות את האפר מאתמול. מי שמבין שהתחזוקה השקופה היא העבודה עצמה, מפסיק לחכות למשימות שיש בהן זוהר."],
+["2029-04-07","שמיני","/parashat-hashavua/vayikra/shmini.html","מה אומרים לאדם שאיבד הכול, ביום הכי גדול שלו","ביום שבו נחנך המשכן מתו שני בניו של אהרן, והוא לא אמר מילה. הפרשה הזאת מלמדת בעיקר מה עושים כשאין מה להגיד — וזה אחד הכישורים הכי נחוצים שיש."],
+["2029-04-14","תזריע־מצרע","/parashat-hashavua/vayikra/tazria.html","מה שאנחנו אומרים על אנשים כשהם לא בחדר","התורה מקדישה שני פרקים שלמים למחלה שחז״ל קשרו אותה לדיבור על אחרים. מי שמצליח לשמור על הפה שלו מגלה שהוא הרבה פחות מסובך עם אנשים."],
+["2029-04-21","אחרי מות־קדשים","/parashat-hashavua/vayikra/achrei-mot.html","פעם בשנה, אדם אחד נכנס לחדר לבד","עבודת יום הכיפורים כולה נשענה על כך שהכהן הגדול ייכנס למקום שאין בו איש, בלי בגדי זהב ובלי קהל. מי שמוצא לעצמו חדר כזה מגלה שהוא חוזר ממנו אדם אחר."],
+["2029-04-28","אמור","/parashat-hashavua/vayikra/emor.html","מה מחזיק אנשים לאורך שנה שלמה","התורה קובעת לוח שנה של מועדים קבועים, שחוזרים בין אם השנה הייתה טובה ובין אם לא. מי שבונה לעצמו נקודות עצירה קבועות מגלה שהן מחזיקות אותו דווקא בשנים הקשות."],
+["2029-05-05","בהר","/parashat-hashavua/vayikra/behar.html","מה קורה לחברה שבה אף אחד לא נשאר תקוע לנצח","פעם בחמישים שנה החזירה התורה כל אדמה לבעליה וכל אדם לביתו. מי שיודע שיש מסלול יציאה מפסיק לחיות בפחד — וזה משנה איך הוא מתנהג כל שאר השנים."],
+["2029-05-12","בחקתי","/parashat-hashavua/vayikra/bechukotai.html","מה באמת קורה כשמצטברים הרגלים קטנים","הפרשה שסוגרת את ויקרא מתארת שתי דרכים — אחת שבה הכול נבנה ואחת שבה הכול מתפורר — ומראה שההבדל ביניהן מתחיל תמיד באותו מקום קטן. מי שמזהה את הצעד הראשון חוסך לעצמו את כל השאר."],
+["2029-05-19","במדבר","/parashat-hashavua/bamidbar/bamidbar.html","למה כל כך חשוב שמישהו יידע שאתה שם","לפני היציאה למסע נספר כל אדם בעם, בשמו ולפי משפחתו. מי שיודע שקיימת לו כתובת בתוך קבוצה מתפקד אחרת לגמרי — וזה נכון בכל צוות ובכל בית."],
+["2029-05-26","נשא","/parashat-hashavua/bamidbar/naso.html","מה שאנחנו אומרים לאנשים כשהם עומדים מולנו","הפרשה הארוכה בתורה מסתיימת בשלושה פסוקים קצרים שנאמרים עד היום מעל ראשם של ילדים. מי שיודע לברך אנשים בפועל, לא רק להרגיש כלפיהם — משנה את האווירה בכל חדר שהוא נכנס אליו."],
+["2029-06-02","בהעלתך","/parashat-hashavua/bamidbar/behaalotcha.html","מה קורה לאדם שנשבר מרוב אחריות","משה, שהוציא עם ממצרים, אמר במפורש שהוא לא מסוגל יותר ושעדיף שימות. התגובה שקיבל לא הייתה נזיפה אלא פתרון — וזה בדיוק ההבדל שרובנו זקוקים לו."],
+["2029-06-09","שלח־לך","/parashat-hashavua/bamidbar/shlach.html","איך פחד אחד מחליט את גורלו של דור שלם","שנים עשר אנשים ראו בדיוק את אותה ארץ, ועשרה מהם חזרו עם דוח שהפיל עם שלם. מי שמצליח להפריד בין מה שראה לבין מה שהוא מספר על עצמו, מקבל בחזרה את היכולת לזוז."],
+["2029-06-16","קורח","/parashat-hashavua/bamidbar/korach.html","המחלוקת שאף אחד כבר לא זוכר על מה התחילה","קורח פתח בטענה צודקת לחלוטין, ותוך יום היא בלעה אותו ואת כל מי שהלך אחריו. מי שיודע לזהות מתי ויכוח הפסיק לעסוק בעניין, חוסך לעצמו שנים."],
+["2029-06-23","חוקת","/parashat-hashavua/bamidbar/chukat.html","מה קורה כשאדם טוב מאבד את זה לרגע אחד","משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש."],
+["2029-06-30","בלק","/parashat-hashavua/bamidbar/balak.html","מה קורה כשמישהו מתעקש לראות בך אויב","מלך שכר את הנביא הגדול בעולם כדי לקלל עם שלא עשה לו דבר, וכל ניסיון נהפך לברכה. הפרשה הזאת עוסקת בעיקר במה שקורה לאדם שמחליט מראש מה הוא רואה."],
+["2029-07-07","פינחס","/parashat-hashavua/bamidbar/pinchas.html","חמש נשים שהגישו תביעה — וניצחו","בנות צלפחד עמדו מול משה, מול הנשיאים ומול כל העדה, וטענו שהחוק פשוט לא הוגן. התשובה שקיבלו שינתה את החוק. מי שמעז לשאול מגלה שהמערכת גמישה יותר משחשב."],
+["2029-07-14","מטות־מסעי","/parashat-hashavua/bamidbar/matot.html","כמה שווה מילה שאמרת ואף אחד לא רשם","התורה פותחת פרשה שלמה בכך שאדם מחויב למה שיצא מפיו, גם בלי חוזה ובלי עדים. מי שמילתו נחשבת מגלה שהחיים שלו פשוטים בהרבה משל כולם."],
+["2029-07-21","דברים","/parashat-hashavua/devarim/devarim.html","איך אומרים למישהו את האמת בלי להרוס אותו","משה פותח נאום פרידה בן חמישה שבועות, וכולו ביקורת — אבל הוא בונה אותה כך שאיש לא יסתום את האוזניים. מי שלומד לומר דברים קשים בדרך שאפשר לשמוע, מקבל בחזרה אנשים שמדברים איתו."],
+["2029-07-28","ואתחנן","/parashat-hashavua/devarim/vaetchanan.html","מה עושים כשהתשובה היא לא, והיא סופית","משה התחנן חמש מאות ופעם אחת שיינתן לו להיכנס, וקיבל סירוב מוחלט. מה שהוא עשה ביום שאחרי הוא אולי הדבר החזק ביותר בכל התורה."],
+["2029-08-04","עקב","/parashat-hashavua/devarim/ekev.html","מה קורה לאדם בדיוק כשהכול מתחיל להצליח","האזהרה הגדולה בפרשה אינה מפני כישלון אלא מפני הצלחה — הרגע שבו אדם אומר לעצמו ״כוחי ועוצם ידי״. מי שזוכר מי עזר לו בדרך, שומר על מה שבנה."],
+["2029-08-11","ראה","/parashat-hashavua/devarim/reeh.html","כמה בחירות קטנות עומדות מאחורי כל אדם","״ראה, אנוכי נותן לפניכם היום ברכה וקללה״ — משפט שנשמע דרמטי, ובעצם מתאר את מה שקורה לכל אחד מאיתנו כמה עשרות פעמים ביום. מי שמזהה את הבחירה, כבר חצי בחר."],
+["2029-08-18","שופטים","/parashat-hashavua/devarim/shoftim.html","מי שומר על מי שמחליט","הפרשה מקימה שופטים, מלך, כהנים ונביאים — ומיד מגבילה כל אחד מהם. מי שמבין שגם הוא זקוק למישהו שיגיד לו ״לא״, מגלה שזה בדיוק מה ששומר עליו."],
+["2029-08-25","כי־תצא","/parashat-hashavua/devarim/ki-tetze.html","מה שאנחנו עושים כשאף אחד לא רואה, בדברים הכי קטנים","הפרשה עם מספר המצוות הגדול בתורה עוסקת באבדה שמצאת, בגג שבנית, ובציפור שראית בקן. מי שמקפיד בקטן מגלה שהוא כמעט לא נדרש להתמודד עם הגדול."],
+["2029-09-01","כי־תבוא","/parashat-hashavua/devarim/ki-tavo.html","למה כל כך קשה לנו להגיד תודה על מה שיש","החקלאי הראשון שהצליח נדרש לשים את הפרי בסל, לעלות לירושלים, ולספר בקול את כל הסיפור שהביא אותו לשם. מי שעושה את זה מגלה שהוא רואה את חייו אחרת."],
+["2029-09-08","נצבים","/parashat-hashavua/devarim/nitzavim.html","מה שאתה צריך כדי להשתנות כבר נמצא אצלך","משה מסכם ארבעים שנה במשפט אחד: זה לא בשמיים ולא מעבר לים — זה קרוב אליך מאוד. מי שמפסיק לחכות לתנאים המושלמים מגלה שהוא יכול להתחיל היום."],
+["2029-09-15","וילך","/parashat-hashavua/devarim/vayelech.html","איך יוצאים מתפקיד בלי להפיל את מה שבנית","ביום האחרון לחייו הלך משה בעצמו אל האנשים, חיזק את מי שיבוא אחריו בפומבי, וכתב את הכול. מי שיודע לסיים בצורה מסודרת משאיר אחריו משהו שממשיך לעבוד."],
+["2029-09-22","האזינו","/parashat-hashavua/devarim/haazinu.html","מה אדם בוחר לומר כשנשארה לו רק שיחה אחת","משה יכול היה לסיים ברשימת הוראות. הוא בחר לסיים בשיר. מי שמבין מה נשאר מאיתנו אצל אנשים, מתחיל לומר דברים אחרים לגמרי."],
+["2029-10-06","בראשית","/parashat-hashavua/bereshit/bereshit.html","המדריך למי שהפנים שלו נפלו","העולם נברא שלם ומדויק, ותוך שישה פרקים הוא מתפרק — לא בגלל אויב מבחוץ, אלא בגלל אדם אחד שהסתכל על אחיו והרגיש קטן."],
+["2029-10-13","נח","/parashat-hashavua/bereshit/noach.html","האיש שבנה תיבה ולא דפק לאף אחד בדלת","אפשר להיות אדם הגון לגמרי, לשמור על הבית שלך נקי — ועדיין לפספס את הדבר היחיד שהיה נדרש ממך. מי שמעז לצאת מהתיבה שלו מגלה שיש לו הרבה יותר כוח ממה שחשב."],
+["2029-10-20","לך־לך","/parashat-hashavua/bereshit/lech-lecha.html","מה קורה כשאתה עוזב את כל מה שבטוח","בגיל שבעים וחמש, כשכל אחד היה אומר לו שהספינה הפליגה, אדם אחד קם ועזב הכול בלי לדעת לאן. מי שמעז לזוז ממקום שכבר מזמן לא שלו מגלה כמה אנרגיה בזבז על להחזיק אותו."],
+["2029-10-27","וירא","/parashat-hashavua/bereshit/vayera.html","מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."],
+["2029-11-03","חיי שרה","/parashat-hashavua/bereshit/chayei-sara.html","איך בוחרים אנשים שיישארו איתנו לכל החיים","עבד אחד נשלח למצוא כלה, והמבחן שהוא ממציא לעצמו אינו יופי, ייחוס או כסף — אלא כמה טרחה אדם מוכן לקחת על עצמו למען מי שלא ביקש ממנו כלום. הכלל הזה עובד היום בדיוק כמו אז."],
+["2029-11-10","תולדות","/parashat-hashavua/bereshit/toldot.html","המשפחה שבה כל הורה אהב ילד אחר","בית אחד, שני אחים, וברכה אחת שנראתה כאילו יש רק עותק אחד ממנה. מי שמפסיק לחלק את האנשים סביבו לזוכים ומפסידים מגלה שהוא מקבל בחזרה את שניהם."],
+["2029-11-17","ויצא","/parashat-hashavua/bereshit/vayetze.html","עשרים שנה אצל בוס שמרמה אותך","אדם ברח מהבית בלי כלום, נפל לידיים של מעסיק שהחליף לו את התנאים עשר פעמים — ויצא משם עם משפחה, רכוש ושם טוב. השאלה היחידה שהוא נאלץ להכריע בה כל בוקר היא מי הוא רוצה להיות בתוך זה."],
+["2029-11-24","וישלח","/parashat-hashavua/bereshit/vayishlach.html","הלילה שלפני הפגישה שאתה הכי מפחד ממנה","עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש."],
+["2029-12-01","וישב","/parashat-hashavua/bereshit/vayeshev.html","כמה עולה משפט אחד של ״טעיתי״","אדם אחד עמד מול בית דין שהוא עצמו הרכיב, במקום שבו אף אחד לא היה מגלה את האמת — ואמר בקול שהוא זה שטעה. הרגע הזה הפך אותו למי שכל המלכות יוצאת ממנו."],
+["2029-12-08","מקץ","/parashat-hashavua/bereshit/miketz.html","שלוש עשרה שנה בבור, ובוקר אחד שהופך הכול","אדם שהושלך לבור בגיל שבע עשרה יצא ממנו בגיל שלושים — וכשעמד סוף סוף מול המלך, המילה הראשונה שאמר הייתה שזה לא בזכותו. מי שמצליח להחזיק את הראש הזה, שורד גם את הבור וגם את הארמון."],
+["2029-12-15","ויגש","/parashat-hashavua/bereshit/vayigash.html","שתי מילים שהפשירו עשרים ושתיים שנה","הוא יכול היה לפרוס בפניהם את כתב האישום המלא, שורה אחר שורה, והיה צודק בכל אות. במקום זה הוא אמר את שמו — ואת מה שהוא בחר לעשות עם מה שקרה לו."],
+["2029-12-22","ויחי","/parashat-hashavua/bereshit/vayechi.html","מה עושים כשסלחת — והם עדיין מפחדים ממך","שבע עשרה שנה אחרי הפיוס הגדול, גילה יוסף שאחיו עדיין חיים בפחד ממנו. הפרשה שסוגרת את ספר בראשית עוסקת בעבודה השקטה שאחרי הסליחה: לגרום לה להיות מאמינה."],
+["2029-12-29","שמות","/parashat-hashavua/shemot/shemot.html","מה עושים כשבחרו דווקא בך, ואתה בטוח שטעו","האדם שנבחר להוציא עם שלם מעבדות ניסה חמש פעמים לסרב, ואמר על עצמו שהוא לא יודע לדבר. מי שמפסיק לחכות להרגשה שהוא ראוי, מגלה שאפשר להתחיל גם בלעדיה."],
+["2030-01-05","וארא","/parashat-hashavua/shemot/vaera.html","למה כל כך קשה להודות שטעינו","שבע מכות, שבע הזדמנויות לעצור — ואדם אחד שבחר בכל פעם מחדש להחזיק בעמדה שכבר הרסה לו את הארץ. מי שמסוגל לשנות דעה באמצע חוסך לעצמו את המכה השמינית."],
+["2030-01-12","בא","/parashat-hashavua/shemot/bo.html","הלילה שבו קבוצת עבדים קיבלה לידיים את הזמן","רגע לפני היציאה, המצווה הראשונה שניתנה לעם לא הייתה על אמונה או על מוסר — אלא על לוח שנה. מי שמפסיק לחיות בזמן של אחרים מגלה שהחיים שלו נראים אחרת לגמרי."],
+["2030-01-19","בשלח","/parashat-hashavua/shemot/beshalach.html","הרגע שבו נגמרות האפשרויות וצריך להיכנס למים","מאחור הצבא, מלפנים הים, ובאמצע עם שלם שמתווכח מה לעשות. מי שמפסיק לנתח ומרים רגל אחת קדימה מגלה שהקרקע מתגלה תוך כדי, אף פעם לא לפני."],
+["2030-01-26","יתרו","/parashat-hashavua/shemot/yitro.html","המדריך לאדם שלא מצליח להגיד ״קח את זה ממני״","האיש הכי חזק בעם ישב מבוקר עד ערב וטיפל בכל בעיה בעצמו, עד שחותנו אמר לו את המשפט שאיש לא העז: ככה אתה תישבר. מי שמשחרר שליטה מקבל בחזרה את הדבר היחיד שאין לו — זמן."],
+["2030-02-02","משפטים","/parashat-hashavua/shemot/mishpatim.html","מה קורה ביום שאחרי החוויה הגדולה","יום אחרי המעמד הגדול בהיסטוריה, הטקסט עובר בלי הכנה לשור שנגח ולשומר שאיבד פיקדון. מי שמבין שהמבחן האמיתי הוא בהתנהלות היומיומית מפסיק לחכות לרגעים הגדולים."],
+["2030-02-09","תרומה","/parashat-hashavua/shemot/truma.html","למה שווה לתת כשאף אחד לא רואה שנתת","המשכן נבנה כולו מתרומות של מתנדבים, בלי מגביות ובלי לוחות תורמים. מי שמגלה שהנתינה עובדת בעיקר עליו מפסיק לחשב אם היא השתלמה."],
+["2030-02-16","תצוה","/parashat-hashavua/shemot/tetzave.html","האח שהיה ראשון, וקיבל אח קטן למנהל","אהרן היה מנהיג העם לפני שמשה חזר ממדיין, ובכל זאת הכתוב מעיד שכשראה את אחיו הקטן ממונה — שמח בלב. מי שמצליח בזה מקבל בחזרה משפחה שלמה שלא נהרסה."],
+["2030-02-23","כי תשא","/parashat-hashavua/shemot/ki-tisa.html","מה עושים עם השברים אחרי שהכול התנפץ","ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."],
+["2030-03-02","ויקהל","/parashat-hashavua/shemot/vayakhel.html","החלק בעבר שלך שהכי התביישת בו","הנשים הביאו למשכן את המראות שבהן התייפו במצרים, ומשה נרתע. התשובה שקיבל הפכה את היוצרות — דווקא אלה, נאמר לו, חביבות עליי מכול."],
+["2030-03-09","פקודי","/parashat-hashavua/shemot/pekudei.html","למה אדם שאיש לא חושד בו טורח להראות קבלות","משה מסר דין וחשבון מלא על כל גרם זהב שנתרם, למרות שאיש לא היה מעז לבקש. מי שמנהל את ענייניו בשקיפות מגלה שהוא חוסך לעצמו את הדבר היקר מכול — את הצורך להתגונן."],
+["2030-03-16","ויקרא","/parashat-hashavua/vayikra/vayikra.html","מה עושים כשטעית ואף אחד לא ראה","הספר שכולו קורבנות מקדיש את מרביתו לא לחגיגות אלא לתיקון של מי ששגה. מי שלומד לסגור חשבון פתוח, במקום לקוות שיישכח, מקבל בחזרה שקט שאין לו תחליף."],
+["2030-03-23","צו","/parashat-hashavua/vayikra/tzav.html","העבודה שאף אחד לא רואה, בשעה שאף אחד לא ער","לפני כל עבודה במקדש הייתה משימה אחת קבועה: לפנות את האפר מאתמול. מי שמבין שהתחזוקה השקופה היא העבודה עצמה, מפסיק לחכות למשימות שיש בהן זוהר."],
+["2030-03-30","שמיני","/parashat-hashavua/vayikra/shmini.html","מה אומרים לאדם שאיבד הכול, ביום הכי גדול שלו","ביום שבו נחנך המשכן מתו שני בניו של אהרן, והוא לא אמר מילה. הפרשה הזאת מלמדת בעיקר מה עושים כשאין מה להגיד — וזה אחד הכישורים הכי נחוצים שיש."],
+["2030-04-06","תזריע","/parashat-hashavua/vayikra/tazria.html","מה שאנחנו אומרים על אנשים כשהם לא בחדר","התורה מקדישה שני פרקים שלמים למחלה שחז״ל קשרו אותה לדיבור על אחרים. מי שמצליח לשמור על הפה שלו מגלה שהוא הרבה פחות מסובך עם אנשים."],
+["2030-04-13","מצרע","/parashat-hashavua/vayikra/metzora.html","איך מחזירים אדם שהורחק, בלי שיישאר עליו סימן","התורה מקדישה פרק שלם לא להרחקה אלא לחזרה — טקס מפורט שכל תכליתו להכניס אדם בחזרה פנימה. מי שיודע לקבל אנשים בחזרה מגלה שגם הוא מקבל הזדמנות שנייה."],
+["2030-04-27","אחרי מות","/parashat-hashavua/vayikra/achrei-mot.html","פעם בשנה, אדם אחד נכנס לחדר לבד","עבודת יום הכיפורים כולה נשענה על כך שהכהן הגדול ייכנס למקום שאין בו איש, בלי בגדי זהב ובלי קהל. מי שמוצא לעצמו חדר כזה מגלה שהוא חוזר ממנו אדם אחר."],
+["2030-05-04","קדשים","/parashat-hashavua/vayikra/kedoshim.html","כל מה שצריך לדעת על להיות בן אדם, בפרק אחד","הפרשה שנחשבת לתמצית התורה כולה כמעט ואינה עוסקת בקדושה מופשטת — היא עוסקת בשכר של פועל, במשקולות של סוחר, ובמה אומרים לחירש. וזו בדיוק הנקודה."],
+["2030-05-11","אמור","/parashat-hashavua/vayikra/emor.html","מה מחזיק אנשים לאורך שנה שלמה","התורה קובעת לוח שנה של מועדים קבועים, שחוזרים בין אם השנה הייתה טובה ובין אם לא. מי שבונה לעצמו נקודות עצירה קבועות מגלה שהן מחזיקות אותו דווקא בשנים הקשות."],
+["2030-05-18","בהר","/parashat-hashavua/vayikra/behar.html","מה קורה לחברה שבה אף אחד לא נשאר תקוע לנצח","פעם בחמישים שנה החזירה התורה כל אדמה לבעליה וכל אדם לביתו. מי שיודע שיש מסלול יציאה מפסיק לחיות בפחד — וזה משנה איך הוא מתנהג כל שאר השנים."],
+["2030-05-25","בחקתי","/parashat-hashavua/vayikra/bechukotai.html","מה באמת קורה כשמצטברים הרגלים קטנים","הפרשה שסוגרת את ויקרא מתארת שתי דרכים — אחת שבה הכול נבנה ואחת שבה הכול מתפורר — ומראה שההבדל ביניהן מתחיל תמיד באותו מקום קטן. מי שמזהה את הצעד הראשון חוסך לעצמו את כל השאר."],
+["2030-06-01","במדבר","/parashat-hashavua/bamidbar/bamidbar.html","למה כל כך חשוב שמישהו יידע שאתה שם","לפני היציאה למסע נספר כל אדם בעם, בשמו ולפי משפחתו. מי שיודע שקיימת לו כתובת בתוך קבוצה מתפקד אחרת לגמרי — וזה נכון בכל צוות ובכל בית."],
+["2030-06-08","נשא","/parashat-hashavua/bamidbar/naso.html","מה שאנחנו אומרים לאנשים כשהם עומדים מולנו","הפרשה הארוכה בתורה מסתיימת בשלושה פסוקים קצרים שנאמרים עד היום מעל ראשם של ילדים. מי שיודע לברך אנשים בפועל, לא רק להרגיש כלפיהם — משנה את האווירה בכל חדר שהוא נכנס אליו."],
+["2030-06-15","בהעלתך","/parashat-hashavua/bamidbar/behaalotcha.html","מה קורה לאדם שנשבר מרוב אחריות","משה, שהוציא עם ממצרים, אמר במפורש שהוא לא מסוגל יותר ושעדיף שימות. התגובה שקיבל לא הייתה נזיפה אלא פתרון — וזה בדיוק ההבדל שרובנו זקוקים לו."],
+["2030-06-22","שלח־לך","/parashat-hashavua/bamidbar/shlach.html","איך פחד אחד מחליט את גורלו של דור שלם","שנים עשר אנשים ראו בדיוק את אותה ארץ, ועשרה מהם חזרו עם דוח שהפיל עם שלם. מי שמצליח להפריד בין מה שראה לבין מה שהוא מספר על עצמו, מקבל בחזרה את היכולת לזוז."],
+["2030-06-29","קורח","/parashat-hashavua/bamidbar/korach.html","המחלוקת שאף אחד כבר לא זוכר על מה התחילה","קורח פתח בטענה צודקת לחלוטין, ותוך יום היא בלעה אותו ואת כל מי שהלך אחריו. מי שיודע לזהות מתי ויכוח הפסיק לעסוק בעניין, חוסך לעצמו שנים."],
+["2030-07-06","חוקת","/parashat-hashavua/bamidbar/chukat.html","מה קורה כשאדם טוב מאבד את זה לרגע אחד","משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש."],
+["2030-07-13","בלק","/parashat-hashavua/bamidbar/balak.html","מה קורה כשמישהו מתעקש לראות בך אויב","מלך שכר את הנביא הגדול בעולם כדי לקלל עם שלא עשה לו דבר, וכל ניסיון נהפך לברכה. הפרשה הזאת עוסקת בעיקר במה שקורה לאדם שמחליט מראש מה הוא רואה."],
+["2030-07-20","פינחס","/parashat-hashavua/bamidbar/pinchas.html","חמש נשים שהגישו תביעה — וניצחו","בנות צלפחד עמדו מול משה, מול הנשיאים ומול כל העדה, וטענו שהחוק פשוט לא הוגן. התשובה שקיבלו שינתה את החוק. מי שמעז לשאול מגלה שהמערכת גמישה יותר משחשב."],
+["2030-07-27","מטות־מסעי","/parashat-hashavua/bamidbar/matot.html","כמה שווה מילה שאמרת ואף אחד לא רשם","התורה פותחת פרשה שלמה בכך שאדם מחויב למה שיצא מפיו, גם בלי חוזה ובלי עדים. מי שמילתו נחשבת מגלה שהחיים שלו פשוטים בהרבה משל כולם."],
+["2030-08-03","דברים","/parashat-hashavua/devarim/devarim.html","איך אומרים למישהו את האמת בלי להרוס אותו","משה פותח נאום פרידה בן חמישה שבועות, וכולו ביקורת — אבל הוא בונה אותה כך שאיש לא יסתום את האוזניים. מי שלומד לומר דברים קשים בדרך שאפשר לשמוע, מקבל בחזרה אנשים שמדברים איתו."],
+["2030-08-10","ואתחנן","/parashat-hashavua/devarim/vaetchanan.html","מה עושים כשהתשובה היא לא, והיא סופית","משה התחנן חמש מאות ופעם אחת שיינתן לו להיכנס, וקיבל סירוב מוחלט. מה שהוא עשה ביום שאחרי הוא אולי הדבר החזק ביותר בכל התורה."],
+["2030-08-17","עקב","/parashat-hashavua/devarim/ekev.html","מה קורה לאדם בדיוק כשהכול מתחיל להצליח","האזהרה הגדולה בפרשה אינה מפני כישלון אלא מפני הצלחה — הרגע שבו אדם אומר לעצמו ״כוחי ועוצם ידי״. מי שזוכר מי עזר לו בדרך, שומר על מה שבנה."],
+["2030-08-24","ראה","/parashat-hashavua/devarim/reeh.html","כמה בחירות קטנות עומדות מאחורי כל אדם","״ראה, אנוכי נותן לפניכם היום ברכה וקללה״ — משפט שנשמע דרמטי, ובעצם מתאר את מה שקורה לכל אחד מאיתנו כמה עשרות פעמים ביום. מי שמזהה את הבחירה, כבר חצי בחר."],
+["2030-08-31","שופטים","/parashat-hashavua/devarim/shoftim.html","מי שומר על מי שמחליט","הפרשה מקימה שופטים, מלך, כהנים ונביאים — ומיד מגבילה כל אחד מהם. מי שמבין שגם הוא זקוק למישהו שיגיד לו ״לא״, מגלה שזה בדיוק מה ששומר עליו."],
+["2030-09-07","כי־תצא","/parashat-hashavua/devarim/ki-tetze.html","מה שאנחנו עושים כשאף אחד לא רואה, בדברים הכי קטנים","הפרשה עם מספר המצוות הגדול בתורה עוסקת באבדה שמצאת, בגג שבנית, ובציפור שראית בקן. מי שמקפיד בקטן מגלה שהוא כמעט לא נדרש להתמודד עם הגדול."],
+["2030-09-14","כי־תבוא","/parashat-hashavua/devarim/ki-tavo.html","למה כל כך קשה לנו להגיד תודה על מה שיש","החקלאי הראשון שהצליח נדרש לשים את הפרי בסל, לעלות לירושלים, ולספר בקול את כל הסיפור שהביא אותו לשם. מי שעושה את זה מגלה שהוא רואה את חייו אחרת."],
+["2030-09-21","נצבים־וילך","/parashat-hashavua/devarim/nitzavim.html","מה שאתה צריך כדי להשתנות כבר נמצא אצלך","משה מסכם ארבעים שנה במשפט אחד: זה לא בשמיים ולא מעבר לים — זה קרוב אליך מאוד. מי שמפסיק לחכות לתנאים המושלמים מגלה שהוא יכול להתחיל היום."],
+["2030-10-05","האזינו","/parashat-hashavua/devarim/haazinu.html","מה אדם בוחר לומר כשנשארה לו רק שיחה אחת","משה יכול היה לסיים ברשימת הוראות. הוא בחר לסיים בשיר. מי שמבין מה נשאר מאיתנו אצל אנשים, מתחיל לומר דברים אחרים לגמרי."],
+["2030-10-26","בראשית","/parashat-hashavua/bereshit/bereshit.html","המדריך למי שהפנים שלו נפלו","העולם נברא שלם ומדויק, ותוך שישה פרקים הוא מתפרק — לא בגלל אויב מבחוץ, אלא בגלל אדם אחד שהסתכל על אחיו והרגיש קטן."],
+["2030-11-02","נח","/parashat-hashavua/bereshit/noach.html","האיש שבנה תיבה ולא דפק לאף אחד בדלת","אפשר להיות אדם הגון לגמרי, לשמור על הבית שלך נקי — ועדיין לפספס את הדבר היחיד שהיה נדרש ממך. מי שמעז לצאת מהתיבה שלו מגלה שיש לו הרבה יותר כוח ממה שחשב."],
+["2030-11-09","לך־לך","/parashat-hashavua/bereshit/lech-lecha.html","מה קורה כשאתה עוזב את כל מה שבטוח","בגיל שבעים וחמש, כשכל אחד היה אומר לו שהספינה הפליגה, אדם אחד קם ועזב הכול בלי לדעת לאן. מי שמעז לזוז ממקום שכבר מזמן לא שלו מגלה כמה אנרגיה בזבז על להחזיק אותו."],
+["2030-11-16","וירא","/parashat-hashavua/bereshit/vayera.html","מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."],
+["2030-11-23","חיי שרה","/parashat-hashavua/bereshit/chayei-sara.html","איך בוחרים אנשים שיישארו איתנו לכל החיים","עבד אחד נשלח למצוא כלה, והמבחן שהוא ממציא לעצמו אינו יופי, ייחוס או כסף — אלא כמה טרחה אדם מוכן לקחת על עצמו למען מי שלא ביקש ממנו כלום. הכלל הזה עובד היום בדיוק כמו אז."],
+["2030-11-30","תולדות","/parashat-hashavua/bereshit/toldot.html","המשפחה שבה כל הורה אהב ילד אחר","בית אחד, שני אחים, וברכה אחת שנראתה כאילו יש רק עותק אחד ממנה. מי שמפסיק לחלק את האנשים סביבו לזוכים ומפסידים מגלה שהוא מקבל בחזרה את שניהם."],
+["2030-12-07","ויצא","/parashat-hashavua/bereshit/vayetze.html","עשרים שנה אצל בוס שמרמה אותך","אדם ברח מהבית בלי כלום, נפל לידיים של מעסיק שהחליף לו את התנאים עשר פעמים — ויצא משם עם משפחה, רכוש ושם טוב. השאלה היחידה שהוא נאלץ להכריע בה כל בוקר היא מי הוא רוצה להיות בתוך זה."],
+["2030-12-14","וישלח","/parashat-hashavua/bereshit/vayishlach.html","הלילה שלפני הפגישה שאתה הכי מפחד ממנה","עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש."],
+["2030-12-21","וישב","/parashat-hashavua/bereshit/vayeshev.html","כמה עולה משפט אחד של ״טעיתי״","אדם אחד עמד מול בית דין שהוא עצמו הרכיב, במקום שבו אף אחד לא היה מגלה את האמת — ואמר בקול שהוא זה שטעה. הרגע הזה הפך אותו למי שכל המלכות יוצאת ממנו."],
+["2030-12-28","מקץ","/parashat-hashavua/bereshit/miketz.html","שלוש עשרה שנה בבור, ובוקר אחד שהופך הכול","אדם שהושלך לבור בגיל שבע עשרה יצא ממנו בגיל שלושים — וכשעמד סוף סוף מול המלך, המילה הראשונה שאמר הייתה שזה לא בזכותו. מי שמצליח להחזיק את הראש הזה, שורד גם את הבור וגם את הארמון."],
+["2031-01-04","ויגש","/parashat-hashavua/bereshit/vayigash.html","שתי מילים שהפשירו עשרים ושתיים שנה","הוא יכול היה לפרוס בפניהם את כתב האישום המלא, שורה אחר שורה, והיה צודק בכל אות. במקום זה הוא אמר את שמו — ואת מה שהוא בחר לעשות עם מה שקרה לו."],
+["2031-01-11","ויחי","/parashat-hashavua/bereshit/vayechi.html","מה עושים כשסלחת — והם עדיין מפחדים ממך","שבע עשרה שנה אחרי הפיוס הגדול, גילה יוסף שאחיו עדיין חיים בפחד ממנו. הפרשה שסוגרת את ספר בראשית עוסקת בעבודה השקטה שאחרי הסליחה: לגרום לה להיות מאמינה."],
+["2031-01-18","שמות","/parashat-hashavua/shemot/shemot.html","מה עושים כשבחרו דווקא בך, ואתה בטוח שטעו","האדם שנבחר להוציא עם שלם מעבדות ניסה חמש פעמים לסרב, ואמר על עצמו שהוא לא יודע לדבר. מי שמפסיק לחכות להרגשה שהוא ראוי, מגלה שאפשר להתחיל גם בלעדיה."],
+["2031-01-25","וארא","/parashat-hashavua/shemot/vaera.html","למה כל כך קשה להודות שטעינו","שבע מכות, שבע הזדמנויות לעצור — ואדם אחד שבחר בכל פעם מחדש להחזיק בעמדה שכבר הרסה לו את הארץ. מי שמסוגל לשנות דעה באמצע חוסך לעצמו את המכה השמינית."],
+["2031-02-01","בא","/parashat-hashavua/shemot/bo.html","הלילה שבו קבוצת עבדים קיבלה לידיים את הזמן","רגע לפני היציאה, המצווה הראשונה שניתנה לעם לא הייתה על אמונה או על מוסר — אלא על לוח שנה. מי שמפסיק לחיות בזמן של אחרים מגלה שהחיים שלו נראים אחרת לגמרי."],
+["2031-02-08","בשלח","/parashat-hashavua/shemot/beshalach.html","הרגע שבו נגמרות האפשרויות וצריך להיכנס למים","מאחור הצבא, מלפנים הים, ובאמצע עם שלם שמתווכח מה לעשות. מי שמפסיק לנתח ומרים רגל אחת קדימה מגלה שהקרקע מתגלה תוך כדי, אף פעם לא לפני."],
+["2031-02-15","יתרו","/parashat-hashavua/shemot/yitro.html","המדריך לאדם שלא מצליח להגיד ״קח את זה ממני״","האיש הכי חזק בעם ישב מבוקר עד ערב וטיפל בכל בעיה בעצמו, עד שחותנו אמר לו את המשפט שאיש לא העז: ככה אתה תישבר. מי שמשחרר שליטה מקבל בחזרה את הדבר היחיד שאין לו — זמן."],
+["2031-02-22","משפטים","/parashat-hashavua/shemot/mishpatim.html","מה קורה ביום שאחרי החוויה הגדולה","יום אחרי המעמד הגדול בהיסטוריה, הטקסט עובר בלי הכנה לשור שנגח ולשומר שאיבד פיקדון. מי שמבין שהמבחן האמיתי הוא בהתנהלות היומיומית מפסיק לחכות לרגעים הגדולים."],
+["2031-03-01","תרומה","/parashat-hashavua/shemot/truma.html","למה שווה לתת כשאף אחד לא רואה שנתת","המשכן נבנה כולו מתרומות של מתנדבים, בלי מגביות ובלי לוחות תורמים. מי שמגלה שהנתינה עובדת בעיקר עליו מפסיק לחשב אם היא השתלמה."],
+["2031-03-08","תצוה","/parashat-hashavua/shemot/tetzave.html","האח שהיה ראשון, וקיבל אח קטן למנהל","אהרן היה מנהיג העם לפני שמשה חזר ממדיין, ובכל זאת הכתוב מעיד שכשראה את אחיו הקטן ממונה — שמח בלב. מי שמצליח בזה מקבל בחזרה משפחה שלמה שלא נהרסה."],
+["2031-03-15","כי תשא","/parashat-hashavua/shemot/ki-tisa.html","מה עושים עם השברים אחרי שהכול התנפץ","ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."],
+["2031-03-22","ויקהל־פקודי","/parashat-hashavua/shemot/vayakhel.html","החלק בעבר שלך שהכי התביישת בו","הנשים הביאו למשכן את המראות שבהן התייפו במצרים, ומשה נרתע. התשובה שקיבל הפכה את היוצרות — דווקא אלה, נאמר לו, חביבות עליי מכול."],
+["2031-03-29","ויקרא","/parashat-hashavua/vayikra/vayikra.html","מה עושים כשטעית ואף אחד לא ראה","הספר שכולו קורבנות מקדיש את מרביתו לא לחגיגות אלא לתיקון של מי ששגה. מי שלומד לסגור חשבון פתוח, במקום לקוות שיישכח, מקבל בחזרה שקט שאין לו תחליף."],
+["2031-04-05","צו","/parashat-hashavua/vayikra/tzav.html","העבודה שאף אחד לא רואה, בשעה שאף אחד לא ער","לפני כל עבודה במקדש הייתה משימה אחת קבועה: לפנות את האפר מאתמול. מי שמבין שהתחזוקה השקופה היא העבודה עצמה, מפסיק לחכות למשימות שיש בהן זוהר."],
+["2031-04-19","שמיני","/parashat-hashavua/vayikra/shmini.html","מה אומרים לאדם שאיבד הכול, ביום הכי גדול שלו","ביום שבו נחנך המשכן מתו שני בניו של אהרן, והוא לא אמר מילה. הפרשה הזאת מלמדת בעיקר מה עושים כשאין מה להגיד — וזה אחד הכישורים הכי נחוצים שיש."],
+["2031-04-26","תזריע־מצרע","/parashat-hashavua/vayikra/tazria.html","מה שאנחנו אומרים על אנשים כשהם לא בחדר","התורה מקדישה שני פרקים שלמים למחלה שחז״ל קשרו אותה לדיבור על אחרים. מי שמצליח לשמור על הפה שלו מגלה שהוא הרבה פחות מסובך עם אנשים."],
+["2031-05-03","אחרי מות־קדשים","/parashat-hashavua/vayikra/achrei-mot.html","פעם בשנה, אדם אחד נכנס לחדר לבד","עבודת יום הכיפורים כולה נשענה על כך שהכהן הגדול ייכנס למקום שאין בו איש, בלי בגדי זהב ובלי קהל. מי שמוצא לעצמו חדר כזה מגלה שהוא חוזר ממנו אדם אחר."],
+["2031-05-10","אמור","/parashat-hashavua/vayikra/emor.html","מה מחזיק אנשים לאורך שנה שלמה","התורה קובעת לוח שנה של מועדים קבועים, שחוזרים בין אם השנה הייתה טובה ובין אם לא. מי שבונה לעצמו נקודות עצירה קבועות מגלה שהן מחזיקות אותו דווקא בשנים הקשות."],
+["2031-05-17","בהר־בחקתי","/parashat-hashavua/vayikra/behar.html","מה קורה לחברה שבה אף אחד לא נשאר תקוע לנצח","פעם בחמישים שנה החזירה התורה כל אדמה לבעליה וכל אדם לביתו. מי שיודע שיש מסלול יציאה מפסיק לחיות בפחד — וזה משנה איך הוא מתנהג כל שאר השנים."],
+["2031-05-24","במדבר","/parashat-hashavua/bamidbar/bamidbar.html","למה כל כך חשוב שמישהו יידע שאתה שם","לפני היציאה למסע נספר כל אדם בעם, בשמו ולפי משפחתו. מי שיודע שקיימת לו כתובת בתוך קבוצה מתפקד אחרת לגמרי — וזה נכון בכל צוות ובכל בית."],
+["2031-05-31","נשא","/parashat-hashavua/bamidbar/naso.html","מה שאנחנו אומרים לאנשים כשהם עומדים מולנו","הפרשה הארוכה בתורה מסתיימת בשלושה פסוקים קצרים שנאמרים עד היום מעל ראשם של ילדים. מי שיודע לברך אנשים בפועל, לא רק להרגיש כלפיהם — משנה את האווירה בכל חדר שהוא נכנס אליו."],
+["2031-06-07","בהעלתך","/parashat-hashavua/bamidbar/behaalotcha.html","מה קורה לאדם שנשבר מרוב אחריות","משה, שהוציא עם ממצרים, אמר במפורש שהוא לא מסוגל יותר ושעדיף שימות. התגובה שקיבל לא הייתה נזיפה אלא פתרון — וזה בדיוק ההבדל שרובנו זקוקים לו."],
+["2031-06-14","שלח־לך","/parashat-hashavua/bamidbar/shlach.html","איך פחד אחד מחליט את גורלו של דור שלם","שנים עשר אנשים ראו בדיוק את אותה ארץ, ועשרה מהם חזרו עם דוח שהפיל עם שלם. מי שמצליח להפריד בין מה שראה לבין מה שהוא מספר על עצמו, מקבל בחזרה את היכולת לזוז."],
+["2031-06-21","קורח","/parashat-hashavua/bamidbar/korach.html","המחלוקת שאף אחד כבר לא זוכר על מה התחילה","קורח פתח בטענה צודקת לחלוטין, ותוך יום היא בלעה אותו ואת כל מי שהלך אחריו. מי שיודע לזהות מתי ויכוח הפסיק לעסוק בעניין, חוסך לעצמו שנים."],
+["2031-06-28","חוקת","/parashat-hashavua/bamidbar/chukat.html","מה קורה כשאדם טוב מאבד את זה לרגע אחד","משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש."],
+["2031-07-05","בלק","/parashat-hashavua/bamidbar/balak.html","מה קורה כשמישהו מתעקש לראות בך אויב","מלך שכר את הנביא הגדול בעולם כדי לקלל עם שלא עשה לו דבר, וכל ניסיון נהפך לברכה. הפרשה הזאת עוסקת בעיקר במה שקורה לאדם שמחליט מראש מה הוא רואה."],
+["2031-07-12","פינחס","/parashat-hashavua/bamidbar/pinchas.html","חמש נשים שהגישו תביעה — וניצחו","בנות צלפחד עמדו מול משה, מול הנשיאים ומול כל העדה, וטענו שהחוק פשוט לא הוגן. התשובה שקיבלו שינתה את החוק. מי שמעז לשאול מגלה שהמערכת גמישה יותר משחשב."],
+["2031-07-19","מטות־מסעי","/parashat-hashavua/bamidbar/matot.html","כמה שווה מילה שאמרת ואף אחד לא רשם","התורה פותחת פרשה שלמה בכך שאדם מחויב למה שיצא מפיו, גם בלי חוזה ובלי עדים. מי שמילתו נחשבת מגלה שהחיים שלו פשוטים בהרבה משל כולם."],
+["2031-07-26","דברים","/parashat-hashavua/devarim/devarim.html","איך אומרים למישהו את האמת בלי להרוס אותו","משה פותח נאום פרידה בן חמישה שבועות, וכולו ביקורת — אבל הוא בונה אותה כך שאיש לא יסתום את האוזניים. מי שלומד לומר דברים קשים בדרך שאפשר לשמוע, מקבל בחזרה אנשים שמדברים איתו."],
+["2031-08-02","ואתחנן","/parashat-hashavua/devarim/vaetchanan.html","מה עושים כשהתשובה היא לא, והיא סופית","משה התחנן חמש מאות ופעם אחת שיינתן לו להיכנס, וקיבל סירוב מוחלט. מה שהוא עשה ביום שאחרי הוא אולי הדבר החזק ביותר בכל התורה."],
+["2031-08-09","עקב","/parashat-hashavua/devarim/ekev.html","מה קורה לאדם בדיוק כשהכול מתחיל להצליח","האזהרה הגדולה בפרשה אינה מפני כישלון אלא מפני הצלחה — הרגע שבו אדם אומר לעצמו ״כוחי ועוצם ידי״. מי שזוכר מי עזר לו בדרך, שומר על מה שבנה."],
+["2031-08-16","ראה","/parashat-hashavua/devarim/reeh.html","כמה בחירות קטנות עומדות מאחורי כל אדם","״ראה, אנוכי נותן לפניכם היום ברכה וקללה״ — משפט שנשמע דרמטי, ובעצם מתאר את מה שקורה לכל אחד מאיתנו כמה עשרות פעמים ביום. מי שמזהה את הבחירה, כבר חצי בחר."],
+["2031-08-23","שופטים","/parashat-hashavua/devarim/shoftim.html","מי שומר על מי שמחליט","הפרשה מקימה שופטים, מלך, כהנים ונביאים — ומיד מגבילה כל אחד מהם. מי שמבין שגם הוא זקוק למישהו שיגיד לו ״לא״, מגלה שזה בדיוק מה ששומר עליו."],
+["2031-08-30","כי־תצא","/parashat-hashavua/devarim/ki-tetze.html","מה שאנחנו עושים כשאף אחד לא רואה, בדברים הכי קטנים","הפרשה עם מספר המצוות הגדול בתורה עוסקת באבדה שמצאת, בגג שבנית, ובציפור שראית בקן. מי שמקפיד בקטן מגלה שהוא כמעט לא נדרש להתמודד עם הגדול."],
+["2031-09-06","כי־תבוא","/parashat-hashavua/devarim/ki-tavo.html","למה כל כך קשה לנו להגיד תודה על מה שיש","החקלאי הראשון שהצליח נדרש לשים את הפרי בסל, לעלות לירושלים, ולספר בקול את כל הסיפור שהביא אותו לשם. מי שעושה את זה מגלה שהוא רואה את חייו אחרת."],
+["2031-09-13","נצבים־וילך","/parashat-hashavua/devarim/nitzavim.html","מה שאתה צריך כדי להשתנות כבר נמצא אצלך","משה מסכם ארבעים שנה במשפט אחד: זה לא בשמיים ולא מעבר לים — זה קרוב אליך מאוד. מי שמפסיק לחכות לתנאים המושלמים מגלה שהוא יכול להתחיל היום."],
+["2031-09-20","האזינו","/parashat-hashavua/devarim/haazinu.html","מה אדם בוחר לומר כשנשארה לו רק שיחה אחת","משה יכול היה לסיים ברשימת הוראות. הוא בחר לסיים בשיר. מי שמבין מה נשאר מאיתנו אצל אנשים, מתחיל לומר דברים אחרים לגמרי."],
+["2031-10-11","בראשית","/parashat-hashavua/bereshit/bereshit.html","המדריך למי שהפנים שלו נפלו","העולם נברא שלם ומדויק, ותוך שישה פרקים הוא מתפרק — לא בגלל אויב מבחוץ, אלא בגלל אדם אחד שהסתכל על אחיו והרגיש קטן."],
+["2031-10-18","נח","/parashat-hashavua/bereshit/noach.html","האיש שבנה תיבה ולא דפק לאף אחד בדלת","אפשר להיות אדם הגון לגמרי, לשמור על הבית שלך נקי — ועדיין לפספס את הדבר היחיד שהיה נדרש ממך. מי שמעז לצאת מהתיבה שלו מגלה שיש לו הרבה יותר כוח ממה שחשב."],
+["2031-10-25","לך־לך","/parashat-hashavua/bereshit/lech-lecha.html","מה קורה כשאתה עוזב את כל מה שבטוח","בגיל שבעים וחמש, כשכל אחד היה אומר לו שהספינה הפליגה, אדם אחד קם ועזב הכול בלי לדעת לאן. מי שמעז לזוז ממקום שכבר מזמן לא שלו מגלה כמה אנרגיה בזבז על להחזיק אותו."],
+["2031-11-01","וירא","/parashat-hashavua/bereshit/vayera.html","מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."],
+["2031-11-08","חיי שרה","/parashat-hashavua/bereshit/chayei-sara.html","איך בוחרים אנשים שיישארו איתנו לכל החיים","עבד אחד נשלח למצוא כלה, והמבחן שהוא ממציא לעצמו אינו יופי, ייחוס או כסף — אלא כמה טרחה אדם מוכן לקחת על עצמו למען מי שלא ביקש ממנו כלום. הכלל הזה עובד היום בדיוק כמו אז."],
+["2031-11-15","תולדות","/parashat-hashavua/bereshit/toldot.html","המשפחה שבה כל הורה אהב ילד אחר","בית אחד, שני אחים, וברכה אחת שנראתה כאילו יש רק עותק אחד ממנה. מי שמפסיק לחלק את האנשים סביבו לזוכים ומפסידים מגלה שהוא מקבל בחזרה את שניהם."],
+["2031-11-22","ויצא","/parashat-hashavua/bereshit/vayetze.html","עשרים שנה אצל בוס שמרמה אותך","אדם ברח מהבית בלי כלום, נפל לידיים של מעסיק שהחליף לו את התנאים עשר פעמים — ויצא משם עם משפחה, רכוש ושם טוב. השאלה היחידה שהוא נאלץ להכריע בה כל בוקר היא מי הוא רוצה להיות בתוך זה."],
+["2031-11-29","וישלח","/parashat-hashavua/bereshit/vayishlach.html","הלילה שלפני הפגישה שאתה הכי מפחד ממנה","עשרים ושתיים שנה של דחייה נגמרות בלילה אחד על גדת נחל, לבד, מול יריב שאי אפשר לזהות. מי שנשאר בזירה עד עלות השחר יוצא ממנה צולע — ועם שם חדש."],
+["2031-12-06","וישב","/parashat-hashavua/bereshit/vayeshev.html","כמה עולה משפט אחד של ״טעיתי״","אדם אחד עמד מול בית דין שהוא עצמו הרכיב, במקום שבו אף אחד לא היה מגלה את האמת — ואמר בקול שהוא זה שטעה. הרגע הזה הפך אותו למי שכל המלכות יוצאת ממנו."],
+["2031-12-13","מקץ","/parashat-hashavua/bereshit/miketz.html","שלוש עשרה שנה בבור, ובוקר אחד שהופך הכול","אדם שהושלך לבור בגיל שבע עשרה יצא ממנו בגיל שלושים — וכשעמד סוף סוף מול המלך, המילה הראשונה שאמר הייתה שזה לא בזכותו. מי שמצליח להחזיק את הראש הזה, שורד גם את הבור וגם את הארמון."],
+["2031-12-20","ויגש","/parashat-hashavua/bereshit/vayigash.html","שתי מילים שהפשירו עשרים ושתיים שנה","הוא יכול היה לפרוס בפניהם את כתב האישום המלא, שורה אחר שורה, והיה צודק בכל אות. במקום זה הוא אמר את שמו — ואת מה שהוא בחר לעשות עם מה שקרה לו."],
+["2031-12-27","ויחי","/parashat-hashavua/bereshit/vayechi.html","מה עושים כשסלחת — והם עדיין מפחדים ממך","שבע עשרה שנה אחרי הפיוס הגדול, גילה יוסף שאחיו עדיין חיים בפחד ממנו. הפרשה שסוגרת את ספר בראשית עוסקת בעבודה השקטה שאחרי הסליחה: לגרום לה להיות מאמינה."]
+];
+(function(){
+  var now=new Date(), t=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+  var row=null;
+  for(var i=0;i<SCHED.length;i++){ if(SCHED[i][0]>=t){ row=SCHED[i]; break; } }
+  if(!row) return;                                   /* מחוץ לטווח הלוח — נשאר הרינדור הסטטי */
+  document.getElementById("pLabel").textContent="השבוע · פרשת "+row[1];
+  document.getElementById("pTitle").textContent=row[3];
+  document.getElementById("pDek").textContent=row[4];
+  document.getElementById("pLink").setAttribute("href",row[2]);
+  var d=new Date(row[0]+"T00:00:00");
+  document.getElementById("pWhen").textContent="שבת פרשת "+row[1]+" · "+
+    d.toLocaleDateString("he-IL",{day:"numeric",month:"long",year:"numeric"});
+})();
+</script>
 </body>
 </html>
