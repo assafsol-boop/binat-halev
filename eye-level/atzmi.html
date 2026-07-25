@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>פרשת השבוע · חמישה חומשי תורה</title>
-<meta name="description" content="נ״ד פרשות התורה — הקונפליקט האנושי שמאחורי כל אחת מהן, ומה אפשר לקחת ממנו כבר השבוע.">
+<title>בינך לבין עצמך · בינת הלב</title>
+<meta name="description" content="מה שקורה בתוכך — שקט מול חרדה, שמחה מול קנאה, ומי אתה כשאף אחד לא רואה.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -538,134 +538,85 @@ a{color:var(--blue)}
 @media (max-width:430px){ .rich-foot .cols{grid-template-columns:1fr} }
 </style>
 <style>
-/* ============================================================
-   CSS של דף הבית — זהה לפרויקט הקודם.
-   אינו קיים בעמודי הפרשה (הם לא זקוקים לו), ולכן מוגדר כאן.
-   ============================================================ */
-.home-hero{
-  position:relative;overflow:hidden;
-  background:
-    radial-gradient(120% 150% at 88% -20%, rgba(242,169,0,.42), transparent 46%),
+.home-hero{position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 150% at 88% -20%, rgba(242,169,0,.42), transparent 46%),
     radial-gradient(90% 120% at 8% 120%, rgba(47,107,255,.28), transparent 52%),
     linear-gradient(120deg, var(--night) 0%, var(--night-2) 100%);
-  color:#fff;
-  padding:clamp(18px,3vw,30px) clamp(18px,5vw,40px) clamp(18px,2.6vw,28px);
-}
-.home-hero::after{
-  content:"";position:absolute;inset-block-end:-60%;inset-inline:0;height:120%;
-  background:radial-gradient(50% 60% at 78% 100%, rgba(255,194,51,.3), transparent 70%);
-  pointer-events:none;
-}
+  padding:clamp(26px,4vw,46px) clamp(18px,5vw,40px)}
 .home-hero .inner{max-width:var(--maxw);margin-inline:auto;position:relative;z-index:2}
-.home-hero .eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
-  padding:5px 13px;border-radius:999px;
-  font-size:.74rem;font-weight:600;letter-spacing:.12em;color:#ffe6ad;
-  margin-bottom:12px;
-}
+.home-hero .eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);padding:5px 13px;border-radius:999px;
+  font-size:.74rem;font-weight:600;letter-spacing:.12em;color:#ffe6ad;margin-bottom:12px}
 .home-hero .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-2)}
-.home-hero h1{
-  font-family:var(--display);
-  font-size:clamp(2rem,5.4vw,3.1rem);
-  font-weight:800;line-height:1.05;letter-spacing:-.5px;
-  margin-bottom:10px;
-}
-.home-hero h1 .glow{
-  background:linear-gradient(100deg,var(--gold-2),#fff 60%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.home-hero .path{
-  display:inline-flex;align-items:center;gap:11px;flex-wrap:wrap;
-  font-family:var(--display);font-weight:500;
-  font-size:clamp(.95rem,2.4vw,1.22rem);color:#dfe6f5;margin-bottom:10px;
-}
-.home-hero .path b{color:#fff;font-weight:700}
-.home-hero .path .arrow{color:var(--gold-2);font-size:1.2em}
-.home-hero p{max-width:64ch;color:#c4cee2;font-size:.94rem;line-height:1.6}
+.home-hero h1{font-family:var(--display);font-size:clamp(2rem,5.4vw,3.1rem);font-weight:800;
+  line-height:1.05;letter-spacing:-.5px;margin-bottom:10px}
+.home-hero h1 .glow{background:linear-gradient(100deg,var(--gold-2),#fff 60%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.home-hero p{max-width:60ch;color:#c4cee2;font-size:.96rem;line-height:1.65}
 
-.ticker{
-  background:var(--night-2);color:#e7ecf7;
-  border-block:1px solid rgba(255,255,255,.07);
-  overflow:hidden;white-space:nowrap;
-  padding-block:7px;font-size:.82rem;
-}
-.ticker .track{
-  display:inline-flex;gap:0;will-change:transform;
-  animation:ticker 34s linear infinite;
-}
-.ticker .track span{padding-inline:22px;color:#c9d3e6}
-.ticker .track b{color:var(--gold-2);font-weight:700}
-.ticker .track .sep{color:rgba(255,255,255,.28)}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(50%)}}
+/* מעבר בין העולמות — שורת קישורים תחת הכותרת */
+.world-nav{max-width:var(--maxw);margin:0 auto;padding:16px clamp(16px,4vw,32px) 0;
+  display:flex;gap:9px;flex-wrap:wrap}
+.world-nav a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  font-weight:600;font-size:.9rem;color:var(--ink-soft);background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:7px 15px;transition:all .16s}
+.world-nav a .wd{width:8px;height:8px;border-radius:50%;background:var(--wc);flex:none}
+.world-nav a:hover{border-color:var(--wc);color:var(--ink)}
+.world-nav a.on{color:#fff;background:var(--wc);border-color:var(--wc)}
+.world-nav a.on .wd{background:#fff}
 
-.wall{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:clamp(8px,1vw,12px);
-}
-.tile{
-  position:relative;display:flex;flex-direction:column;gap:4px;
-  text-decoration:none;color:var(--ink);
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius-sm);
-  padding:10px 13px 11px;
-  min-height:84px;
-  box-shadow:var(--shadow-xs);
-  overflow:hidden;
-  transition:transform .18s,box-shadow .18s,border-color .18s;
-  opacity:0;transform:translateY(12px);
-  animation:tileIn .5s cubic-bezier(.2,.7,.3,1) forwards;
-}
-@keyframes tileIn{to{opacity:1;transform:none}}
-.tile::before{
-  content:"";position:absolute;inset-block-start:0;inset-inline:0;height:3px;
-  background:var(--c);
-}
-.tile:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 24px color-mix(in srgb,var(--c) 26%,transparent);
-  border-color:var(--c);
-}
+/* חלוקה לפרקים — כמו הספרים באינדקס הפרשות */
+.chapters{max-width:var(--maxw);margin-inline:auto;padding:clamp(18px,3vw,30px) clamp(16px,4vw,32px) 0}
+.chap{margin-bottom:clamp(24px,4vw,38px)}
+.chap-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.chap-head .ct{font-family:var(--display);font-weight:800;font-size:clamp(1.15rem,3vw,1.45rem);color:var(--bc)}
+.chap-head .bar{flex:1;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--bc),transparent)}
+
+/* קוביות — זהות בגודל ובעיצוב לאינדקס הפרשות */
+.wall{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(8px,1vw,12px)}
+.tile{position:relative;display:flex;flex-direction:column;gap:4px;text-decoration:none;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:10px 13px 11px;min-height:84px;box-shadow:var(--shadow-xs);overflow:hidden;
+  transition:transform .18s,box-shadow .18s,border-color .18s}
+.tile::before{content:"";position:absolute;inset-block-start:0;inset-inline:0;height:3px;background:var(--c)}
+.tile:hover{transform:translateY(-4px);border-color:var(--c);
+  box-shadow:0 12px 24px color-mix(in srgb,var(--c) 26%,transparent)}
 .tile .t-top{display:flex;align-items:center;gap:6px}
 .tile .t-top .dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
 .tile .t-top .ch{font-size:.68rem;font-weight:600;color:var(--ink-faint);letter-spacing:.02em}
-.tile .num{
-  font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1;
-  color:var(--c);font-variant-numeric:tabular-nums;
-}
+.tile .num{font-family:var(--display);font-weight:800;font-size:1.5rem;line-height:1;color:var(--c);
+  font-variant-numeric:tabular-nums}
 .tile .tt{font-weight:600;font-size:.88rem;line-height:1.3;color:var(--ink)}
+.tile .sub{font-size:.73rem;line-height:1.45;color:var(--ink-faint);margin-top:2px}
 
+/* עמוד השער — שלוש כרטיסיות עולם גדולות */
+.worlds{max-width:var(--maxw);margin-inline:auto;padding:clamp(22px,4vw,40px) clamp(16px,4vw,32px) 0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px)}
+@media (max-width:820px){ .worlds{grid-template-columns:1fr} }
+.wcard{position:relative;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;
+  color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(22px,3vw,30px);box-shadow:var(--shadow-xs);
+  transition:transform .18s,box-shadow .18s,border-color .18s}
+.wcard::before{content:"";position:absolute;inset-block-start:0;inset-inline:0;height:4px;background:var(--wc)}
+.wcard:hover{transform:translateY(-4px);border-color:var(--wc);
+  box-shadow:0 16px 34px color-mix(in srgb,var(--wc) 22%,transparent)}
+.wcard .wk{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.wcard .wk .wd{width:9px;height:9px;border-radius:50%;background:var(--wc);flex:none}
+.wcard .wk span{font-size:.72rem;letter-spacing:.14em;font-weight:700;color:var(--wc)}
+.wcard h3{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,3.2vw,1.6rem);
+  line-height:1.2;margin-bottom:10px}
+.wcard p{color:var(--ink-soft);font-size:.97rem;line-height:1.7;flex:1}
+.wcard .wf{display:flex;align-items:center;gap:8px;margin-top:16px;font-family:var(--display);
+  font-weight:700;color:var(--wc);font-size:.96rem}
+.wcard .wf .n{background:color-mix(in srgb,var(--wc) 11%,#fff);
+  border:1px solid color-mix(in srgb,var(--wc) 26%,transparent);
+  padding:3px 11px;border-radius:999px;font-size:.8rem}
+
+.hfoot{max-width:var(--maxw);margin:34px auto 0;padding:24px clamp(16px,4vw,32px) 50px;
+  border-top:1px solid var(--line);text-align:center;color:var(--ink-faint);font-size:.84rem;line-height:1.7}
 @media (max-width:1080px){ .wall{grid-template-columns:repeat(4,1fr)} }
-@media (max-width:760px){ .wall{grid-template-columns:repeat(3,1fr)}
-  .home-hero p{display:none} }
+@media (max-width:760px){ .wall{grid-template-columns:repeat(3,1fr)} }
 @media (max-width:480px){ .wall{grid-template-columns:repeat(2,1fr)} }
-@media (prefers-reduced-motion:reduce){
-  .tile{opacity:1;transform:none;animation:none}
-  .ticker .track{animation:none}
-}
-
-/* ---- תוספות לדף הבית: חלוקה לספרים ---- */
-.books{max-width:var(--maxw);margin-inline:auto;padding:clamp(18px,3vw,30px) clamp(16px,4vw,32px) 0}
-.book{margin-bottom:clamp(24px,4vw,38px)}
-.book-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-.book-head .bt{font-family:var(--display);font-weight:800;font-size:clamp(1.15rem,3vw,1.45rem);color:var(--ink)}
-.book-head .bt .bk{color:var(--bc)}
-.book-head .bbar{flex:1;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--bc),transparent)}
-.book-head .bmeta{font-size:.78rem;font-weight:700;letter-spacing:.04em;color:var(--bc);
-  background:color-mix(in srgb,var(--bc) 10%,#fff);border:1px solid color-mix(in srgb,var(--bc) 26%,transparent);
-  padding:4px 12px;border-radius:999px}
-.book-head .bmeta.soon{color:var(--ink-faint);background:var(--surface-2);border-color:var(--line)}
-.tile .sub{font-size:.73rem;line-height:1.4;color:var(--ink-faint);margin-top:2px}
-.tile.soon{cursor:default;background:var(--surface-2);box-shadow:none}
-.tile.soon .num,.tile.soon .t-top .dot{opacity:.4}
-.tile.soon .tt{color:var(--ink-soft)}
-.tile.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
-.home-hero .stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}
-.home-hero .stats div{display:flex;flex-direction:column}
-.home-hero .stats b{font-family:var(--display);font-size:1.5rem;font-weight:800;color:var(--gold-2);line-height:1}
-.home-hero .stats span{font-size:.76rem;color:#c4cee2;margin-top:3px}
 </style>
 <link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png">
 </head>
@@ -674,8 +625,8 @@ a{color:var(--blue)}
 <header class="nav">
   <a class="brand" href="/"><span class="logo"><img src="/logo.png" alt="" class="mk-img"></span>בינת הלב</a>
   <nav class="links">
-    <a href="/parashat-hashavua/" class="on">פרשת השבוע</a>
-    <a href="/eye-level/atzmi.html">בינך לבין עצמך</a>
+    <a href="/parashat-hashavua/">פרשת השבוע</a>
+    <a href="/eye-level/atzmi.html" class="on">בינך לבין עצמך</a>
     <a href="/eye-level/zulat.html">בינך לבין הזולת</a>
     <a href="/eye-level/chaim.html">בינך לבין החיים</a>
     <a href="/agadot-hatikva/">מגלות לגאולה</a>
@@ -692,137 +643,54 @@ a{color:var(--blue)}
 
 <section class="home-hero">
   <div class="inner">
-    <span class="eyebrow"><span class="dot"></span>חמישה חומשי תורה</span>
-    <h1>פרשת <span class="glow">השבוע</span></h1>
-    <div class="path"><b>הַסִּפּוּר</b><span class="arrow">←</span><b>הַמִּבְחָן</b><span class="arrow">←</span><b>נְקֻדַּת אוֹר</b></div>
-    <p>נ״ד פרשות, וכל אחת מהן סובבת סביב התנגשות אנושית אחת — קנאה, פחד, ויתור, סליחה.
-       כל עמוד מגיע עד סופו עם דבר אחד מעשי שאפשר לעשות איתו כבר בסוף השבוע.</p>
-    <div class="stats">
-      <div><b>54</b><span>פרשות מוכנות</span></div>
-      <div><b>54</b><span>בסך הכול</span></div>
-      <div><b>5</b><span>ספרים</span></div>
-    </div>
+    <span class="eyebrow"><span class="dot"></span>חוכמה אנושית, בגובה העיניים</span>
+    <h1>בינך לבין עצמך</h1>
+    <p>מה שקורה בתוכך — שקט מול חרדה, שמחה מול קנאה, ומי אתה כשאף אחד לא רואה.</p>
   </div>
 </section>
+<nav class="world-nav">
+  <a href="atzmi.html" style="--wc:#7a5bb8" class="on"><span class="wd"></span>בינך לבין עצמך</a><a href="zulat.html" style="--wc:#3d6fd9"><span class="wd"></span>בינך לבין הזולת</a><a href="chaim.html" style="--wc:#2e8b6f"><span class="wd"></span>בינך לבין החיים</a>
+</nav>
+<main>
+<div class="chapters">
+    <section class="chap" style="--bc:#7a5bb8">
+      <div class="chap-head"><span class="ct">לעשות, לא רק לדעת</span><span class="bar"></span></div>
+      <nav class="wall">
+      <a class="tile" href="maase.html" style="--c:#c4761f"><span class="t-top"><span class="dot"></span><span class="ch">לעשות, לא רק לדעת</span></span><span class="num">1</span><span class="tt">המעשה הוא העיקר</span><span class="sub">המדריך למי שכל הזמן מתכוון להתחיל</span></a>
+      <a class="tile" href="la-alecha.html" style="--c:#b8632a"><span class="t-top"><span class="dot"></span><span class="ch">לעשות, לא רק לדעת</span></span><span class="num">2</span><span class="tt">לא עליך המלאכה לגמור</span><span class="sub">כשהמשימה גדולה מכדי בכלל להתחיל</span></a>
+      <a class="tile" href="lichshe-efaneh.html" style="--c:#a8551f"><span class="t-top"><span class="dot"></span><span class="ch">לעשות, לא רק לדעת</span></span><span class="num">3</span><span class="tt">לכשאפנה — שמא לא תפנה</span><span class="sub">הדבר שאתה דוחה ל״כשיהיה רגוע״</span></a>
+      <a class="tile" href="prozdor.html" style="--c:#c08a10"><span class="t-top"><span class="dot"></span><span class="ch">לעשות, לא רק לדעת</span></span><span class="num">4</span><span class="tt">התקן עצמך בפרוזדור</span><span class="sub">החיים כמסדרון, לא כחדר המתנה</span></a>
+      </nav>
+    </section>
 
-<div class="ticker" aria-hidden="true">
-  <div class="track"><span><b>חֲמִשָּׁה חֻמְשֵׁי תּוֹרָה</b></span><span class="sep">·</span><span>נ״ד פָּרָשׁוֹת · סִפּוּר אֶחָד בְּכָל שָׁבוּעַ</span><span class="sep">·</span><span>הַקּוֹנְפְלִיקְט הָאֱנוֹשִׁי שֶׁמֵּאֲחוֹרֵי הַטֶּקְסְט</span><span class="sep">·</span><span><b>חֲמִשָּׁה חֻמְשֵׁי תּוֹרָה</b></span><span class="sep">·</span><span>נ״ד פָּרָשׁוֹת · סִפּוּר אֶחָד בְּכָל שָׁבוּעַ</span><span class="sep">·</span><span>הַקּוֹנְפְלִיקְט הָאֱנוֹשִׁי שֶׁמֵּאֲחוֹרֵי הַטֶּקְסְט</span><span class="sep">·</span></div>
+    <section class="chap" style="--bc:#7a5bb8">
+      <div class="chap-head"><span class="ct">כשלאחרים יש יותר</span><span class="bar"></span></div>
+      <nav class="wall">
+      <a class="tile" href="sameach.html" style="--c:#17847d"><span class="t-top"><span class="dot"></span><span class="ch">כשלאחרים יש יותר</span></span><span class="num">5</span><span class="tt">איזהו עשיר</span><span class="sub">המדריך למי שאף פעם אין לו מספיק</span></a>
+      <a class="tile" href="marbe.html" style="--c:#c08a10"><span class="t-top"><span class="dot"></span><span class="ch">כשלאחרים יש יותר</span></span><span class="num">6</span><span class="tt">מרבה נכסים מרבה דאגה</span><span class="sub">כמה ממה שיש לך באמת שלך</span></a>
+      <a class="tile" href="kina.html" style="--c:#b83f61"><span class="t-top"><span class="dot"></span><span class="ch">כשלאחרים יש יותר</span></span><span class="num">7</span><span class="tt">הקנאה מוציאה מן העולם</span><span class="sub">מה שההצלחה של מישהו אחר עושה לך בפנים</span></a>
+      <a class="tile" href="avadim.html" style="--c:#5566a8"><span class="t-top"><span class="dot"></span><span class="ch">כשלאחרים יש יותר</span></span><span class="num">8</span><span class="tt">לא על מנת לקבל פרס</span><span class="sub">כשאתה עושה רק בשביל מה שתקבל</span></a>
+      </nav>
+    </section>
+
+    <section class="chap" style="--bc:#7a5bb8">
+      <div class="chap-head"><span class="ct">מי שאתה כשאף אחד לא רואה</span><span class="bar"></span></div>
+      <nav class="wall">
+      <a class="tile" href="daas.html" style="--c:#2f6bff"><span class="t-top"><span class="dot"></span><span class="ch">מי שאתה כשאף אחד לא רואה</span></span><span class="num">9</span><span class="tt">עין רואה ואוזן שומעת</span><span class="sub">מי אתה כשאף אחד לא מסתכל</span></a>
+      <a class="tile" href="histakel.html" style="--c:#7a5bb8"><span class="t-top"><span class="dot"></span><span class="ch">מי שאתה כשאף אחד לא רואה</span></span><span class="num">10</span><span class="tt">מאין באת ולאן אתה הולך</span><span class="sub">שלוש שאלות ששומרות אותך קטן — במובן הטוב</span></a>
+      <a class="tile" href="ruach.html" style="--c:#17847d"><span class="t-top"><span class="dot"></span><span class="ch">מי שאתה כשאף אחד לא רואה</span></span><span class="num">11</span><span class="tt">רוח הבריות נוחה הימנו</span><span class="sub">איך אנשים מרגישים אחרי שהיו איתך</span></a>
+      <a class="tile" href="tzafuy.html" style="--c:#c08a10"><span class="t-top"><span class="dot"></span><span class="ch">מי שאתה כשאף אחד לא רואה</span></span><span class="num">12</span><span class="tt">הכל צפוי והרשות נתונה</span><span class="sub">אתה חופשי לבחור — וזה כל ההבדל</span></a>
+      </nav>
+    </section>
 </div>
-
-<main class="books">
-    <section class="book" style="--bc:#3d6fd9">
-      <div class="book-head">
-        <span class="bt">ספר <span class="bk">בראשית</span></span>
-        <span class="bbar"></span>
-        <span class="bmeta">12 פרשות · מוכן</span>
-      </div>
-      <nav class="wall" aria-label="פרשות ספר בראשית">
-      <a class="tile" href="bereshit/bereshit.html" style="--c:#3d6fd9;animation-delay:0.03s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">1</span><span class="tt">בראשית</span><span class="sub">המדריך למי שהפנים שלו נפלו</span></a>
-      <a class="tile" href="bereshit/noach.html" style="--c:#17847d;animation-delay:0.06s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">2</span><span class="tt">נח</span><span class="sub">האיש שבנה תיבה ולא דפק לאף אחד בדלת</span></a>
-      <a class="tile" href="bereshit/lech-lecha.html" style="--c:#c4761f;animation-delay:0.09s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">3</span><span class="tt">לך לך</span><span class="sub">מה קורה כשאתה עוזב את כל מה שבטוח</span></a>
-      <a class="tile" href="bereshit/vayera.html" style="--c:#c34a37;animation-delay:0.12s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">4</span><span class="tt">וירא</span><span class="sub">מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך</span></a>
-      <a class="tile" href="bereshit/chayei-sara.html" style="--c:#7a5bb8;animation-delay:0.15s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">5</span><span class="tt">חיי שרה</span><span class="sub">איך בוחרים אנשים שיישארו איתנו לכל החיים</span></a>
-      <a class="tile" href="bereshit/toldot.html" style="--c:#a87a1e;animation-delay:0.18s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">6</span><span class="tt">תולדות</span><span class="sub">המשפחה שבה כל הורה אהב ילד אחר</span></a>
-      <a class="tile" href="bereshit/vayetze.html" style="--c:#4256c8;animation-delay:0.21s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">7</span><span class="tt">ויצא</span><span class="sub">עשרים שנה אצל בוס שמרמה אותך</span></a>
-      <a class="tile" href="bereshit/vayishlach.html" style="--c:#23795a;animation-delay:0.24s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">8</span><span class="tt">וישלח</span><span class="sub">הלילה שלפני הפגישה שאתה הכי מפחד ממנה</span></a>
-      <a class="tile" href="bereshit/vayeshev.html" style="--c:#b83f61;animation-delay:0.27s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">9</span><span class="tt">וישב</span><span class="sub">כמה עולה משפט אחד של ״טעיתי״</span></a>
-      <a class="tile" href="bereshit/miketz.html" style="--c:#c08a10;animation-delay:0.30s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">10</span><span class="tt">מקץ</span><span class="sub">שלוש עשרה שנה בבור, ובוקר אחד שהופך הכול</span></a>
-      <a class="tile" href="bereshit/vayigash.html" style="--c:#2f6bff;animation-delay:0.33s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">11</span><span class="tt">ויגש</span><span class="sub">שתי מילים שהפשירו עשרים ושתיים שנה</span></a>
-      <a class="tile" href="bereshit/vayechi.html" style="--c:#5566a8;animation-delay:0.36s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">12</span><span class="tt">ויחי</span><span class="sub">מה עושים כשסלחת — והם עדיין מפחדים ממך</span></a>
-      </nav>
-    </section>
-
-    <section class="book" style="--bc:#c4761f">
-      <div class="book-head">
-        <span class="bt">ספר <span class="bk">שמות</span></span>
-        <span class="bbar"></span>
-        <span class="bmeta">11 פרשות · מוכן</span>
-      </div>
-      <nav class="wall" aria-label="פרשות ספר שמות">
-      <a class="tile" href="shemot/shemot.html" style="--c:#c4761f;animation-delay:0.03s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">13</span><span class="tt">שמות</span><span class="sub">מה עושים כשבחרו דווקא בך, ואתה בטוח שטעו</span></a>
-      <a class="tile" href="shemot/vaera.html" style="--c:#b8632a;animation-delay:0.06s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">14</span><span class="tt">וארא</span><span class="sub">למה כל כך קשה להודות שטעינו</span></a>
-      <a class="tile" href="shemot/bo.html" style="--c:#a8551f;animation-delay:0.09s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">15</span><span class="tt">בא</span><span class="sub">הלילה שבו קבוצת עבדים קיבלה לידיים את הזמן</span></a>
-      <a class="tile" href="shemot/beshalach.html" style="--c:#1f7f9c;animation-delay:0.12s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">16</span><span class="tt">בשלח</span><span class="sub">הרגע שבו נגמרות האפשרויות וצריך להיכנס למים</span></a>
-      <a class="tile" href="shemot/yitro.html" style="--c:#2f6bff;animation-delay:0.15s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">17</span><span class="tt">יתרו</span><span class="sub">המדריך לאדם שלא מצליח להגיד ״קח את זה ממני״</span></a>
-      <a class="tile" href="shemot/mishpatim.html" style="--c:#4256c8;animation-delay:0.18s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">18</span><span class="tt">משפטים</span><span class="sub">מה קורה ביום שאחרי החוויה הגדולה</span></a>
-      <a class="tile" href="shemot/truma.html" style="--c:#c08a10;animation-delay:0.21s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">19</span><span class="tt">תרומה</span><span class="sub">למה שווה לתת כשאף אחד לא רואה שנתת</span></a>
-      <a class="tile" href="shemot/tetzave.html" style="--c:#23795a;animation-delay:0.24s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">20</span><span class="tt">תצווה</span><span class="sub">האח שהיה ראשון, וקיבל אח קטן למנהל</span></a>
-      <a class="tile" href="shemot/ki-tisa.html" style="--c:#b83f61;animation-delay:0.27s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">21</span><span class="tt">כי תשא</span><span class="sub">מה עושים עם השברים אחרי שהכול התנפץ</span></a>
-      <a class="tile" href="shemot/vayakhel.html" style="--c:#7a5bb8;animation-delay:0.30s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">22</span><span class="tt">ויקהל</span><span class="sub">החלק בעבר שלך שהכי התביישת בו</span></a>
-      <a class="tile" href="shemot/pekudei.html" style="--c:#5566a8;animation-delay:0.33s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">23</span><span class="tt">פקודי</span><span class="sub">למה אדם שאיש לא חושד בו טורח להראות קבלות</span></a>
-      </nav>
-    </section>
-
-    <section class="book" style="--bc:#23795a">
-      <div class="book-head">
-        <span class="bt">ספר <span class="bk">ויקרא</span></span>
-        <span class="bbar"></span>
-        <span class="bmeta">10 פרשות · מוכן</span>
-      </div>
-      <nav class="wall" aria-label="פרשות ספר ויקרא">
-      <a class="tile" href="vayikra/vayikra.html" style="--c:#23795a;animation-delay:0.03s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">24</span><span class="tt">ויקרא</span><span class="sub">מה עושים כשטעית ואף אחד לא ראה</span></a>
-      <a class="tile" href="vayikra/tzav.html" style="--c:#1f7f6a;animation-delay:0.06s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">25</span><span class="tt">צו</span><span class="sub">העבודה שאף אחד לא רואה, בשעה שאף אחד לא ער</span></a>
-      <a class="tile" href="vayikra/shmini.html" style="--c:#2f6bff;animation-delay:0.09s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">26</span><span class="tt">שמיני</span><span class="sub">מה אומרים לאדם שאיבד הכול, ביום הכי גדול שלו</span></a>
-      <a class="tile" href="vayikra/tazria.html" style="--c:#7a5bb8;animation-delay:0.12s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">27</span><span class="tt">תזריע</span><span class="sub">מה שאנחנו אומרים על אנשים כשהם לא בחדר</span></a>
-      <a class="tile" href="vayikra/metzora.html" style="--c:#c08a10;animation-delay:0.15s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">28</span><span class="tt">מצורע</span><span class="sub">איך מחזירים אדם שהורחק, בלי שיישאר עליו סימן</span></a>
-      <a class="tile" href="vayikra/achrei-mot.html" style="--c:#4256c8;animation-delay:0.18s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">29</span><span class="tt">אחרי מות</span><span class="sub">פעם בשנה, אדם אחד נכנס לחדר לבד</span></a>
-      <a class="tile" href="vayikra/kedoshim.html" style="--c:#b83f61;animation-delay:0.21s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">30</span><span class="tt">קדושים</span><span class="sub">כל מה שצריך לדעת על להיות בן אדם, בפרק אחד</span></a>
-      <a class="tile" href="vayikra/emor.html" style="--c:#17847d;animation-delay:0.24s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">31</span><span class="tt">אמור</span><span class="sub">מה מחזיק אנשים לאורך שנה שלמה</span></a>
-      <a class="tile" href="vayikra/behar.html" style="--c:#c4761f;animation-delay:0.27s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">32</span><span class="tt">בהר</span><span class="sub">מה קורה לחברה שבה אף אחד לא נשאר תקוע לנצח</span></a>
-      <a class="tile" href="vayikra/bechukotai.html" style="--c:#5566a8;animation-delay:0.30s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">33</span><span class="tt">בחוקותי</span><span class="sub">מה באמת קורה כשמצטברים הרגלים קטנים</span></a>
-      </nav>
-    </section>
-
-    <section class="book" style="--bc:#7a5bb8">
-      <div class="book-head">
-        <span class="bt">ספר <span class="bk">במדבר</span></span>
-        <span class="bbar"></span>
-        <span class="bmeta">10 פרשות · מוכן</span>
-      </div>
-      <nav class="wall" aria-label="פרשות ספר במדבר">
-      <a class="tile" href="bamidbar/bamidbar.html" style="--c:#7a5bb8;animation-delay:0.03s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">34</span><span class="tt">במדבר</span><span class="sub">למה כל כך חשוב שמישהו יידע שאתה שם</span></a>
-      <a class="tile" href="bamidbar/naso.html" style="--c:#2f8f8c;animation-delay:0.06s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">35</span><span class="tt">נשא</span><span class="sub">מה שאנחנו אומרים לאנשים כשהם עומדים מולנו</span></a>
-      <a class="tile" href="bamidbar/behaalotcha.html" style="--c:#c08a10;animation-delay:0.09s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">36</span><span class="tt">בהעלותך</span><span class="sub">מה קורה לאדם שנשבר מרוב אחריות</span></a>
-      <a class="tile" href="bamidbar/shlach.html" style="--c:#c34a37;animation-delay:0.12s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">37</span><span class="tt">שלח לך</span><span class="sub">איך פחד אחד מחליט את גורלו של דור שלם</span></a>
-      <a class="tile" href="bamidbar/korach.html" style="--c:#b83f61;animation-delay:0.15s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">38</span><span class="tt">קרח</span><span class="sub">המחלוקת שאף אחד כבר לא זוכר על מה התחילה</span></a>
-      <a class="tile" href="bamidbar/chukat.html" style="--c:#4256c8;animation-delay:0.18s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">39</span><span class="tt">חוקת</span><span class="sub">מה קורה כשאדם טוב מאבד את זה לרגע אחד</span></a>
-      <a class="tile" href="bamidbar/balak.html" style="--c:#c4761f;animation-delay:0.21s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">40</span><span class="tt">בלק</span><span class="sub">מה קורה כשמישהו מתעקש לראות בך אויב</span></a>
-      <a class="tile" href="bamidbar/pinchas.html" style="--c:#17847d;animation-delay:0.24s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">41</span><span class="tt">פינחס</span><span class="sub">חמש נשים שהגישו תביעה — וניצחו</span></a>
-      <a class="tile" href="bamidbar/matot.html" style="--c:#a87a1e;animation-delay:0.27s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">42</span><span class="tt">מטות</span><span class="sub">כמה שווה מילה שאמרת ואף אחד לא רשם</span></a>
-      <a class="tile" href="bamidbar/masei.html" style="--c:#5566a8;animation-delay:0.30s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">43</span><span class="tt">מסעי</span><span class="sub">ארבעים שנה, ארבעים ושתיים תחנות, ורשימה אחת</span></a>
-      </nav>
-    </section>
-
-    <section class="book" style="--bc:#b83f61">
-      <div class="book-head">
-        <span class="bt">ספר <span class="bk">דברים</span></span>
-        <span class="bbar"></span>
-        <span class="bmeta">11 פרשות · מוכן</span>
-      </div>
-      <nav class="wall" aria-label="פרשות ספר דברים">
-      <a class="tile" href="devarim/devarim.html" style="--c:#b83f61;animation-delay:0.03s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">44</span><span class="tt">דברים</span><span class="sub">איך אומרים למישהו את האמת בלי להרוס אותו</span></a>
-      <a class="tile" href="devarim/vaetchanan.html" style="--c:#3d6fd9;animation-delay:0.06s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">45</span><span class="tt">ואתחנן</span><span class="sub">מה עושים כשהתשובה היא לא, והיא סופית</span></a>
-      <a class="tile" href="devarim/ekev.html" style="--c:#c4761f;animation-delay:0.09s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">46</span><span class="tt">עקב</span><span class="sub">מה קורה לאדם בדיוק כשהכול מתחיל להצליח</span></a>
-      <a class="tile" href="devarim/reeh.html" style="--c:#23795a;animation-delay:0.12s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">47</span><span class="tt">ראה</span><span class="sub">כמה בחירות קטנות עומדות מאחורי כל אדם</span></a>
-      <a class="tile" href="devarim/shoftim.html" style="--c:#4256c8;animation-delay:0.15s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">48</span><span class="tt">שופטים</span><span class="sub">מי שומר על מי שמחליט</span></a>
-      <a class="tile" href="devarim/ki-tetze.html" style="--c:#c08a10;animation-delay:0.18s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">49</span><span class="tt">כי תצא</span><span class="sub">מה שאנחנו עושים כשאף אחד לא רואה, בדברים הכי קטנים</span></a>
-      <a class="tile" href="devarim/ki-tavo.html" style="--c:#7a5bb8;animation-delay:0.21s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">50</span><span class="tt">כי תבוא</span><span class="sub">למה כל כך קשה לנו להגיד תודה על מה שיש</span></a>
-      <a class="tile" href="devarim/nitzavim.html" style="--c:#2f6bff;animation-delay:0.24s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">51</span><span class="tt">ניצבים</span><span class="sub">מה שאתה צריך כדי להשתנות כבר נמצא אצלך</span></a>
-      <a class="tile" href="devarim/vayelech.html" style="--c:#17847d;animation-delay:0.27s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">52</span><span class="tt">וילך</span><span class="sub">איך יוצאים מתפקיד בלי להפיל את מה שבנית</span></a>
-      <a class="tile" href="devarim/haazinu.html" style="--c:#a87a1e;animation-delay:0.30s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">53</span><span class="tt">האזינו</span><span class="sub">מה אדם בוחר לומר כשנשארה לו רק שיחה אחת</span></a>
-      <a class="tile" href="devarim/vezot-habracha.html" style="--c:#f2a900;animation-delay:0.33s"><span class="t-top"><span class="dot"></span><span class="ch">פרשה</span></span><span class="num">54</span><span class="tt">וזאת הברכה</span><span class="sub">מה אומרים לאנשים ברגע האחרון</span></a>
-      </nav>
-    </section>
 </main>
 
-<footer class="foot">
-  פרשת השבוע · 54 מתוך 54 פרשות
-  <span class="disc">עזר לימודי בלבד. הסיפורים מסופרים בלשון חופשית — יש לעיין במקור.
-    פרקי העיון אינם ציטוט מן המקורות; הפסוקים ודברי חז״ל מובאים בשמם.</span>
+<footer class="hfoot">
+  בינך לבין עצמך · בינת הלב
+  <span class="disc" style="display:block;max-width:640px;margin:12px auto 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 18px;font-size:.82rem">
+    עזר לימודי בלבד. הדברים מובאים בלשון חופשית — יש לעיין במקור.
+    לשון המקורות ודברי חז״ל מובאים בשמם.</span>
 </footer>
-
-<button class="to-top" id="toTop" aria-label="חזרה למעלה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
-<script>(function(){var b=document.getElementById("toTop");addEventListener("scroll",function(){b.classList.toggle("show",scrollY>460)},{passive:true});b.onclick=function(){scrollTo({top:0,behavior:"smooth"})}})();</script>
 <script>
 var IDX=[
 ["פרשת בראשית","המדריך למי שהפנים שלו נפלו","/parashat-hashavua/bereshit/bereshit.html","פרשה · בראשית"],
