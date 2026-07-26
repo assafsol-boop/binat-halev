@@ -675,6 +675,47 @@ h2.section-label{
 .more .card .dd{font-size:.88rem;line-height:1.65;color:var(--ink-soft)}
 @media (max-width:760px){ .more .grid{grid-template-columns:1fr} }
 
+/* ---- לוח הפרשות: טבלת תאריך↔פרשה ---- */
+.sched{max-width:var(--maxw);margin:clamp(30px,4vw,46px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.sched h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.25rem,3.4vw,1.7rem);line-height:1.25;margin-bottom:8px}
+.sched .sched-lead{color:var(--ink-soft);font-size:.97rem;line-height:1.7;max-width:62ch;margin-bottom:16px}
+.sched-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);box-shadow:var(--shadow-xs)}
+.sched table{width:100%;border-collapse:collapse;font-size:.96rem}
+.sched th{
+  text-align:start;font-family:var(--display);font-size:.74rem;letter-spacing:.12em;
+  color:var(--ink-faint);font-weight:700;padding:12px 16px;border-bottom:1px solid var(--line);
+  background:var(--surface-2);position:sticky;top:0;
+}
+.sched td{padding:11px 16px;border-bottom:1px solid var(--line-soft);white-space:nowrap}
+.sched tr:last-child td{border-bottom:none}
+.sched tbody tr:first-child{background:var(--gold-soft)}
+.sched tbody tr:first-child .dt{font-weight:700;color:var(--gold-deep)}
+.sched tbody tr:hover{background:var(--surface-2)}
+.sched .dt{color:var(--ink-soft)}
+.sched .pr a{font-weight:700;color:var(--ink);text-decoration:none}
+.sched .pr a:hover{color:var(--blue);text-decoration:underline}
+.sched .bk{color:var(--ink-faint);font-size:.88rem}
+@media (max-width:520px){ .sched .bk{display:none} .sched td,.sched th{padding-inline:11px} }
+
+/* ---- טקסט פתיחה בעמודי השער ---- */
+.hub-text{max-width:var(--maxw);margin:clamp(28px,4vw,44px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.hub-text h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.2rem,3.2vw,1.55rem);margin-bottom:12px}
+.hub-text p{color:var(--ink-soft);font-size:1rem;line-height:1.8;max-width:70ch}
+.hub-text p+p{margin-top:12px}
+.hub-text strong{color:var(--ink);font-weight:700}
+
+/* ---- שאלות נפוצות ---- */
+.faq{max-width:var(--maxw);margin:clamp(28px,4vw,42px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.faq h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.2rem,3.2vw,1.55rem);margin-bottom:14px}
+.faq .qa{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:15px 18px 16px;box-shadow:var(--shadow-xs);margin-bottom:10px}
+.faq .qa h3{font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink);margin-bottom:6px}
+.faq .qa p{color:var(--ink-soft);font-size:.96rem;line-height:1.72}
+
 /* ---- ליטוש כללי: טיפוגרפיה, מגע, מיקוד ---- */
 h1,h2,h3,.a-head h1{text-wrap:balance}
 p,li{text-wrap:pretty}
@@ -710,7 +751,7 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
 <meta name="twitter:title" content="פרשת כי תשא: מה עושים עם השברים אחרי שהכול התנפץ">
 <meta name="twitter:description" content="ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים.">
 <meta name="twitter:image" content="https://binathalev.co/logo.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://binathalev.co/#org","name":"בינת הלב","url":"https://binathalev.co/","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","logo":{"@type":"ImageObject","url":"https://binathalev.co/logo.png"}},{"@type":"WebSite","@id":"https://binathalev.co/#website","url":"https://binathalev.co/","name":"בינת הלב","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","publisher":{"@id":"https://binathalev.co/#org"}},{"url":"https://binathalev.co/parashat-hashavua/shemot/ki-tisa.html","name":"פרשת כי תשא: מה עושים עם השברים אחרי שהכול התנפץ","description":"ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים.","inLanguage":"he-IL","isPartOf":{"@id":"https://binathalev.co/#website"},"publisher":{"@id":"https://binathalev.co/#org"},"@type":"Article","@id":"https://binathalev.co/parashat-hashavua/shemot/ki-tisa.html#article","headline":"פרשת כי תשא: מה עושים עם השברים אחרי שהכול התנפץ","alternativeHeadline":"פרשת כי תשא","articleSection":"פרשת השבוע","author":{"@id":"https://binathalev.co/#org"},"image":"https://binathalev.co/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://binathalev.co/parashat-hashavua/shemot/ki-tisa.html"},"isAccessibleForFree":true,"datePublished":"2026-07-24","dateModified":"2026-07-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"בית","item":"https://binathalev.co/"},{"@type":"ListItem","position":2,"name":"פרשת השבוע","item":"https://binathalev.co/parashat-hashavua/"},{"@type":"ListItem","position":3,"name":"ספר שמות","item":"https://binathalev.co/parashat-hashavua/#shemot"},{"@type":"ListItem","position":4,"name":"פרשת כי תשא"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://binathalev.co/#org","name":"בינת הלב","url":"https://binathalev.co/","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","logo":{"@type":"ImageObject","url":"https://binathalev.co/logo.png"}},{"@type":"WebSite","@id":"https://binathalev.co/#website","url":"https://binathalev.co/","name":"בינת הלב","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","publisher":{"@id":"https://binathalev.co/#org"}},{"url":"https://binathalev.co/parashat-hashavua/shemot/ki-tisa.html","name":"פרשת כי תשא: מה עושים עם השברים אחרי שהכול התנפץ","description":"ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים.","inLanguage":"he-IL","isPartOf":{"@id":"https://binathalev.co/#website"},"publisher":{"@id":"https://binathalev.co/#org"},"@type":"Article","@id":"https://binathalev.co/parashat-hashavua/shemot/ki-tisa.html#article","headline":"פרשת כי תשא: מה עושים עם השברים אחרי שהכול התנפץ","alternativeHeadline":"פרשת כי תשא","articleSection":"פרשת השבוע","author":{"@id":"https://binathalev.co/#org"},"image":"https://binathalev.co/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://binathalev.co/parashat-hashavua/shemot/ki-tisa.html"},"isAccessibleForFree":true,"datePublished":"2026-07-24","dateModified":"2026-07-26","about":{"@type":"Thing","name":"פרשת כי תשא","description":"פרשה 21 מתוך 54 · ספר שמות · שמות ל׳, י״א – ל״ד, ל״ה"},"keywords":"פרשת כי תשא, דבר תורה לפרשת כי תשא, פרשת השבוע, ספר שמות"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"בית","item":"https://binathalev.co/"},{"@type":"ListItem","position":2,"name":"פרשת השבוע","item":"https://binathalev.co/parashat-hashavua/"},{"@type":"ListItem","position":3,"name":"ספר שמות","item":"https://binathalev.co/parashat-hashavua/#shemot"},{"@type":"ListItem","position":4,"name":"פרשת כי תשא"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"מתי קוראים את פרשת כי תשא?","acceptedAnswer":{"@type":"Answer","text":"פרשת כי תשא נקראת בשבת 27 בפברואר 2027, לפי מנהג ארץ ישראל. הפרשה היא ה־21 מתוך 54 פרשות התורה, והיא בספר שמות (שמות ל׳, י״א – ל״ד, ל״ה)."}},{"@type":"Question","name":"על מה פרשת כי תשא?","acceptedAnswer":{"@type":"Answer","text":"ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."}},{"@type":"Question","name":"מהו דבר תורה קצר לפרשת כי תשא?","acceptedAnswer":{"@type":"Answer","text":"מה עושים עם השברים אחרי שהכול התנפץ. ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים."}},{"@type":"Question","name":"מה אפשר לקחת מפרשת כי תשא למעשה?","acceptedAnswer":{"@type":"Answer","text":"כתבו לעצמכם בשורה אחת פרק אחד מהחיים שאתם לא מספרים לאף אחד. לא לפרסם, לא לשתף — רק לנסח אותו כמשפט עובדתי, בלי התנצלות ובלי הצדקה. מה שמנוסח מפסיק לרדוף."}}]}]}</script>
 </head>
 <body>
 <div class="bsd-bar">בס״ד</div>
@@ -881,6 +922,8 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
   </nav>
 
   
+<section class="faq"><h2>שאלות נפוצות על פרשת כי תשא</h2><div class="qa"><h3>מתי קוראים את פרשת כי תשא?</h3><p>פרשת כי תשא נקראת בשבת 27 בפברואר 2027, לפי מנהג ארץ ישראל. הפרשה היא ה־21 מתוך 54 פרשות התורה, והיא בספר שמות (שמות ל׳, י״א – ל״ד, ל״ה).</p></div><div class="qa"><h3>על מה פרשת כי תשא?</h3><p>ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים.</p></div><div class="qa"><h3>מהו דבר תורה קצר לפרשת כי תשא?</h3><p>מה עושים עם השברים אחרי שהכול התנפץ. ארבעים יום אחרי המעמד הגדול בהיסטוריה, העם בנה עגל זהב. ומה שנשמר בארון הברית לדורות היה לא רק הלוחות השלמים — אלא גם השברים של הראשונים.</p></div><div class="qa"><h3>מה אפשר לקחת מפרשת כי תשא למעשה?</h3><p>כתבו לעצמכם בשורה אחת פרק אחד מהחיים שאתם לא מספרים לאף אחד. לא לפרסם, לא לשתף — רק לנסח אותו כמשפט עובדתי, בלי התנצלות ובלי הצדקה. מה שמנוסח מפסיק לרדוף.</p></div></section>
+
 <section class="more"><h2 class="mh">להמשיך מכאן</h2><div class="grid"><a class="card" href="/agadot-hatikva/a17.html" style="--mk:#f2a900"><span class="kk">מגלות לגאולה</span><h3 class="tt">רבי יוסי בחורבה</h3><span class="dd">בת קול שמנהמת כיונה — שלוש פעמים בכל יום.</span></a><a class="card" href="/eye-level/shtika.html" style="--mk:#7a5bb8"><span class="kk">בינך לבין הזולת</span><h3 class="tt">מה שלא אמרת</h3><span class="dd">אנחנו ממהרים למלא כל שקט, להגיב, לומר את שלנו. משנה אחת מזכירה שהשתיקה אינה חולשה אלא גדר ששומרת. מי…</span></a><a class="card" href="/parashat-hashavua/" style="--mk:#2e8b6f"><span class="kk">כל המדור</span><h3 class="tt">פרשת השבוע</h3><span class="dd">חזרה לשער המדור — כל העמודים במקום אחד.</span></a></div></section>
 <footer class="foot">
     פרשה 21 מתוך 54 · שמות ל׳, י״א – ל״ד, ל״ה

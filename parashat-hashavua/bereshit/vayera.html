@@ -675,6 +675,47 @@ h2.section-label{
 .more .card .dd{font-size:.88rem;line-height:1.65;color:var(--ink-soft)}
 @media (max-width:760px){ .more .grid{grid-template-columns:1fr} }
 
+/* ---- לוח הפרשות: טבלת תאריך↔פרשה ---- */
+.sched{max-width:var(--maxw);margin:clamp(30px,4vw,46px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.sched h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.25rem,3.4vw,1.7rem);line-height:1.25;margin-bottom:8px}
+.sched .sched-lead{color:var(--ink-soft);font-size:.97rem;line-height:1.7;max-width:62ch;margin-bottom:16px}
+.sched-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);box-shadow:var(--shadow-xs)}
+.sched table{width:100%;border-collapse:collapse;font-size:.96rem}
+.sched th{
+  text-align:start;font-family:var(--display);font-size:.74rem;letter-spacing:.12em;
+  color:var(--ink-faint);font-weight:700;padding:12px 16px;border-bottom:1px solid var(--line);
+  background:var(--surface-2);position:sticky;top:0;
+}
+.sched td{padding:11px 16px;border-bottom:1px solid var(--line-soft);white-space:nowrap}
+.sched tr:last-child td{border-bottom:none}
+.sched tbody tr:first-child{background:var(--gold-soft)}
+.sched tbody tr:first-child .dt{font-weight:700;color:var(--gold-deep)}
+.sched tbody tr:hover{background:var(--surface-2)}
+.sched .dt{color:var(--ink-soft)}
+.sched .pr a{font-weight:700;color:var(--ink);text-decoration:none}
+.sched .pr a:hover{color:var(--blue);text-decoration:underline}
+.sched .bk{color:var(--ink-faint);font-size:.88rem}
+@media (max-width:520px){ .sched .bk{display:none} .sched td,.sched th{padding-inline:11px} }
+
+/* ---- טקסט פתיחה בעמודי השער ---- */
+.hub-text{max-width:var(--maxw);margin:clamp(28px,4vw,44px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.hub-text h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.2rem,3.2vw,1.55rem);margin-bottom:12px}
+.hub-text p{color:var(--ink-soft);font-size:1rem;line-height:1.8;max-width:70ch}
+.hub-text p+p{margin-top:12px}
+.hub-text strong{color:var(--ink);font-weight:700}
+
+/* ---- שאלות נפוצות ---- */
+.faq{max-width:var(--maxw);margin:clamp(28px,4vw,42px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.faq h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.2rem,3.2vw,1.55rem);margin-bottom:14px}
+.faq .qa{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:15px 18px 16px;box-shadow:var(--shadow-xs);margin-bottom:10px}
+.faq .qa h3{font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink);margin-bottom:6px}
+.faq .qa p{color:var(--ink-soft);font-size:.96rem;line-height:1.72}
+
 /* ---- ליטוש כללי: טיפוגרפיה, מגע, מיקוד ---- */
 h1,h2,h3,.a-head h1{text-wrap:balance}
 p,li{text-wrap:pretty}
@@ -710,7 +751,7 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
 <meta name="twitter:title" content="פרשת וירא: מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך">
 <meta name="twitter:description" content="אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו.">
 <meta name="twitter:image" content="https://binathalev.co/logo.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://binathalev.co/#org","name":"בינת הלב","url":"https://binathalev.co/","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","logo":{"@type":"ImageObject","url":"https://binathalev.co/logo.png"}},{"@type":"WebSite","@id":"https://binathalev.co/#website","url":"https://binathalev.co/","name":"בינת הלב","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","publisher":{"@id":"https://binathalev.co/#org"}},{"url":"https://binathalev.co/parashat-hashavua/bereshit/vayera.html","name":"פרשת וירא: מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","description":"אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו.","inLanguage":"he-IL","isPartOf":{"@id":"https://binathalev.co/#website"},"publisher":{"@id":"https://binathalev.co/#org"},"@type":"Article","@id":"https://binathalev.co/parashat-hashavua/bereshit/vayera.html#article","headline":"פרשת וירא: מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","alternativeHeadline":"פרשת וירא","articleSection":"פרשת השבוע","author":{"@id":"https://binathalev.co/#org"},"image":"https://binathalev.co/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://binathalev.co/parashat-hashavua/bereshit/vayera.html"},"isAccessibleForFree":true,"datePublished":"2026-07-24","dateModified":"2026-07-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"בית","item":"https://binathalev.co/"},{"@type":"ListItem","position":2,"name":"פרשת השבוע","item":"https://binathalev.co/parashat-hashavua/"},{"@type":"ListItem","position":3,"name":"ספר בראשית","item":"https://binathalev.co/parashat-hashavua/#bereshit"},{"@type":"ListItem","position":4,"name":"פרשת וירא"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://binathalev.co/#org","name":"בינת הלב","url":"https://binathalev.co/","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","logo":{"@type":"ImageObject","url":"https://binathalev.co/logo.png"}},{"@type":"WebSite","@id":"https://binathalev.co/#website","url":"https://binathalev.co/","name":"בינת הלב","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","publisher":{"@id":"https://binathalev.co/#org"}},{"url":"https://binathalev.co/parashat-hashavua/bereshit/vayera.html","name":"פרשת וירא: מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","description":"אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו.","inLanguage":"he-IL","isPartOf":{"@id":"https://binathalev.co/#website"},"publisher":{"@id":"https://binathalev.co/#org"},"@type":"Article","@id":"https://binathalev.co/parashat-hashavua/bereshit/vayera.html#article","headline":"פרשת וירא: מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך","alternativeHeadline":"פרשת וירא","articleSection":"פרשת השבוע","author":{"@id":"https://binathalev.co/#org"},"image":"https://binathalev.co/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://binathalev.co/parashat-hashavua/bereshit/vayera.html"},"isAccessibleForFree":true,"datePublished":"2026-07-24","dateModified":"2026-07-26","about":{"@type":"Thing","name":"פרשת וירא","description":"פרשה 4 מתוך 54 · ספר בראשית · בראשית י״ח, א׳ – כ״ב, כ״ד"},"keywords":"פרשת וירא, דבר תורה לפרשת וירא, פרשת השבוע, ספר בראשית"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"בית","item":"https://binathalev.co/"},{"@type":"ListItem","position":2,"name":"פרשת השבוע","item":"https://binathalev.co/parashat-hashavua/"},{"@type":"ListItem","position":3,"name":"ספר בראשית","item":"https://binathalev.co/parashat-hashavua/#bereshit"},{"@type":"ListItem","position":4,"name":"פרשת וירא"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"מתי קוראים את פרשת וירא?","acceptedAnswer":{"@type":"Answer","text":"פרשת וירא נקראת בשבת 31 באוקטובר 2026, לפי מנהג ארץ ישראל. הפרשה היא ה־4 מתוך 54 פרשות התורה, והיא בספר בראשית (בראשית י״ח, א׳ – כ״ב, כ״ד)."}},{"@type":"Question","name":"על מה פרשת וירא?","acceptedAnswer":{"@type":"Answer","text":"אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."}},{"@type":"Question","name":"מהו דבר תורה קצר לפרשת וירא?","acceptedAnswer":{"@type":"Answer","text":"מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך. אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו."}},{"@type":"Question","name":"מה אפשר לקחת מפרשת וירא למעשה?","acceptedAnswer":{"@type":"Answer","text":"השבוע יהיה רגע אחד שבו מישהו ידבר לא יפה על אדם שאינו נוכח. תחליטו כבר עכשיו מה המשפט שלכם — אחד, קצר, בלי הטפה: ״הוא בסדר, אני עבדתי איתו״. ״בואו נעזוב.״ תכינו אותו מראש, כי בזמן אמת אין זמן לנסח. ואז שימו לב איך אתם הולכים הביתה באותו…"}}]}]}</script>
 </head>
 <body>
 <div class="bsd-bar">בס״ד</div>
@@ -880,6 +921,8 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
   </nav>
 
   
+<section class="faq"><h2>שאלות נפוצות על פרשת וירא</h2><div class="qa"><h3>מתי קוראים את פרשת וירא?</h3><p>פרשת וירא נקראת בשבת 31 באוקטובר 2026, לפי מנהג ארץ ישראל. הפרשה היא ה־4 מתוך 54 פרשות התורה, והיא בספר בראשית (בראשית י״ח, א׳ – כ״ב, כ״ד).</p></div><div class="qa"><h3>על מה פרשת וירא?</h3><p>אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו.</p></div><div class="qa"><h3>מהו דבר תורה קצר לפרשת וירא?</h3><p>מתי אתה נעמד בשביל מישהו שלא היה עושה את זה בשבילך. אברהם התווכח עם אלוהים על גורלה של העיר המושחתת בהיסטוריה — עיר שלא הייתה מרימה למענו אצבע. מי שמעז לפתוח את הפה ברגע הלא נוח מגלה שהוא חי אחרת עם עצמו.</p></div><div class="qa"><h3>מה אפשר לקחת מפרשת וירא למעשה?</h3><p>השבוע יהיה רגע אחד שבו מישהו ידבר לא יפה על אדם שאינו נוכח. תחליטו כבר עכשיו מה המשפט שלכם — אחד, קצר, בלי הטפה: ״הוא בסדר, אני עבדתי איתו״. ״בואו נעזוב.״ תכינו אותו מראש, כי בזמן אמת אין זמן לנסח. ואז שימו לב איך אתם הולכים הביתה באותו…</p></div></section>
+
 <section class="more"><h2 class="mh">להמשיך מכאן</h2><div class="grid"><a class="card" href="/agadot-hatikva/a18.html" style="--mk:#f2a900"><span class="kk">מגלות לגאולה</span><h3 class="tt">הפרושים ורבי יהושע</h3><span class="dd">איך חיים אחרי החורבן: לא לשכוח, אבל גם לא לשקוע.</span></a><a class="card" href="/eye-level/beitcha.html" style="--mk:#7a5bb8"><span class="kk">בינך לבין החיים</span><h3 class="tt">מה שהבית שלך משדר החוצה</h3><span class="dd">לכל בית יש אווירה — משהו שאדם שנכנס מרגיש בשנייה הראשונה: רצוי או מטריד, חם או סגור. משנה אחת הופכת את…</span></a><a class="card" href="/parashat-hashavua/" style="--mk:#2e8b6f"><span class="kk">כל המדור</span><h3 class="tt">פרשת השבוע</h3><span class="dd">חזרה לשער המדור — כל העמודים במקום אחד.</span></a></div></section>
 <footer class="foot">
     פרשה 4 מתוך 54 · בראשית י״ח, א׳ – כ״ב, כ״ד

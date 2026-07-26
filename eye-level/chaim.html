@@ -675,6 +675,47 @@ h2.section-label{
 .more .card .dd{font-size:.88rem;line-height:1.65;color:var(--ink-soft)}
 @media (max-width:760px){ .more .grid{grid-template-columns:1fr} }
 
+/* ---- לוח הפרשות: טבלת תאריך↔פרשה ---- */
+.sched{max-width:var(--maxw);margin:clamp(30px,4vw,46px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.sched h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.25rem,3.4vw,1.7rem);line-height:1.25;margin-bottom:8px}
+.sched .sched-lead{color:var(--ink-soft);font-size:.97rem;line-height:1.7;max-width:62ch;margin-bottom:16px}
+.sched-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);box-shadow:var(--shadow-xs)}
+.sched table{width:100%;border-collapse:collapse;font-size:.96rem}
+.sched th{
+  text-align:start;font-family:var(--display);font-size:.74rem;letter-spacing:.12em;
+  color:var(--ink-faint);font-weight:700;padding:12px 16px;border-bottom:1px solid var(--line);
+  background:var(--surface-2);position:sticky;top:0;
+}
+.sched td{padding:11px 16px;border-bottom:1px solid var(--line-soft);white-space:nowrap}
+.sched tr:last-child td{border-bottom:none}
+.sched tbody tr:first-child{background:var(--gold-soft)}
+.sched tbody tr:first-child .dt{font-weight:700;color:var(--gold-deep)}
+.sched tbody tr:hover{background:var(--surface-2)}
+.sched .dt{color:var(--ink-soft)}
+.sched .pr a{font-weight:700;color:var(--ink);text-decoration:none}
+.sched .pr a:hover{color:var(--blue);text-decoration:underline}
+.sched .bk{color:var(--ink-faint);font-size:.88rem}
+@media (max-width:520px){ .sched .bk{display:none} .sched td,.sched th{padding-inline:11px} }
+
+/* ---- טקסט פתיחה בעמודי השער ---- */
+.hub-text{max-width:var(--maxw);margin:clamp(28px,4vw,44px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.hub-text h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.2rem,3.2vw,1.55rem);margin-bottom:12px}
+.hub-text p{color:var(--ink-soft);font-size:1rem;line-height:1.8;max-width:70ch}
+.hub-text p+p{margin-top:12px}
+.hub-text strong{color:var(--ink);font-weight:700}
+
+/* ---- שאלות נפוצות ---- */
+.faq{max-width:var(--maxw);margin:clamp(28px,4vw,42px) auto 0;padding:0 clamp(16px,4vw,32px)}
+.faq h2{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.2rem,3.2vw,1.55rem);margin-bottom:14px}
+.faq .qa{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:15px 18px 16px;box-shadow:var(--shadow-xs);margin-bottom:10px}
+.faq .qa h3{font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink);margin-bottom:6px}
+.faq .qa p{color:var(--ink-soft);font-size:.96rem;line-height:1.72}
+
 /* ---- ליטוש כללי: טיפוגרפיה, מגע, מיקוד ---- */
 h1,h2,h3,.a-head h1{text-wrap:balance}
 p,li{text-wrap:pretty}
@@ -891,6 +932,8 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
 </div>
 </main>
 
+
+<section class="hub-text"><h2>על העולם הזה</h2><p>העולם השלישי עוסק בשאלות הגדולות: על מה אתה עמל, איך אתה לוקח אחריות כשקשה, מה אתה עושה עם מה שאינו בשליטתך, ומה יישאר אחריך. <strong>אלה השאלות שאין להן תשובה מהירה, ובכל זאת אנחנו מכריעים בהן כל יום.</strong></p><p>כל עמוד כאן מתחיל במשפט מן המקורות ומגיע עד ההחלטה הקטנה שאפשר לקבל השבוע.</p></section>
 <footer class="hfoot">
   בינך לבין החיים · בינת הלב
   <span class="disc" style="display:block;max-width:640px;margin:12px auto 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 18px;font-size:.82rem">
