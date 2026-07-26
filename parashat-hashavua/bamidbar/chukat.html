@@ -175,7 +175,7 @@ a{color:var(--blue)}
 
 .body{max-width:var(--maxw);margin-inline:auto;padding:8px clamp(16px,4vw,32px) 0}
 
-.section-label{
+h2.section-label{
   display:flex;align-items:center;gap:9px;
   font-size:.74rem;letter-spacing:.16em;font-weight:700;
   color:var(--ink-faint);margin:30px 0 14px;
@@ -254,7 +254,7 @@ a{color:var(--blue)}
 }
 .segment .ico svg{width:21px;height:21px}
 .segment .sbody{flex:1;min-width:0}
-.segment .sbody h4{
+.segment .sbody h3{
   font-size:.74rem;letter-spacing:.14em;font-weight:700;
   color:var(--seg,var(--blue));margin-bottom:6px;
 }
@@ -307,7 +307,7 @@ a{color:var(--blue)}
   box-shadow:0 6px 16px rgba(242,169,0,.4);
 }
 .future .fhead .sun svg{width:23px;height:23px;color:#fff}
-.future .fhead h4{
+.future .fhead h2{
   font-family:var(--display);font-weight:700;
   font-size:clamp(1.2rem,3.2vw,1.5rem);color:var(--gold-deep);
 }
@@ -343,7 +343,7 @@ a{color:var(--blue)}
   max-width:var(--maxw);margin:34px auto 0;
   padding:0 clamp(16px,4vw,32px);
 }
-.knowledge-box .kb-head{
+.knowledge-box h2.kb-head{
   display:flex;align-items:center;gap:9px;
   font-size:.74rem;letter-spacing:.16em;font-weight:700;
   color:var(--ink-faint);margin-bottom:14px;
@@ -370,7 +370,7 @@ a{color:var(--blue)}
   box-shadow:0 12px 24px color-mix(in srgb,var(--c) 22%,transparent);
   border-color:var(--c);
 }
-.k-card .kt{
+.k-card h3.kt{
   display:flex;align-items:center;gap:8px;
   font-family:var(--display);font-weight:700;font-size:1.04rem;
   color:var(--ink);margin-bottom:7px;
@@ -506,7 +506,7 @@ a{color:var(--blue)}
 @media (max-width:860px){
   .search{width:min(40vw,180px)}
 }
-@media (max-width:620px){
+@media (max-width:880px){
   .nav .links{display:none}
 }
 
@@ -520,7 +520,7 @@ a{color:var(--blue)}
   max-width:var(--maxw);margin-inline:auto;
   display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(14px,2vw,28px);
 }
-.rich-foot h4{
+.rich-foot h2{
   font-family:var(--display);font-size:.78rem;letter-spacing:.14em;font-weight:700;
   color:var(--gold-2);margin-bottom:12px;
 }
@@ -536,12 +536,185 @@ a{color:var(--blue)}
 }
 @media (max-width:760px){ .rich-foot .cols{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:430px){ .rich-foot .cols{grid-template-columns:1fr} }
+
+/* ---- כפתורי אייקון בסרגל (נייד בלבד) ---- */
+.nav .icon-btn{
+  display:none;flex:none;width:42px;height:42px;border-radius:12px;
+  align-items:center;justify-content:center;
+  background:var(--surface-2);border:1px solid var(--line);color:var(--ink);
+  cursor:pointer;padding:0;transition:background .15s,border-color .15s;
+}
+.nav .icon-btn:hover{background:var(--gold-soft);border-color:var(--gold)}
+.nav .icon-btn svg{width:20px;height:20px}
+.nav .burger{flex-direction:column}
+.nav .burger .bl{display:block;width:19px;height:2px;border-radius:2px;background:currentColor;
+  margin:2.5px auto;transition:transform .22s,opacity .18s}
+.nav.menu-open .burger .bl:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.nav.menu-open .burger .bl:nth-child(2){opacity:0}
+.nav.menu-open .burger .bl:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+/* צל עדין כשגוללים — הסרגל ״מתנתק״ מהתוכן */
+.nav{transition:box-shadow .2s,background .2s}
+.nav.scrolled{box-shadow:0 6px 20px rgba(20,29,46,.09)}
+
+/* ---- מגירת ניווט לנייד ---- */
+.drawer-back{
+  position:fixed;inset:0;z-index:80;background:rgba(15,26,51,.5);
+  backdrop-filter:blur(2px);opacity:0;transition:opacity .22s;
+}
+.drawer-back.show{opacity:1}
+.drawer{
+  position:fixed;inset-block:0;inset-inline-end:0;z-index:81;
+  width:min(86vw,340px);background:var(--surface);
+  border-inline-start:1px solid var(--line);
+  box-shadow:-18px 0 40px rgba(20,29,46,.18);
+  transform:translateX(-100%);transition:transform .26s cubic-bezier(.2,.8,.3,1);
+  display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;
+}
+.drawer.show{transform:translateX(0)}
+.drawer .d-top{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  background:linear-gradient(160deg,var(--night),var(--night-2));
+}
+.drawer .d-top .bd{display:flex;align-items:center;gap:10px;color:#fff;
+  font-family:var(--display);font-weight:800;font-size:1.05rem;text-decoration:none}
+.drawer .d-top .bd img{width:38px;height:34px;object-fit:contain}
+.drawer .d-close{
+  width:38px;height:38px;border-radius:11px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:grid;place-items:center;
+}
+.drawer .d-close svg{width:18px;height:18px}
+.drawer .d-body{padding:14px 16px 30px}
+.drawer .d-cap{
+  font-family:var(--display);font-size:.72rem;letter-spacing:.15em;font-weight:700;
+  color:var(--ink-faint);margin:18px 6px 7px;
+}
+.drawer .d-cap:first-child{margin-top:4px}
+.drawer a.d-link{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:12px 14px;border-radius:12px;text-decoration:none;
+  color:var(--ink);font-weight:600;font-size:1rem;min-height:46px;
+  border:1px solid transparent;
+}
+.drawer a.d-link:hover,.drawer a.d-link:focus-visible{background:var(--surface-2);border-color:var(--line)}
+.drawer a.d-link .n{font-size:.78rem;color:var(--ink-faint);font-weight:500}
+.drawer a.d-link.on{background:var(--blue-soft);color:var(--blue)}
+.drawer .d-books{display:flex;flex-wrap:wrap;gap:7px;padding:4px 8px 2px}
+.drawer .d-books a{
+  text-decoration:none;font-size:.85rem;font-weight:600;color:var(--ink-soft);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:7px 13px;
+}
+.drawer .d-books a:hover{border-color:var(--gold);background:var(--gold-soft);color:var(--ink)}
+
+@media (max-width:880px){
+  .nav{gap:8px;padding-inline:14px}
+  .nav .icon-btn{display:inline-flex}
+  .nav .sp{display:none}
+  .nav .brand{font-size:.98rem}
+  /* החיפוש נפתח כשורה מתחת לסרגל, ומשתמש באותו שדה עצמו */
+  .nav .search{
+    position:absolute;inset-inline:0;inset-block-start:100%;
+    width:auto;display:none;
+    padding:10px 14px 12px;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);box-shadow:0 10px 22px rgba(20,29,46,.09);
+  }
+  .nav.search-open .search{display:block}
+  .nav .results{inset-inline:14px}
+}
+@media (min-width:881px){
+  .drawer,.drawer-back{display:none!important}
+}
+
+/* ---- פירורי לחם ---- */
+.crumbs{
+  max-width:var(--maxw);margin-inline:auto;
+  padding:11px clamp(16px,4vw,32px) 0;
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  font-size:.82rem;color:var(--ink-faint);
+}
+.crumbs a{color:var(--ink-soft);text-decoration:none;font-weight:600;
+  padding:3px 6px;border-radius:7px;transition:color .15s,background .15s}
+.crumbs a:hover{color:var(--blue);background:var(--blue-soft)}
+.crumbs .sep{opacity:.5}
+.crumbs .cur{color:var(--ink-faint);font-weight:600;padding:3px 2px}
+@media (max-width:520px){
+  .crumbs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;white-space:nowrap}
+  .crumbs::-webkit-scrollbar{display:none}
+}
+
+/* ---- פס התקדמות קריאה ---- */
+.progress{
+  position:fixed;inset-block-start:0;inset-inline:0;height:3px;z-index:90;
+  background:linear-gradient(90deg,var(--gold),var(--gold-2));
+  transform:scaleX(0);transform-origin:right center;
+  transition:transform .08s linear;pointer-events:none;
+}
+
+/* ---- ״להמשיך מכאן״ — קישור צולב בין המדורים ---- */
+.more{
+  max-width:var(--maxw);margin:clamp(30px,4vw,44px) auto 0;
+  padding:0 clamp(16px,4vw,32px);
+}
+.more h2.mh{
+  display:flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.16em;font-weight:700;color:var(--ink-faint);margin-bottom:14px;
+}
+.more h2.mh::before{content:"";width:22px;height:3px;border-radius:99px;background:var(--gold)}
+.more .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,15px)}
+.more .card{
+  display:flex;flex-direction:column;gap:6px;text-decoration:none;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:16px 18px 17px;box-shadow:var(--shadow-xs);
+  transition:transform .18s,box-shadow .18s,border-color .18s;
+  border-inline-start:3px solid var(--mk,var(--blue));
+}
+.more .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm);border-color:var(--mk,var(--blue))}
+.more .card .kk{font-size:.7rem;letter-spacing:.12em;font-weight:700;color:var(--mk,var(--blue))}
+.more .card h3.tt{font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink);line-height:1.45}
+.more .card .dd{font-size:.88rem;line-height:1.65;color:var(--ink-soft)}
+@media (max-width:760px){ .more .grid{grid-template-columns:1fr} }
+
+/* ---- ליטוש כללי: טיפוגרפיה, מגע, מיקוד ---- */
+h1,h2,h3,.a-head h1{text-wrap:balance}
+p,li{text-wrap:pretty}
+a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:8px}
+.nav .links a{min-height:38px;display:inline-flex;align-items:center}
+.pager a{flex:1 1 240px}
+@media (max-width:620px){
+  body{font-size:1.02rem;line-height:1.78}
+  .pager{gap:10px}
+  .pager a{min-width:100%;padding:15px 18px}
+  .to-top{inset-block-end:16px;inset-inline-start:16px;width:44px;height:44px}
+}
+@media print{
+  .nav,.bsd-bar,.drawer,.drawer-back,.to-top,.progress,.search,.more,.pager{display:none!important}
+  body{background:#fff}
+  .article{max-width:none}
+}
 </style>
 <link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png">
+<!-- binathalev:meta -->
+<link rel="canonical" href="https://binathalev.co/parashat-hashavua/bamidbar/chukat.html">
+<meta name="theme-color" content="#182545">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:site_name" content="בינת הלב">
+<meta property="og:locale" content="he_IL">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://binathalev.co/parashat-hashavua/bamidbar/chukat.html">
+<meta property="og:title" content="פרשת חוקת: מה קורה כשאדם טוב מאבד את זה לרגע אחד">
+<meta property="og:description" content="משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש.">
+<meta property="og:image" content="https://binathalev.co/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="פרשת חוקת: מה קורה כשאדם טוב מאבד את זה לרגע אחד">
+<meta name="twitter:description" content="משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש.">
+<meta name="twitter:image" content="https://binathalev.co/logo.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://binathalev.co/#org","name":"בינת הלב","url":"https://binathalev.co/","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","logo":{"@type":"ImageObject","url":"https://binathalev.co/logo.png"}},{"@type":"WebSite","@id":"https://binathalev.co/#website","url":"https://binathalev.co/","name":"בינת הלב","description":"הקונפליקט האנושי שמאחורי הטקסט — פרשת השבוע, אגדות חז״ל וחוכמה יהודית בשפה של היום, ובכל עמוד דבר אחד מעשי לקחת.","inLanguage":"he-IL","publisher":{"@id":"https://binathalev.co/#org"}},{"url":"https://binathalev.co/parashat-hashavua/bamidbar/chukat.html","name":"פרשת חוקת: מה קורה כשאדם טוב מאבד את זה לרגע אחד","description":"משה הכה בסלע במקום לדבר אליו, ובגלל זה לא נכנס לארץ. הסיפור הקשה הזה מלמד בעיקר על התפקיד שיש לעייפות, לאבל ולשחיקה — ועל למה כדאי להכיר בהם מראש.","inLanguage":"he-IL","isPartOf":{"@id":"https://binathalev.co/#website"},"publisher":{"@id":"https://binathalev.co/#org"},"@type":"Article","@id":"https://binathalev.co/parashat-hashavua/bamidbar/chukat.html#article","headline":"פרשת חוקת: מה קורה כשאדם טוב מאבד את זה לרגע אחד","alternativeHeadline":"פרשת חוקת","articleSection":"פרשת השבוע","author":{"@id":"https://binathalev.co/#org"},"image":"https://binathalev.co/logo.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://binathalev.co/parashat-hashavua/bamidbar/chukat.html"},"isAccessibleForFree":true,"datePublished":"2026-07-24","dateModified":"2026-07-26"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"בית","item":"https://binathalev.co/"},{"@type":"ListItem","position":2,"name":"פרשת השבוע","item":"https://binathalev.co/parashat-hashavua/"},{"@type":"ListItem","position":3,"name":"ספר במדבר","item":"https://binathalev.co/parashat-hashavua/#bamidbar"},{"@type":"ListItem","position":4,"name":"פרשת חוקת"}]}]}</script>
 </head>
 <body>
 <div class="bsd-bar">בס״ד</div>
-<header class="nav">
+<header class="nav" id="siteNav">
   <a class="brand" href="/"><span class="logo"><img src="/logo.png" alt="" class="mk-img"></span>בינת הלב</a>
   <nav class="links">
     <a href="/parashat-hashavua/" class="on">פרשת השבוע</a>
@@ -558,7 +731,34 @@ a{color:var(--blue)}
       autocomplete="off" aria-label="חיפוש"></label>
     <div class="results" id="res"></div>
   </div>
+  <button class="icon-btn s-toggle" id="sBtn" aria-label="חיפוש" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+  <button class="icon-btn burger" id="burger" aria-label="תפריט" aria-expanded="false"
+    aria-controls="drawer"><span class="bl"></span><span class="bl"></span><span class="bl"></span></button>
 </header>
+<div class="drawer-back" id="dback" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="תפריט האתר">
+  <div class="d-top">
+    <a class="bd" href="/"><img src="/logo.png" alt="">בינת הלב</a>
+    <button class="d-close" id="dclose" aria-label="סגירת התפריט"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="d-body">
+    <div class="d-cap">פרשת השבוע</div>
+      <a class="d-link on" href="/parashat-hashavua/">כל הפרשות<span class="n">54 פרשות</span></a>
+      <div class="d-books"><a href="/parashat-hashavua/#bereshit">בראשית</a><a href="/parashat-hashavua/#shemot">שמות</a><a href="/parashat-hashavua/#vayikra">ויקרא</a><a href="/parashat-hashavua/#bamidbar">במדבר</a><a href="/parashat-hashavua/#devarim">דברים</a></div>
+    <div class="d-cap">בגובה העיניים</div>
+      <a class="d-link" href="/eye-level/atzmi.html">בינך לבין עצמך<span class="n">23 עמודים</span></a>
+      <a class="d-link" href="/eye-level/zulat.html">בינך לבין הזולת<span class="n">20 עמודים</span></a>
+      <a class="d-link" href="/eye-level/chaim.html">בינך לבין החיים<span class="n">13 עמודים</span></a>
+    <div class="d-cap">מגלות לגאולה</div>
+      <a class="d-link" href="/agadot-hatikva/">כל האגדות<span class="n">18 אגדות</span></a>
+    <div class="d-cap">האתר</div>
+      <a class="d-link" href="/">דף הבית</a>
+      <a class="d-link" href="/about.html">על האתר</a>
+      <a class="d-link" href="/#contact">צור קשר</a>
+  </div>
+</aside>
+<nav class="crumbs" aria-label="מיקום באתר"><a href="/">בית</a><span class="sep" aria-hidden="true">›</span><a href="/parashat-hashavua/">פרשת השבוע</a><span class="sep" aria-hidden="true">›</span><a href="/parashat-hashavua/#bamidbar">ספר במדבר</a><span class="sep" aria-hidden="true">›</span><span class="cur" aria-current="page">פרשת חוקת</span></nav>
+
 
 <article class="article" style="--c:#4256c8">
   <header class="a-head">
@@ -574,7 +774,7 @@ a{color:var(--blue)}
 
   <div class="body">
 
-    <div class="section-label">מה קורה בפרשה</div>
+    <h2 class="section-label">מה קורה בפרשה</h2>
     <div class="story">
       <p>הפרשה נפתחת בפרה אדומה — החוק שנחשב למובהק שבחוקים שאין להם טעם: אפרה מטהר את הטמאים, <em>ומטמא את מי שעוסק בהכנתו</em>. ואז קופצת התורה ארבעים שנה קדימה, אל השנה האחרונה במדבר.</p>
       <p>מרים מתה, <strong>ומיד אחר כך נאמר ״ולא היה מים לעדה״</strong> — חז״ל קשרו: הבאר הייתה בזכותה. העם מתקהל ומתלונן, ומשה ואהרן נופלים על פניהם. ההוראה שניתנת ברורה: קחו את המטה, <em>ודיברתם אל הסלע</em>.</p>
@@ -593,11 +793,11 @@ a{color:var(--blue)}
       <cite>במדבר כ׳, ח׳ · ההוראה הייתה לדבר. הוא הכה</cite>
     </div>
 
-    <div class="section-label">המבחן</div>
+    <h2 class="section-label">המבחן</h2>
     <section class="segment trial">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M6 7 3 13h6z"/><path d="M18 7l-3 6h6z"/><path d="M8 21h8"/><path d="M12 3 8 5M12 3l4 2"/></svg></span>
       <div class="sbody">
-        <h4>משה · השבוע שבו קבר את אחותו</h4>
+        <h3>משה · השבוע שבו קבר את אחותו</h3>
         <p class="stitle">לא מנתחים את הרגע הזה בלי לשים לב מה קרה בפסוק שלפניו.</p>
         <p>הסדר בכתוב חשוב מאוד. <em>״ותמת שם מרים, ותיקבר שם. ולא היה מים לעדה, וייקהלו על משה ועל אהרן״</em> — הכול באותה נשימה. אחותו הגדולה, זו ששמרה עליו על היאור, מתה. ולפני שהספיק לשבת שבעה, כל העם עומד עליו וצועק על מים.</p>
         <p>וזה לא תירוץ, כי התורה בהחלט מציגה את מה שקרה ככישלון. אבל היא כן מספרת לנו מה היו התנאים. <strong>אדם שקבר את אחותו ולא קיבל יום אחד להתאבל, איבד את זה.</strong></p>
@@ -611,11 +811,11 @@ a{color:var(--blue)}
       </div>
     </section>
 
-    <div class="section-label">מן הגמרא אל החיים</div>
+    <h2 class="section-label">מן הגמרא אל החיים</h2>
     <section class="segment talmud">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M3 12h2M19 12h2"/></svg></span>
       <div class="sbody">
-        <h4>מועד קטן כ״ז ע״ב · פסחים נ״ד ע״א</h4>
+        <h3>מועד קטן כ״ז ע״ב · פסחים נ״ד ע״א</h3>
         <p class="stitle">אל תרצה את חברך בשעת כעסו, ואל תנחמנו בשעה שמתו מוטל לפניו.</p>
         <p>המשנה באבות אוספת רשימה של רגעים שבהם מוטב לא לפעול. <em>אל תרצה את חברך בשעת כעסו</em>, ואל תנחמנו בשעה שמתו מוטל לפניו. שני המקרים חולקים הנחה אחת: <strong>יש שעות שבהן אדם אינו זמין, וגם התגובה הנכונה תיכשל בהן.</strong></p>
         <p>והגמרא מרחיבה את זה גם לדיני אבלות. שלושה ימים לבכי, שבעה להספד, שלושים לתספורת. <em>ההלכה לא מבקשת מהאדם להתגבר — היא בונה לו לוח זמנים.</em></p>
@@ -624,11 +824,11 @@ a{color:var(--blue)}
       </div>
     </section>
 
-    <div class="section-label">סיפור מן השטח</div>
+    <h2 class="section-label">סיפור מן השטח</h2>
     <section class="segment tzadik">
       <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-3.5 10.9V17h7v-3.1A6 6 0 0 0 12 3z"/><path d="M9 20h6M10 22.5h4"/></svg></span>
       <div class="sbody">
-        <h4>רבי אהרן מקרלין · על העייפות</h4>
+        <h3>רבי אהרן מקרלין · על העייפות</h3>
         <p class="stitle">הוא אמר שהעצבות אינה עבירה — אבל מה שהיא עושה, שום עבירה לא עושה.</p>
         <p>המשפט הזה, שמיוחס לרבי אהרן מקרלין, נעשה מפורסם: <em>״העצבות אינה עבירה, אבל מה שהעצבות מביאה — אין העבירה החמורה ביותר מביאה.״</em></p>
         <p>והוא לא נאמר כעצה להיות שמח. הוא נאמר כאבחנה מדויקת על מה שקורה לאדם שנשחק: הוא לא נעשה רשע, הוא נעשה <strong>חסר סבלנות</strong>. ומתוך זה נעשים הדברים שהוא מתחרט עליהם.</p>
@@ -638,7 +838,7 @@ a{color:var(--blue)}
     </section>
 
     <section class="future">
-      <div class="fhead"><span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M12 9a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5z"/><path d="M12 3v3"/><path d="M5.5 8.5 7 10M18.5 8.5 17 10M2 14h1M21 14h1"/></svg></span><h4>נקודת אור</h4></div>
+      <div class="fhead"><span class="sun"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M12 9a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5z"/><path d="M12 3v3"/><path d="M5.5 8.5 7 10M18.5 8.5 17 10M2 14h1M21 14h1"/></svg></span><h2>נקודת אור</h2></div>
       <p>בהמשך הפרשה, כשהעם ננשך בנחשים, ההוראה שניתנת מוזרה: לעשות נחש נחושת ולהניח על נס, <em>וכל מי שיביט בו — יחיה</em>. המשנה שואלת: וכי נחש ממית או מחיה? ועונה: כשהיו מסתכלים כלפי מעלה, היו נרפאים.</p>
         <p><strong>ויש בזה הצעה מעשית.</strong> מה שריפא אותם לא היה שכחת הנשיכה — <em>אלא הרמת הראש</em>. מי שנמצא בתקופה קשה נוטה להסתכל רק על מה שכואב, וזה טבעי לגמרי. והדבר היחיד שמשנה משהו הוא לא להכחיש את הנשיכה, אלא להרים את המבט ולראות שיש עוד עולם. וזה, בדרך כלל, מספיק כדי להחזיק עוד יום.</p>
       <div class="todo">
@@ -651,23 +851,23 @@ a{color:var(--blue)}
   </div>
 
   <div class="knowledge-box">
-    <div class="kb-head">קופסת ידע</div>
+    <h2 class="kb-head">קופסת ידע</h2>
     <div class="k-grid">
 
       <div class="k-card">
-        <div class="kt"><span class="kd"></span>פרה אדומה</div>
+        <h3 class="kt"><span class="kd"></span>פרה אדומה</h3>
         <p>אפר הפרה מטהר את מי שנטמא במת — <strong>ומטמא את הכהן שעסק בהכנתו</strong>. הפרדוקס הזה עשה אותה לסמל החוק שאין לו הסבר.</p>
         <p>המדרש מספר ששלמה המלך אמר על כך: ״אמרתי אחכמה — והיא רחוקה ממני״.</p>
       </div>
 
       <div class="k-card">
-        <div class="kt"><span class="kd"></span>באר מרים</div>
+        <h3 class="kt"><span class="kd"></span>באר מרים</h3>
         <p>חז״ל מסרו שבזכות מרים היה מעיין מלווה את המחנה במדבר, ושכשמתה — פסק.</p>
         <p><strong>שלושה מנהיגים, שלוש מתנות:</strong> מן בזכות משה, ענני כבוד בזכות אהרן, ובאר בזכות מרים. היחידה שנתנה מים.</p>
       </div>
 
       <div class="k-card">
-        <div class="kt"><span class="kd"></span>מי מריבה</div>
+        <h3 class="kt"><span class="kd"></span>מי מריבה</h3>
         <p>הפרשנים חלוקים במה בדיוק חטא משה. רש״י: הכה במקום לדבר. הרמב״ם: הכעס והמילים ״שמעו נא המורים״.</p>
         <p><strong>הרמב״ן הציע כיוון אחר לגמרי</strong>. העובדה שאין הסכמה עד היום מלמדת כמה דק היה הגבול שנחצה שם.</p>
       </div>
@@ -680,7 +880,9 @@ a{color:var(--blue)}
     <a class="next" href="balak.html"><span class="lbl">הפרשה הבאה</span><span class="ttl">בלק</span></a>
   </nav>
 
-  <footer class="foot">
+  
+<section class="more"><h2 class="mh">להמשיך מכאן</h2><div class="grid"><a class="card" href="/agadot-hatikva/a13.html" style="--mk:#f2a900"><span class="kk">מגלות לגאולה</span><h3 class="tt">אישה ושבעת בניה</h3><span class="dd">שבעה בנים, שבעה פסוקים — ואם שמודדת עצמה מול העקדה.</span></a><a class="card" href="/eye-level/lashon.html" style="--mk:#7a5bb8"><span class="kk">בינך לבין הזולת</span><h3 class="tt">איך מילה אחת בונה או הורסת למישהו את היום</h3><span class="dd">אנחנו זורקים מילים בלי לחשוב — הערה, ביקורת, בדיחה על חשבון מישהו. משלי מזכיר שלמילה יש כוח שקשה להאמין…</span></a><a class="card" href="/parashat-hashavua/" style="--mk:#2e8b6f"><span class="kk">כל המדור</span><h3 class="tt">פרשת השבוע</h3><span class="dd">חזרה לשער המדור — כל העמודים במקום אחד.</span></a></div></section>
+<footer class="foot">
     פרשה 39 מתוך 54 · במדבר י״ט, א׳ – כ״ב, א׳
     <span class="disc">עזר לימודי בלבד. הסיפורים מסופרים בלשון חופשית — יש לעיין במקור.
       ״המבחן״, ״מן הגמרא אל החיים״ ו״נקודת אור״ הם דברי עיון, ואינם ציטוט מן המקורות;
@@ -841,6 +1043,106 @@ var IDX=[
     if(!e.target.closest(".search")) res.classList.remove("show"); });
   q.addEventListener("keydown",function(e){ if(e.key==="Escape") res.classList.remove("show"); });
 })();
+
+/* ---- ממשק: מגירת ניווט לנייד, חיפוש נפתח, פס קריאה, חזרה למעלה ---- */
+(function(){
+  var nav=document.getElementById("siteNav");
+  var dr=document.getElementById("drawer"), back=document.getElementById("dback");
+  var burger=document.getElementById("burger"), sBtn=document.getElementById("sBtn");
+
+  function setMenu(open){
+    if(!dr||!back) return;
+    if(open){ dr.hidden=false; back.hidden=false;
+      requestAnimationFrame(function(){ dr.classList.add("show"); back.classList.add("show"); });
+    } else {
+      dr.classList.remove("show"); back.classList.remove("show");
+      setTimeout(function(){ if(!dr.classList.contains("show")){ dr.hidden=true; back.hidden=true; } },260);
+    }
+    if(nav) nav.classList.toggle("menu-open",open);
+    if(burger) burger.setAttribute("aria-expanded",open?"true":"false");
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+  if(burger) burger.addEventListener("click",function(){ setMenu(!dr||dr.hidden); });
+  if(back) back.addEventListener("click",function(){ setMenu(false); });
+  var dc=document.getElementById("dclose");
+  if(dc) dc.addEventListener("click",function(){ setMenu(false); });
+  if(dr) dr.addEventListener("click",function(e){ if(e.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){ setMenu(false); if(nav) nav.classList.remove("search-open"); } });
+
+  if(sBtn) sBtn.addEventListener("click",function(){
+    if(!nav) return;
+    var open=!nav.classList.contains("search-open");
+    nav.classList.toggle("search-open",open);
+    sBtn.setAttribute("aria-expanded",open?"true":"false");
+    if(open){ var q=document.getElementById("q"); if(q) q.focus(); }
+  });
+
+  /* פס התקדמות קריאה — רק בעמודי תוכן */
+  var art=document.querySelector(".article");
+  var bar=null;
+  if(art){
+    bar=document.createElement("div"); bar.className="progress"; document.body.appendChild(bar);
+  }
+  /* כפתור חזרה למעלה — נוצר רק אם העמוד לא מביא אחד משלו */
+  var top=document.getElementById("toTop");
+  var owned=false;
+  if(!top){
+    top=document.createElement("button");
+    top.className="to-top"; top.id="toTop"; top.setAttribute("aria-label","חזרה למעלה");
+    top.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'+
+      ' stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    top.addEventListener("click",function(){ window.scrollTo({top:0,behavior:"smooth"}); });
+    document.body.appendChild(top); owned=true;
+  }
+  var tick=false;
+  function onScroll(){
+    var y=window.scrollY||0;
+    if(nav) nav.classList.toggle("scrolled",y>8);
+    if(bar&&art){
+      var h=art.scrollHeight-window.innerHeight;
+      bar.style.transform="scaleX("+(h>0?Math.min(1,Math.max(0,y/h)):0)+")";
+    }
+    if(owned) top.classList.toggle("show",y>600);
+    tick=false;
+  }
+  window.addEventListener("scroll",function(){
+    if(!tick){ tick=true; requestAnimationFrame(onScroll); } },{passive:true});
+  onScroll();
+})();
 </script>
+<footer class="rich-foot">
+  <div class="cols">
+    <div>
+      <h2>פרשת השבוע</h2>
+      <a href="/parashat-hashavua/">כל 54 הפרשות</a>
+      <a href="/parashat-hashavua/#bereshit">ספר בראשית</a><a href="/parashat-hashavua/#shemot">ספר שמות</a><a href="/parashat-hashavua/#vayikra">ספר ויקרא</a><a href="/parashat-hashavua/#bamidbar">ספר במדבר</a><a href="/parashat-hashavua/#devarim">ספר דברים</a>
+    </div>
+    <div>
+      <h2>מגלות לגאולה</h2>
+      <a href="/agadot-hatikva/">כל 18 האגדות</a>
+      <a href="/agadot-hatikva/a3.html">קמצא ובר קמצא</a>
+      <a href="/agadot-hatikva/a9.html">תן לי יבנה וחכמיה</a>
+    </div>
+    <div>
+      <h2>בגובה העיניים</h2>
+      <a href="/eye-level/atzmi.html">בינך לבין עצמך</a>
+      <a href="/eye-level/zulat.html">בינך לבין הזולת</a>
+      <a href="/eye-level/chaim.html">בינך לבין החיים</a>
+    </div>
+    <div>
+      <h2>האתר</h2>
+      <a href="/">דף הבית</a>
+      <a href="/about.html">על האתר</a>
+      <a href="/#contact">צור קשר</a>
+    </div>
+    <div>
+      <h2>הערה</h2>
+      <p>עזר לימודי בלבד. הסיפורים מסופרים בלשון חופשית — יש לעיין במקור.
+         פרקי העיון אינם ציטוט מן המקורות; הפסוקים ודברי חז״ל מובאים בשמם.</p>
+    </div>
+  </div>
+  <div class="end"><span>בינת הלב</span><span>binathalev.co</span></div>
+</footer>
 </body>
 </html>
