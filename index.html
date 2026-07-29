@@ -502,9 +502,29 @@ h2.section-label{
 .results .rs{display:block;font-size:.82rem;color:var(--ink-soft);margin-top:2px;line-height:1.5}
 .results .rk{display:block;font-size:.7rem;color:var(--ink-faint);letter-spacing:.08em;margin-top:4px}
 .results .none{padding:16px;text-align:center;color:var(--ink-faint);font-size:.9rem}
-@media (max-width:1040px){
+/* בין 880 ל-1440 הסרגל צפוף: שמונה קישורים ותיבת חיפוש. בלי הצמצומים האלה
+   הקישורים האחרונים נגללים אל מחוץ למסך ופשוט לא נמצאים. */
+@media (max-width:1440px){
+  .search{width:min(26vw,205px)}
+  /* ‎.links‎ הוא overflow-x:auto, ולכן קישור שאינו נכנס נחתך באמצע המילה
+     ומשאיר שבר כמו ״צ״. עדיף להסתירו — הוא קיים בתפריט הצד ובפוטר. */
+  .nav .links a.contact{display:none}
+}
+@media (max-width:1300px){
   .nav{gap:clamp(8px,1.6vw,16px)}
-  .nav .links a{font-size:.87rem;padding:6px 8px}
+  .nav .links{gap:clamp(2px,.7vw,10px)}
+  .nav .links a{font-size:.88rem;padding:6px 7px}
+  .search{width:min(24vw,175px)}
+}
+@media (max-width:1120px){
+  .nav .links a{font-size:.84rem;padding:5px 5px}
+  .search{width:min(22vw,148px)}
+}
+/* ממש לפני המעבר להמבורגר (880) — ״עלונים לשבת״ קודם ל״על האתר״ ול״צור קשר״,
+   ששניהם ממילא בתפריט הצד ובפוטר. */
+@media (max-width:1000px){
+  .nav .links a{font-size:.8rem;padding:5px 3px}
+  .search{width:min(18vw,104px)}
 }
 @media (max-width:860px){
   .search{width:min(40vw,180px)}
@@ -965,8 +985,9 @@ h2.band-head{display:flex;align-items:center;gap:9px;font-size:.74rem;letter-spa
     <a href="/eye-level/zulat.html">בינך לבין הזולת</a>
     <a href="/eye-level/chaim.html">בינך לבין החיים</a>
     <a href="/agadot-hatikva/">מגלות לגאולה</a>
+    <a href="/alon/">עלונים לשבת</a>
     <a href="/about.html">על האתר</a>
-    <a href="/#contact">צור קשר</a>
+    <a class="contact" href="/#contact">צור קשר</a>
   </nav>
   <span class="sp"></span>
   <div class="search">
@@ -994,6 +1015,8 @@ h2.band-head{display:flex;align-items:center;gap:9px;font-size:.74rem;letter-spa
       <a class="d-link" href="/eye-level/chaim.html">בינך לבין החיים<span class="n">18 עמודים</span></a>
     <div class="d-cap">מגלות לגאולה</div>
       <a class="d-link" href="/agadot-hatikva/">כל האגדות<span class="n">18 אגדות</span></a>
+    <div class="d-cap">עלונים לשבת</div>
+      <a class="d-link" href="/alon/">להורדה והדפסה<span class="n">54 עלונים</span></a>
     <div class="d-cap">האתר</div>
       <a class="d-link" href="/">דף הבית</a>
       <a class="d-link" href="/about.html">על האתר</a>
