@@ -511,6 +511,8 @@ a{color:var(--blue)}
   .nav .links a.contact{display:none}
 }
 @media (max-width:1300px){
+  /* ״חגי ישראל״ הוא הקישור התשיעי — ״על האתר״ מפנה לו מקום (קיים בתפריט הצד ובפוטר) */
+  .nav .links a[href="/about.html"]{display:none}
   .nav{gap:clamp(8px,1.6vw,16px)}
   .nav .links{gap:clamp(2px,.7vw,10px)}
   .nav .links a{font-size:.88rem;padding:6px 7px}
@@ -802,6 +804,7 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
     <a href="/eye-level/zulat.html">בינך לבין הזולת</a>
     <a href="/eye-level/chaim.html">בינך לבין החיים</a>
     <a href="/agadot-hatikva/">מגלות לגאולה</a>
+    <a href="/chagim/">חגי ישראל</a>
     <a href="/alon/">עלונים לשבת</a>
     <a href="/about.html">על האתר</a>
     <a class="contact" href="/#contact">צור קשר</a>
@@ -832,6 +835,8 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
       <a class="d-link" href="/eye-level/chaim.html">בינך לבין החיים<span class="n">18 עמודים</span></a>
     <div class="d-cap">מגלות לגאולה</div>
       <a class="d-link" href="/agadot-hatikva/">כל האגדות<span class="n">18 אגדות</span></a>
+    <div class="d-cap">חגי ישראל</div>
+      <a class="d-link" href="/chagim/sukkot.html">סוכות<span class="n">13 עמודים</span></a>
     <div class="d-cap">עלונים לשבת</div>
       <a class="d-link" href="/alon/">להורדה והדפסה<span class="n">54 עלונים</span></a>
     <div class="d-cap">האתר</div>
@@ -877,6 +882,7 @@ a,button{-webkit-tap-highlight-color:rgba(242,169,0,.18)}
     <div>
       <h2>האתר</h2>
       <a href="/">דף הבית</a>
+      <a href="/chagim/">חגי ישראל</a>
       <a href="/neshamot/">לעילוי נשמת</a>
       <a href="/about.html">על האתר</a>
       <a href="/#contact">צור קשר</a>
